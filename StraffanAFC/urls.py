@@ -14,7 +14,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from home import views as home_views
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', home_views.get_index, name='index'),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
+    url(r'^players/', home_views.get_players, name='players'),
+    url(r'^team/', home_views.get_team, name='teams'),
 ]

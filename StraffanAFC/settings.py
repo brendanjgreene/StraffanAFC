@@ -25,6 +25,8 @@ SECRET_KEY = '^lnyvsn+3sam$)!9w%zr$&g+x)0_t6c5^06^r_t)x^te4n2)3+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SITE_ID = 2
+
 ALLOWED_HOSTS = []
 
 
@@ -38,6 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +53,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'StraffanAFC.urls'
@@ -102,3 +108,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),  # static directory at the project level
+)
