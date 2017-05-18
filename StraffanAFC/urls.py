@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^$', home_views.get_index, name='index'),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^players/', home_views.get_players, name='players'),
-    url(r'^team/', home_views.get_team, name='teams'),
+    url(r'^team/', home_views.get_team_test, name='teams'),
+    url(r'^about/', home_views.get_info, name='info'),
+    url(r'^profile/', home_views.profile, name='profile'),
 ]

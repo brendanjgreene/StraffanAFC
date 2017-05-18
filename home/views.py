@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from models import Player
+from models import Player, Team
 
 
 def get_index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html',
+                  {'teams': Team.objects.all().order_by("-name")})
 
 
 def get_players(request):
@@ -13,5 +14,18 @@ def get_players(request):
 
 def get_team(request):
     return render(request, "team.html",
-                  {'team_list': Player.objects.get(team="U11 White")})
+                  {'team_list': Player.objects.filter(team__exact="name")})
 
+
+def get_team_test(request):
+    return render(request, "team.html",
+                  {'team_list': Player.objects.filter(team__id=1),
+                   'teams': Team.objects.all().order_by("-name")})
+
+
+def get_info(request):
+    return render(request, 'about.html')
+
+
+def profile(request):
+    return render(request, 'profile.html')
