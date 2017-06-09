@@ -1,11 +1,18 @@
 body{
     padding-top: 100px;
-}
-#my-background-image {
+    padding-bottom: 100px;
+
+    background-image: url("/static/Images/IMG_8678.JPG");
     background-size: 100%;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 600px;
+}
+#footer {
+    background-color: #0F7E50;
+    background-size: 100%;
+    bottom: 0;
+    height: auto;
+    left: 0;
+    position: fixed;
+    right: 0;
 }
 .list-inline .fa {
     color: #222222;
@@ -17,4 +24,24 @@ body{
 }
 .container {
     padding: 30px;
+    background-color: rgba(255,255,255,0.9);
+    margin-bottom: 50px;
+}
+
+.navbar {
+    /*background-color: #22b24c; old green maybe use for hover*/
+    background-color: #0F7E50;
+}
+
+.navbar-brand a {
+    color: #222222;
+}
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  padding: 7px 15px;
+}
+.btn-success {
+    background-color: #0F7E50;
 }

@@ -15,14 +15,29 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from home import views as home_views
+from django.conf import settings
+from schedule import views as schedule_views
 
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', home_views.get_index, name='index'),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
-    url(r'^players/', home_views.get_players, name='players'),
-    url(r'^team/', home_views.get_team_test, name='teams'),
+    url(r'^players/$', home_views.get_players, name='players'),
+    url(r'^team/(?P<id>\d+)$', home_views.get_team, name='get_team'),
     url(r'^about/', home_views.get_info, name='info'),
     url(r'^profile/', home_views.profile, name='profile'),
+    url(r'^team/new/', home_views.new_team, name='newteam'),
+    url(r'^players/new/', home_views.new_player, name='newplayer'),
+    url(r'^team/edit/(?P<id>\d+)$', home_views.edit_team, name='edit-team'),
+    url(r'^players/edit/(?P<id>\d+)$', home_views.edit_player, name='edit-player'),
+    url(r'^schedule/', schedule_views.get_schedule, name='schedule'),
+    url(r'^login/$', home_views.login, name='login'),
+    url(r'^logout/$', home_views.logout, name='logout'),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ]

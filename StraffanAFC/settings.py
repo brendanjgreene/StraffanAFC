@@ -42,7 +42,14 @@ INSTALLED_APPS = (
     'home',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'django_forms_bootstrap',
+    'debug_toolbar',
+    'tinymce',
+    'emoticons',
+    'schedule',
 )
+
+INTERNAL_IPS = ('127.0.0.1',)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,6 +62,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 )
 
 ROOT_URLCONF = 'StraffanAFC.urls'
@@ -62,8 +70,7 @@ ROOT_URLCONF = 'StraffanAFC.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

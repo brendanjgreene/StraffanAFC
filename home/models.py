@@ -1,16 +1,5 @@
 from django.db import models
 
-TEAM_CHOICES = (
-    ('U8', 'U8'),
-    ("U9", "U9"),
-    ("U11 White", "U11 White"),
-    ("U11 Green", "U11 Green"),
-    ("U12", "U12"),
-    ("U14", "U14"),
-    ("Seniors", "Seniors"),
-    ("Masters", "Masters"),
-)
-
 
 class Team(models.Model):
     name = models.CharField(max_length=255)
@@ -33,4 +22,4 @@ class Player(models.Model):
     team = models.ForeignKey(Team, related_name='player_name')
 
     def __unicode__(self):
-        return self.name + self.last_name
+        return self.name + " " + self.last_name
