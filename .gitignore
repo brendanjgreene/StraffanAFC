@@ -2,4 +2,4 @@
 .gitignore
 .idea/
 db.sqlite3
-Would skip repository templates/
+
