@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 class="text-info">Success!</h2>
+    <p>You are logged in as {{ user.first_name }} {{ user.last_name }} </p>
+    <p>Your last login was {{ user.last_login }}</p>
+    <h2 class="text-info">Subscription Details</h2>
+    {% if user.is_staff %}
+        <p>As a Manager you have unlimited access</p>
+    {% endif %}
+
+{% endblock %}

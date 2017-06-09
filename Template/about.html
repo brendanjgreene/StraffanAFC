@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% load staticfiles %}
+
+{% block head_js %}
+    <script>
+    function initMap() {
+        var uluru = {lat: 53.3155368, lng: -6.5964982};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzoE4I4KLfRtJS78yFMQnDf7l_YfvgFNo&callback=initMap">
+    </script>
+{% endblock %}
+
+{% block title %}Contact - {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="col-sm-12">
+        <div class="col-sm-6">
+            <h1>About Us?</h1>
+            <blockquote class="blockquote-reverse">
+                <h3 class="text-muted">Contact Us?</h3>
+                <h4>Phone:  +99 (55) 391-0862</h4>
+                <h4>Email:  noreply@anti-social.com</h4>
+            </blockquote>
+            <blockquote class="blockquote-reverse">
+                <h3 class="text-muted">Headquarters?</h3>
+                <h4>123 Penguin Way, Igloo 2</h4>
+                <h4>Isolation Industrial Park</h4>
+                <h4>Antartica</h4>
+            </blockquote>
+            <blockquote class="blockquote-reverse">
+                <h3 class="text-warning">Seriously! We are anti-social fill out a contact form and we might get back to you!</h3>
+            </blockquote>
+        </div>
+
+        <div class="col-sm-6">
+            <h1>Map</h1>
+            <h4 class="text-info">Remember we are Anti-Social, You didn't really think we would show <strong>YOU</strong> where we are!</h4>
+            <div id="map"></div>
+        </div>
+    </div>
+{% endblock %}
