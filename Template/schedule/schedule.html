@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="text-info">{{ team_name }} </h1>
+    <h2>Upcoming games</h2>
+    <table class="table table-striped">
+        <thead>
+            <th>Home</th>
+            <td>G</td>
+            <td>G</td>
+            <th>Away</th>
+            <th>Venue</th>
+            <th>Time</th>
+            <th>Referee</th>
+        </thead>
+    <tbody>
+            <tr>
+                <td>{{ home }}</td>
+                <td></td>
+                <td></td>
+                <td>{{ away }}</td>
+                <td>{{ venue }}</td>
+                <td>{{ time }}</td>
+                <td>{{ referee }}</td>
+            </tr>
+    </tbody>
+    </table>
+
+<iframe class="col-sm-12" height="500px" src="http://www.kdul.ie/roundup.aspx?oid=1012&show=f&cid=10095">
+</iframe>
+{% endblock %}

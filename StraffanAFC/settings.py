@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'tinymce',
     'emoticons',
     'schedule',
+    'news',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)
