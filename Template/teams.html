@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for team in teams %}
+        {% include 'teamlist.html' %}
+    {% endfor %}
+{% endblock %}

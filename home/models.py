@@ -16,15 +16,12 @@ class StaffTitle(models.Model):
 
     name = models.CharField(max_length=255)
     is_staff = models.BooleanField(default=True,
-                                   help_text='Designates whether the user can log into this admin '
-                                               'site.')
+                                   help_text='Designates whether the user can log into this admin site.')
     is_superuser = models.BooleanField(default=False,
-                                       help_text='Designates whether the user can log into all admin '
-                                                   'site.')
+                                       help_text='Designates whether the user can log into all admin site.')
 
     def __unicode__(self):
         return self.name
-
 
 
 class Player(models.Model):
@@ -59,6 +56,7 @@ class AccountUserManager(UserManager):
                           is_staff=is_staff, is_active=True,
                           is_superuser=is_superuser,
                           date_joined=now, **extra_fields)
+
         user.set_password(password)
         user.save(using=self._db)
 

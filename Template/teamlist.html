@@ -1,0 +1,22 @@
+    <a href="/team/{{ team.id }}"><h1 class="text-info">{{ team.name }}</h1></a>
+    <h2>Managers</h2>
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th></th>
+            <th>Phone</th>
+            <th>Email</th>
+        </thead>
+    <tbody>
+    {% for managers in manager_list %}
+            <tr>
+                <td>{{ managers.name }}</td>
+                <td>{{ managers.last_name }}</td>
+                <td>{{ managers.mobile }}</td>
+                <td>{{ managers.email }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+

@@ -51,13 +51,17 @@ def get_schedule(request):
             time.append(column_4)
         except IndexError:
             time.append('')
+        except AttributeError:
+            time.append('')
         try:
             column_5 = game[6].string.strip()
             referee.append(column_5)
         except IndexError:
             referee.append('')
+        except AttributeError:
+            referee.append('')
 
-    args = {'game': game[0], 'home': home, 'away': away, 'venue': venue, 'time': time, 'referee': referee,
+    args = {'game': game, 'home': home, 'away': away, 'venue': venue, 'time': time, 'referee': referee,
             'teams': Team.objects.all().order_by("-name")}
 
     return render(request, 'schedule/schedule.html', args)

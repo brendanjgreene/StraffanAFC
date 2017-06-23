@@ -33,12 +33,14 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
                          <i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Teams </a>
                     <ul class="dropdown-menu">
+                    <li><a href="/teams/">Teams</a></li>
+                    <li role="separator" class="divider"></li>
                     {% for team in teams %}
                         <li><a href="/team/{{ team.id }}">{{ team.name }}</a></li>
                     {% endfor %}
                         <li role="separator" class="divider"></li>
                         {% if user.is_superuser %}
-                            <li><a href="/team/new/">Create New Team</a></li>
+                            <li><a href="/admin/home/team/add/">Create New Team</a></li>
                             <li><a href="/admin/home/team/">Edit Teams</a></li>
                         {% endif %}
                     </ul>
@@ -103,11 +105,11 @@
             </p>
 
             <ul class="col-sm-3 list-inline pull-left">
-                <li><a href="/" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
-                <li><a href="/" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
-                <li><a href="/" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
-                <li><a href="/" target="_blank"><i class="fa fa-youtube fa-2x"></i></a></li>
-                <li><a href="/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
+                <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
+                <li><a href="https://plus.google.com" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
+                <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
+                <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube fa-2x"></i></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
             </ul>
         </div>
     </div>

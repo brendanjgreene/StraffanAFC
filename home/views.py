@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from models import Player, Team
+from models import Player, Team, AccountUserManager
 from forms import TeamForm, PlayerForm, UserLoginForm
 from django.shortcuts import redirect
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
+from django.contrib.auth.models import UserManager
 
 
 '''def new_post(request):
@@ -132,6 +133,12 @@ def get_team(request, id):
                   {'team_name': team_name,
                    'team_list': Player.objects.filter(team__id=id),
                    'teams': Team.objects.all().order_by("-name")})
+
+
+def get_teams(request):
+    return render(request, "teams.html",
+                  {'teams': Team.objects.all().order_by("-name"),
+                   'team_list': Player.objects.all()})
 
 
 def get_info(request):

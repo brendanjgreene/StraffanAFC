@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^players/$', home_views.get_players, name='players'),
     url(r'^team/(?P<id>\d+)$', home_views.get_team, name='get_team'),
+    url(r'^teams/$', home_views.get_teams, name='get_teams'),
     url(r'^about/', home_views.get_info, name='info'),
     url(r'^profile/', home_views.profile, name='profile'),
     url(r'^team/new/', home_views.new_team, name='newteam'),
