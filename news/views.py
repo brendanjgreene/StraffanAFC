@@ -11,6 +11,24 @@ from polls.forms import PollSubjectForm, PollForm
 from polls.models import PollSubject
 from home.models import Team, Player
 
+
+
+@login_required()
+def new_subject(request):
+    if request.method == "POST":
+        form = SubjectForm(request.POST)
+        if form.is_valid():
+            Subject = form.save(commit=False)
+            subject.save()
+
+            messages.success(request, "You have added a new News Subject!")
+
+            return redirect(forum)
+    else:
+        form = SubjectForm()
+    return render(request, 'player-form.html', {'form': form,
+                                                'teams': Team.objects.all().order_by("-name")})
+
 @login_required
 def new_thread(request, subject_id):
     subject = get_object_or_404(Subject, pk=subject_id)

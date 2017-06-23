@@ -20,4 +20,5 @@ class PostForm(forms.ModelForm):
 class SubjectForm(forms.ModelForm):
     class Meta:
         model = Subject
-        fields = ['name']
+        fields = ['name', 'description', 'team']
+
