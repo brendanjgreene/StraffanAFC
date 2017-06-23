@@ -9,14 +9,45 @@
         </thead>
     <tbody>
     {% for managers in manager_list %}
-            <tr>
-                <td>{{ managers.name }}</td>
-                <td>{{ managers.last_name }}</td>
-                <td>{{ managers.mobile }}</td>
-                <td>{{ managers.email }}</td>
-            </tr>
-        {% endfor %}
+        {% if managers.team_id == team.id %}
+        <tr>
+            <td>{{ managers.name }}</td>
+            <td>{{ managers.last_name }}</td>
+            <td>{{ managers.mobile }}</td>
+            <td>{{ managers.email }}</td>
+        </tr>
+        {% endif %}
+    {% endfor %}
     </tbody>
     </table>
+</table>
+    {% if user.is_staff %}
+        <h2>Players</h2>
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Parent's Name</th>
+                <th>Phone</th>
+                <th>D.O.B.</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for players in team_list %}
+            {% if players.team_id == team.id %}
+            <tr>
+                <td>{{ players.name }}</td>
+                <td>{{ players.last_name }}</td>
+                <td>{{ players.parent_name }}</td>
+                <td>{{ players.mobile }}</td>
+                <td>{{ players.date_of_birth }}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+
+        </table>
+    {% endif %}
 
 

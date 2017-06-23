@@ -2,12 +2,14 @@ from django.db import models
 from django.utils import timezone
 from tinymce.models import HTMLField
 from django.conf import settings
+from home.models import Team
 
 
 class Subject(models.Model):
 
     name = models.CharField(max_length=255)
     description = HTMLField()
+    team = models.ForeignKey(Team, related_name='subject_team')
 
     def __unicode__(self):
         return self.name

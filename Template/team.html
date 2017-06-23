@@ -11,13 +11,15 @@
         </thead>
     <tbody>
     {% for managers in manager_list %}
-            <tr>
-                <td>{{ managers.name }}</td>
-                <td>{{ managers.last_name }}</td>
-                <td>{{ managers.mobile }}</td>
-                <td>{{ managers.email }}</td>
-            </tr>
-        {% endfor %}
+        {% if managers.team_id == team.id %}
+        <tr>
+            <td>{{ managers.name }}</td>
+            <td>{{ managers.last_name }}</td>
+            <td>{{ managers.mobile }}</td>
+            <td>{{ managers.email }}</td>
+        </tr>
+        {% endif %}
+    {% endfor %}
     </tbody>
     </table>
     {% if user.is_staff %}

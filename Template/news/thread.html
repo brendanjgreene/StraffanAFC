@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load news_extras %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="row header">
+        <div class="container jumbotron">
+        <h2>{{ thread.subject }}</h2>
+            <h1>{{ thread.name }}</h1>
+            <div class="col-md-12">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>CREATED</th>
+                            <th>OWNER</th>
+                            <th>LAST POST</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <time datetime="{{ thread.created_at }}">
+                                    {{ thread.created_at | started_time }}
+                                </time>
+                            </td>
+                            <td>{{ thread.user.username }}</td>
+                            {% if thread.posts.count > 0 %}
+                                <td>{% last_posted_user_name thread %}</td>
+                            {% endif %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {% if thread.poll %}
+                <div class="container">
+                    <div class="col-md-9">
+                        <h2>Poll</h2>
+                        <strong>{{ thread.poll.question }}</strong>
+
+                        <p>Here's how the votes are so far</p>
+
+                        {% for subject in thread.poll.subjects.all %}
+                            <div class="col-md-9">
+                                <strong>{{ subject.name }}</strong>
+                                <span class="pull-right">{{ subject|vote_percentage }}%</span>
+                            </div>
+                            {% user_vote_button thread subject user %}
+                            <div class="col-md-9">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-value="{{ subject|vote_percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ subject|vote_percentage }}%;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+            <div class="btn-group col-md-9">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'new_post' thread.id %}" class="btn btn-primary">New post</a>
+                {% endif %}
+                <a href="/news/" class="btn btn-warning">Back to Forum</a>
+            </div>
+            {% for post in thread.posts.all %}
+                {% include "news/post.html" %}
+            {% endfor %}
+    </div>
+{% endblock %}

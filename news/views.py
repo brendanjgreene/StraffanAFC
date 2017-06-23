@@ -97,7 +97,7 @@ def thread(request, thread_id):
     args = {'thread': thread_,
             'teams': Team.objects.all().order_by("-name")}
     args.update(csrf(request))
-    return render(request, 'forum/thread.html', args)
+    return render(request, 'news/thread.html', args)
 
 
 @login_required
