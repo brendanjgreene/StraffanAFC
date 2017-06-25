@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="row header">
-        <div class="container jumbotron">
+        <div class="container-fluid jumbotron">
         <h2>{{ thread.subject }}</h2>
             <h1>{{ thread.name }}</h1>
             <div class="col-md-12">
@@ -60,7 +60,7 @@
                 {% if user.is_authenticated %}
                     <a href="{% url 'new_post' thread.id %}" class="btn btn-primary">New post</a>
                 {% endif %}
-                <a href="/news/" class="btn btn-warning">Back to Forum</a>
+                <a href="/news/" class="btn btn-warning">Back to News</a>
             </div>
             {% for post in thread.posts.all %}
                 {% include "news/post.html" %}

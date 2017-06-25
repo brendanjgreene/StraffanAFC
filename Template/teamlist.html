@@ -1,4 +1,14 @@
-    <a href="/team/{{ team.id }}"><h1 class="text-info">{{ team.name }}</h1></a>
+<div class="row">
+<h1 class="text-info col-md-4">
+    <a href="/team/{{ team.id }}">{{ team.name }} Team</a>
+        {% if user.is_superuser %}
+        <div class="pull-right">
+            <a href="{% url 'edit_team' team.id %}"><i class="fa fa-pencil-square-o"></i></a>
+            <a href="{% url 'delete_team' team.id %}"><i class="fa fa-trash-o"></i></a>
+        </div>
+        {% endif %}
+</h1>
+</div>
     <h2>Managers</h2>
     <table class="table">
         <thead>
@@ -31,19 +41,28 @@
                 <th>Parent's Name</th>
                 <th>Phone</th>
                 <th>D.O.B.</th>
+                {% if user.is_superuser %}
+                    <td>
+                    Edit
+                    </td>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
         {% for players in team_list %}
-            {% if players.team_id == team.id %}
             <tr>
                 <td>{{ players.name }}</td>
                 <td>{{ players.last_name }}</td>
                 <td>{{ players.parent_name }}</td>
                 <td>{{ players.mobile }}</td>
                 <td>{{ players.date_of_birth }}</td>
+                {% if user.is_superuser %}
+                    <td>
+                        <a href="{% url 'edit-player' players.id %}"><i class="fa fa-pencil-square-o"></i></a>
+                        <a href="{% url 'delete-player' players.id %}"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                {% endif %}
             </tr>
-            {% endif %}
         {% endfor %}
         </tbody>
 

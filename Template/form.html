@@ -11,14 +11,19 @@
 });
 </script>
 {% endblock %}
+{% block title %}
+    {{ team }}
+{% endblock %}
 {% block content %}
  <section>
    <div class="col-md-9">
      <form method="post" action="{{ form_action }}">
+         <h1>{{ heading_text }}</h1>
        {% csrf_token %}
        {{ form|as_bootstrap }}
        <div class="form-group">
          <button type="submit" class="btn btn-primary">{{button_text}}</button>
+           <button class="btn btn-danger" onclick="goBack()">Cancel</button>
        </div>
      </form>
 

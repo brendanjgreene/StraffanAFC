@@ -55,15 +55,18 @@ def new_team(request):
     if request.method == "POST":
         form = TeamForm(request.POST)
         if form.is_valid():
-            Team = form.save(commit=False)
-            Team.save()
+            team = form.save(commit=False)
+            team.save()
 
-            messages.success(request, "You have added a new Team!")
+            messages.success(request, "You have added the " + team.name + " Team!")
 
-            return redirect("/")
+            return redirect("get_team", team.id)
     else:
         form = TeamForm()
-    return render(request, 'team-form.html', {'form': form})
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'You are creating a new Team!',
+                                         'button_text': 'Save Team',
+                                         'teams': Team.objects.all().order_by("-name")})
 
 
 def edit_team(request, id):
@@ -71,32 +74,55 @@ def edit_team(request, id):
     if request.method == "POST":
         form = TeamForm(request.POST, request.FILES, instance=team)
         if form.is_valid():
-            team = form.save(False)
+            team = form.save(commit=False)
             team.save()
-            messages.success(request, "You have edited the team!")
+            messages.success(request, "the " + team.name + " was edited!")
 
-            return redirect('teams')
+            return redirect(reverse('get_team', args={team.pk}))
     else:
         form = TeamForm(instance=team)
 
-    return render(request, 'team-form.html', {'form': form,
-                                              'teams': Team.objects.all().order_by("-name")})
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'You are editing ' + team.name + 'Team?',
+                                         'button_text': 'Save Changes',
+                                         'teams': Team.objects.all().order_by("-name")})
+
+
+def delete_team(request, id):
+    team = get_object_or_404(Team, pk=id)
+    if request.method == "POST":
+        form = TeamForm(request.POST, instance=team)
+        team.delete()
+
+        messages.success(request, "The " + team.name + " team was deleted!")
+
+        return redirect("get_teams")
+    else:
+        form = TeamForm(instance=team)
+
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'Are you sure you want to delete the '+ team.name + 'Team?',
+                                         'button_text': 'Click to confirm deletion of ' + team.name + ' Team',
+                                         'teams': Team.objects.all().order_by("-name")})
 
 
 def new_player(request):
     if request.method == "POST":
         form = PlayerForm(request.POST)
         if form.is_valid():
-            Player = form.save(commit=False)
-            Player.save()
+            player = form.save(commit=False)
+            player.save()
 
-            messages.success(request, "You have added a new player!")
+            messages.success(request, "You have added " + player.name + " " + player.last_name + " to " + player.team.name + " Team!")
 
-            return redirect(get_players)
+            return redirect('get_team', player.team_id)
     else:
         form = PlayerForm()
-    return render(request, 'player-form.html', {'form': form,
-                                                'teams': Team.objects.all().order_by("-name")})
+
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'You are creating a new player!',
+                                         'button_text': 'Save Player',
+                                         'teams': Team.objects.all().order_by("-name")})
 
 
 def edit_player(request, id):
@@ -106,14 +132,35 @@ def edit_player(request, id):
         if form.is_valid():
             player = form.save(False)
             player.save()
-            messages.success(request, "You have edited a Player!")
+            messages.success(request, "You have edited " + player.name + ' ' + player.last_name +"!")
 
-            return redirect('players')
+            return redirect('get_team', player.team_id)
     else:
         form = PlayerForm(instance=player)
 
-    return render(request, 'player-form.html', {'form': form,
-                                                'teams': Team.objects.all().order_by("-name")})
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'You are editing ' + player.name + ' ' + player.last_name,
+                                         'button_text': 'Save Player',
+                                         'teams': Team.objects.all().order_by("-name")})
+
+
+def delete_player(request, id):
+    player = get_object_or_404(Player, pk=id)
+    if request.method == "POST":
+        form = TeamForm(request.POST, instance=player)
+        player.delete()
+
+        messages.success(request, player.name + ' ' + player.last_name + " was deleted!")
+
+        return redirect('get_team', player.team_id)
+
+    else:
+        form = PlayerForm(instance=player)
+
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'Are you sure you want to delete ' + player.name + ' ' + player.last_name + "!",
+                                         'button_text': 'confirm delete ' + player.name + ' ' + player.last_name + "!",
+                                         'teams': Team.objects.all().order_by("-name")})
 
 
 def get_index(request):
@@ -129,7 +176,7 @@ def get_players(request):
 
 def get_team(request, id):
     team_name = get_object_or_404(Team, pk=id)
-    return render(request, "teams.html",
+    return render(request, "team.html",
                   {'team_name': team_name,
                    'team_list': Player.objects.filter(team__id=id),
                    'teams': Team.objects.all().order_by("-name")})
@@ -144,6 +191,12 @@ def get_teams(request):
 def get_info(request):
     return render(request, 'about.html',
                   {'teams': Team.objects.all().order_by("-name")})
+
+
+def get_players(request):
+    return render(request, 'players.html',
+                  {'teams': Team.objects.all().order_by('-name'),
+                   'player_list': Player.objects.all().order_by("date_of_birth")})
 
 
 @login_required(login_url='/login/')

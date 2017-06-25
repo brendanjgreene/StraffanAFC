@@ -5,12 +5,11 @@ from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
-from .forms import ThreadForm, PostForm
+from .forms import ThreadForm, PostForm, SubjectForm
 from django.forms import formset_factory
 from polls.forms import PollSubjectForm, PollForm
 from polls.models import PollSubject
 from home.models import Team, Player
-
 
 
 @login_required()
@@ -18,7 +17,7 @@ def new_subject(request):
     if request.method == "POST":
         form = SubjectForm(request.POST)
         if form.is_valid():
-            Subject = form.save(commit=False)
+            subject = form.save(commit=False)
             subject.save()
 
             messages.success(request, "You have added a new News Subject!")
@@ -26,8 +25,10 @@ def new_subject(request):
             return redirect(forum)
     else:
         form = SubjectForm()
-    return render(request, 'player-form.html', {'form': form,
-                                                'teams': Team.objects.all().order_by("-name")})
+    return render(request, 'form.html', {'form': form,
+                                         'form_action': reverse('forum'),
+                                         'button_text': 'Save Subject',
+                                         'teams': Team.objects.all().order_by("-name")})
 
 @login_required
 def new_thread(request, subject_id):

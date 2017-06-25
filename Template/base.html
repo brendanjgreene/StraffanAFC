@@ -40,9 +40,10 @@
                     {% endfor %}
                         <li role="separator" class="divider"></li>
                         {% if user.is_superuser %}
-                            <li><a href="/admin/home/team/add/">Create New Team</a></li>
+                            <li><a href="/team/new/">Create New Team</a></li>
                             <li><a href="/admin/home/team/">Edit Teams</a></li>
                             <li><a href="/players/new/">Add Player</a></li>
+                            <li><a href="/players/">Players</a></li>
 
                         {% endif %}
                     </ul>
@@ -81,25 +82,34 @@
 <div class="container">
        {% block content %}
        {% endblock %}
-    <hr>
+    <!--hr> these buttons were moved to the footer
 <div>
 <button class="btn btn-success pull-right" onclick="goBack()">Go Back</button>
-</div>
+    <a href="#"><button class="btn btn-primary" >To Top</button></a>
+</div-->
 </div>
 
 <div id="footer">
     <div class="container-fluid" style="padding-top: 15px">
         <div class="footer">
-            <p class="col-sm-4 pull-right">Site Designed by <a href="https://github.com/brendanjgreene" target="_blank">Brendan Greene!</a>
-            </p>
 
-            <ul class="col-sm-3 list-inline pull-left">
+
+
+
+            <ul class="col-sm-4 list-inline pull-left">
                 <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
                 <li><a href="https://plus.google.com" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
                 <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
                 <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube fa-2x"></i></a></li>
                 <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a></li>
             </ul>
+
+            <p class="col-sm-4 text-center">Site Designed by <a href="https://github.com/brendanjgreene" target="_blank">Brendan Greene!</a></p>
+            <ul class="col-sm-4 list-inline text-right">
+                <li><button class="btn btn-success" onclick="goBack()"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></button></li>
+                <li><button class="btn btn-success"><a href="#"><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i></a></li></button>
+            </ul>
+
         </div>
     </div>
 </div>
