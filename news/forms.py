@@ -1,5 +1,6 @@
 from django import forms
 from .models import Thread, Post, Subject
+from tinymce.models import HTMLField
 
 
 class ThreadForm(forms.ModelForm):
@@ -21,4 +22,11 @@ class SubjectForm(forms.ModelForm):
     class Meta:
         model = Subject
         fields = ['name', 'description', 'team']
+
+
+class SubjectFormDesc(forms.ModelForm):
+    class Meta:
+        model = Subject
+        fields = ['description']
+
 

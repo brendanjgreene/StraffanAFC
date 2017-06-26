@@ -1,12 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from models import Player, Team, AccountUserManager
-from forms import TeamForm, PlayerForm, UserLoginForm
+from forms import TeamForm, PlayerForm, UserLoginForm, TeamDeleteForm
 from django.shortcuts import redirect
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
 from django.contrib.auth.models import UserManager
+from news.models import Subject
+from news.forms import SubjectFormDesc
 
 
 '''def new_post(request):
@@ -53,20 +55,27 @@ def logout(request):
 
 def new_team(request):
     if request.method == "POST":
-        form = TeamForm(request.POST)
-        if form.is_valid():
-            team = form.save(commit=False)
+        team_form = TeamForm(request.POST)
+        subject_form_desc = SubjectFormDesc(request.POST)
+        if team_form.is_valid() and subject_form_desc.is_valid():
+            team = team_form.save(commit=False)
             team.save()
+            subject = subject_form_desc.save(commit=False)
+            subject.name = team.name
+            subject.team_id = team.id
+            subject.save()
 
             messages.success(request, "You have added the " + team.name + " Team!")
 
             return redirect("get_team", team.id)
     else:
-        form = TeamForm()
-    return render(request, 'form.html', {'form': form,
-                                         'heading_text': 'You are creating a new Team!',
-                                         'button_text': 'Save Team',
-                                         'teams': Team.objects.all().order_by("-name")})
+        team_form = TeamForm()
+        subject_form_desc = SubjectFormDesc()
+    return render(request, 'team_subject_form.html', {'team_form': team_form,
+                                                      'subject_form_desc': subject_form_desc,
+                                                      'heading_text': 'You are creating a new Team!',
+                                                      'button_text': 'Save Team',
+                                                      'teams': Team.objects.all().order_by("-name")})
 
 
 def edit_team(request, id):
@@ -91,17 +100,21 @@ def edit_team(request, id):
 def delete_team(request, id):
     team = get_object_or_404(Team, pk=id)
     if request.method == "POST":
-        form = TeamForm(request.POST, instance=team)
+        form = TeamDeleteForm(request.POST, instance=team)
         team.delete()
 
         messages.success(request, "The " + team.name + " team was deleted!")
 
         return redirect("get_teams")
     else:
-        form = TeamForm(instance=team)
+        form = TeamDeleteForm(instance=team)
 
     return render(request, 'form.html', {'form': form,
-                                         'heading_text': 'Are you sure you want to delete the '+ team.name + 'Team?',
+                                         'heading_text': 'Are you sure you want to delete the '
+                                                         + team.name +
+                                                         ' Team?  All of the Players and News Associated with this '
+                                                         'team will also be deleted.  '
+                                                         'We suggest you reassign these players and other items first!',
                                          'button_text': 'Click to confirm deletion of ' + team.name + ' Team',
                                          'teams': Team.objects.all().order_by("-name")})
 
@@ -191,12 +204,6 @@ def get_teams(request):
 def get_info(request):
     return render(request, 'about.html',
                   {'teams': Team.objects.all().order_by("-name")})
-
-
-def get_players(request):
-    return render(request, 'players.html',
-                  {'teams': Team.objects.all().order_by('-name'),
-                   'player_list': Player.objects.all().order_by("date_of_birth")})
 
 
 @login_required(login_url='/login/')

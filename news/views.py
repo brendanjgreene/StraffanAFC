@@ -25,7 +25,7 @@ def new_subject(request):
             return redirect(forum)
     else:
         form = SubjectForm()
-    return render(request, 'form.html', {'form': form,
+    return render(request, 'news/subject-form.html', {'form': form,
                                          'form_action': reverse('forum'),
                                          'button_text': 'Save Subject',
                                          'teams': Team.objects.all().order_by("-name")})
