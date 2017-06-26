@@ -52,10 +52,12 @@ class AccountUserManager(UserManager):
             raise ValueError('The given username must be set')
 
         email = self.normalize_email(email)
+        team = models.ForeignKey(Team, related_name='user_name')
         user = self.model(username=email, email=email,
                           is_staff=is_staff, is_active=True,
                           is_superuser=is_superuser,
-                          date_joined=now, **extra_fields)
+                          date_joined=now, team=team,
+                          **extra_fields.get)
 
         user.set_password(password)
         user.save(using=self._db)
