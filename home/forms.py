@@ -1,5 +1,7 @@
 from django import forms
 from models import Team, Player
+from news.models import Subject
+from django.contrib.auth.forms import UserCreationForm
 
 
 class TeamForm(forms.ModelForm):
@@ -7,6 +9,13 @@ class TeamForm(forms.ModelForm):
     class Meta:
         model = Team
         fields = ['name']
+
+
+class TeamDeleteForm(forms.ModelForm):
+
+    class Meta:
+        model = Team
+        fields = []
 
 
 class PlayerForm(forms.ModelForm):
@@ -23,3 +32,5 @@ class PlayerForm(forms.ModelForm):
 class UserLoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+
