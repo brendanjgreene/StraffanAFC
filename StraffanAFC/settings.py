@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'schedule',
     'news',
     'polls',
+    'accounts',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)

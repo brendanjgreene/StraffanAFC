@@ -1,14 +1,13 @@
 from django.shortcuts import render, get_object_or_404
-from models import Player, Team, AccountUserManager
+from models import Player, Team
 from forms import TeamForm, PlayerForm, UserLoginForm, TeamDeleteForm
 from django.shortcuts import redirect
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
-from django.contrib.auth.models import UserManager
-from news.models import Subject
 from news.forms import SubjectFormDesc
+from django.contrib.auth.models import User
 
 
 '''def new_post(request):
@@ -145,7 +144,7 @@ def edit_player(request, id):
         if form.is_valid():
             player = form.save(False)
             player.save()
-            messages.success(request, "You have edited " + player.name + ' ' + player.last_name +"!")
+            messages.success(request, "You have edited " + player.name + ' ' + player.last_name + "!")
 
             return redirect('get_team', player.team_id)
     else:
@@ -191,6 +190,7 @@ def get_team(request, id):
     team_name = get_object_or_404(Team, pk=id)
     return render(request, "team.html",
                   {'team_name': team_name,
+                   'managers_list': User.objects.all(),
                    'team_list': Player.objects.filter(team__id=id),
                    'teams': Team.objects.all().order_by("-name")})
 

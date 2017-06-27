@@ -1,5 +1,7 @@
+from __future__ import unicode_literals
 from django.db import models
-from django.contrib.auth.models import UserManager, Permission
+from django.contrib.auth.models import AbstractUser, UserManager
+from django.utils import timezone
 
 
 class Team(models.Model):
@@ -32,7 +34,7 @@ class Player(models.Model):
     name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     mobile = models.CharField(max_length=20)
-    parent_name = models.CharField(max_length=255)
+    parent_name = models.CharField(max_length=255,  blank=True, null=True)
     date_of_birth = models.DateField()
     email = models.EmailField(max_length=255)
     team = models.ForeignKey(Team, related_name='player_name')
@@ -52,14 +54,12 @@ class AccountUserManager(UserManager):
             raise ValueError('The given username must be set')
 
         email = self.normalize_email(email)
-        team = models.ForeignKey(Team, related_name='user_name')
         user = self.model(username=email, email=email,
                           is_staff=is_staff, is_active=True,
                           is_superuser=is_superuser,
-                          date_joined=now, team=team,
-                          **extra_fields.get)
-
+                          date_joined=now, team=models.ForeignKey(Team, related_name='user_name'), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
         return user
+

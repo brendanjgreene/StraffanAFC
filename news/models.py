@@ -3,7 +3,6 @@ from django.utils import timezone
 from tinymce.models import HTMLField
 from django.conf import settings
 from home.models import Team
-from django import forms
 
 
 class Subject(models.Model):
