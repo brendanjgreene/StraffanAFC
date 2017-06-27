@@ -24,15 +24,15 @@ class PlayerForm(forms.ModelForm):
         model = Player
         fields = ['name', 'last_name', 'parent_name', 'mobile', 'email', 'date_of_birth', 'team']
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'enter First Name'}),
+            'name': forms.TextInput(attrs={'placeholder': "enter Player's First Name"}),
+            'last_name': forms.TextInput(attrs={'placeholder': "enter Player's Last Name"}),
+            'parent_name': forms.TextInput(attrs={'placeholder': "enter Parent's Full Name if a minor"}),
+            'mobile': forms.TextInput(attrs={'placeholder': "enter Mobile or Parent's Mobile if a minor"}),
+            'email': forms.TextInput(attrs={'placeholder': "enter Email or Parent's Email if a minor"}),
             'date_of_birth': forms.DateInput(attrs={
-                'placeholder': 'MM/DD/YYY',
+                'placeholder': 'MM/DD/YYYY',
                 'id': 'date',
             }),
-            'last_name': forms.TextInput(attrs={'placeholder': 'enter Last Name'}),
-            'parent_name': forms.TextInput(attrs={'placeholder': 'enter Parents Full Name'}),
-            'mobile': forms.TextInput(attrs={'placeholder': 'enter Parents Full Name'}),
-            'parent_name': forms.TextInput(attrs={'placeholder': 'enter Parents Full Name'})
         }
 
 
