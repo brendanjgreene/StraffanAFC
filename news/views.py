@@ -124,9 +124,9 @@ def new_post(request, thread_id):
     thread = get_object_or_404(Thread, pk=thread_id)
 
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save(False)
+            post = form.save(commit=False)
             post.thread = thread
             post.user = request.user
             post.save()
@@ -145,7 +145,7 @@ def new_post(request, thread_id):
     }
     args.update(csrf(request))
 
-    return render(request, 'forum/post_form.html', args)
+    return render(request, 'news/post-form.html', args)
 
 
 @login_required
@@ -154,9 +154,10 @@ def edit_post(request, thread_id, post_id):
     post = get_object_or_404(Post, pk=post_id)
 
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.save()
             messages.success(request, "You have updated your thread!")
 
             return redirect(reverse('thread', args={thread.pk}))
@@ -171,7 +172,7 @@ def edit_post(request, thread_id, post_id):
     }
     args.update(csrf(request))
 
-    return render(request, 'forum/post_form.html', args)
+    return render(request, 'news/post-form.html', args)
 
 
 @login_required

@@ -1,21 +1,25 @@
 {% load staticfiles %}
 {% load emoticons_tags %}
-<section class="row comment col-md-9">
+<section class="comment col-md-12">
     <hr>
- <div class="col-md-3 comment-profile">
-     {% if user.png %}
-         <p><img src="{% static 'images/user.png' %}" /></p>
-     {% endif %}
-     <p>{{ post.user.username }}</p>
-     <p>{{ post.user.posts.count }} POSTS</p>
- </div>
- <div class="col-md-9">
-   <div class="comment-content">
-     {% autoescape off %}
-       {{ post.comment|emoticons }}
-     {% endautoescape %}
-   </div>
- <div>{% include "news/comment-details.html" %}</div>
-
- </div>
+    <div class="col-md-3 comment-profile">
+        {% if user.png %}
+            <p><img src="{% static 'images/user.png' %}" /></p>
+        {% endif %}
+        <p>{{ post.user.username }}</p>
+        <p>{{ post.user.posts.count }} POSTS</p>
+    </div>
+    <div class="col-md-9">
+        <div class="comment-content">
+            {% autoescape off %}
+                {{ post.comment|emoticons }}
+            {% endautoescape %}
+        </div>
+        <div class="col-md-12">{% include "news/comment-details.html" %}</div>
+    </div>
+{% if post.image %}
+    <div class="container col-xs-12">
+        <img src="/media/{{ post.image }}" style="width: inherit">
+    </div>
+{% endif %}
 </section>

@@ -21,7 +21,7 @@
     {% for managers in managers_list %}
             <tr>
                 <td>{{ managers.first_name }} {{ managers.last_name }}</td>
-                <td>{{ managers.username }}</td>
+                <td>{{ managers.profile.mobile }}</td>
                 <td>{{ managers.email }}</td>
             </tr>
         {% endfor %}

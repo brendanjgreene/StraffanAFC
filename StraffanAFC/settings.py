@@ -49,10 +49,11 @@ INSTALLED_APPS = (
     'schedule',
     'news',
     'polls',
-    'accounts',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)
+
+LOGIN_URL = '/login/'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -120,6 +121,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),  # static directory at the project level
 )
+

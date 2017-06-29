@@ -18,6 +18,8 @@ from home import views as home_views
 from django.conf import settings
 from schedule import views as schedule_views
 from news import views as news_views
+from settings import MEDIA_ROOT
+from django.views.static import serve
 
 
 urlpatterns = [
@@ -36,6 +38,9 @@ urlpatterns = [
     url(r'^players/edit/(?P<id>\d+)$', home_views.edit_player, name='edit-player'),
     url(r'^players/delete/(?P<id>\d+)$', home_views.delete_player, name='delete-player'),
     url(r'^schedule/', schedule_views.get_schedule, name='schedule'),
+    url(r'^newuser/$', home_views.new_user, name='new_user'),
+    url(r'^edit_profile/$', home_views.edit_profile, name='edit_profile'),
+    url(r'^change_your_password/$', home_views.change_your_password, name='change_your_password'),
     url(r'^login/$', home_views.login, name='login'),
     url(r'^logout/$', home_views.logout, name='logout'),
 
@@ -49,6 +54,7 @@ urlpatterns = [
     url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', news_views.edit_post, name='edit_post'),
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', news_views.delete_post, name='delete_post'),
     url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', news_views.thread_vote, name='cast_vote'),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 ]
 
 if settings.DEBUG:

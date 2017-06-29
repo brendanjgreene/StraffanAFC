@@ -7,6 +7,10 @@ import pandas as pd
 
 
 def get_schedule(request):
+    return render(request, 'schedule/schedule.html', {'teams': Team.objects.all().order_by("-name")})
+
+
+'''def get_schedule(request):
     # Create a variable with the URL
     url = 'http://www.kdul.ie/roundup.aspx?oid=1012&show=f&cid=10095'
 
@@ -61,10 +65,10 @@ def get_schedule(request):
         except AttributeError:
             referee.append('')
 
-    args = {'game': game, 'home': home, 'away': away, 'venue': venue, 'time': time, 'referee': referee,
+    args = { #  'game': game, 'home': home, 'away': away, 'venue': venue, 'time': time, 'referee': referee,
             'teams': Team.objects.all().order_by("-name")}
 
-    return render(request, 'schedule/schedule.html', args)
+    return render(request, 'schedule/schedule.html', args)'''
 
 
 '''def get_schedule(request):
