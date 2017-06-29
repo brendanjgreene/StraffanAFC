@@ -1,14 +1,20 @@
 from django.shortcuts import render, get_object_or_404
-from models import Player, Team
-from forms import TeamForm, PlayerForm, UserLoginForm, TeamDeleteForm
+from models import Player, Team, Profile
+from forms import TeamForm, PlayerForm, UserLoginForm, TeamDeleteForm, NewUserForm, MyUserChangeForm, MyPasswordChangeForm, ProfileForm
 from django.shortcuts import redirect
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
 from news.forms import SubjectFormDesc
+from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.models import User
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.conf.urls import url
 
+
+teams = Team.objects.all().order_by("-name")
 
 '''def new_post(request):
     if request.method == "POST":
@@ -24,6 +30,86 @@ from django.contrib.auth.models import User
     return render(request, 'blogpostform.html', {'form': form})'''
 
 
+def change_your_password(request):
+    try:
+        profile = Profile.objects.get(user=request.user)
+    except Profile.DoesNotExist:
+        profile = Profile.objects.create(user=request.user)
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST, )
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, request.user.username + '. Your password was successfully updated!')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+
+    args = {'form': form,
+            'heading_text': request.user.username + ": " + request.user.first_name + " Are you sure you want to change your password",
+            'button_text': 'Confirm Password Change'}
+
+    return render(request, 'form.html', args)
+
+
+def edit_profile(request):
+    try:
+        profile = Profile.objects.get(user=request.user)
+    except Profile.DoesNotExist:
+        profile = Profile.objects.create(user=request.user)
+
+    if request.method == 'POST':
+        second_form = ProfileForm(request.POST or None, instance=profile)
+        form = MyUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid() and second_form.is_valid():
+            form.save()
+            second_form.save()
+            messages.success(request, 'Your profile was succesfully updated!')
+            return redirect(reverse('profile'))
+        else:
+            messages.error(request, 'Please correct the error below')
+    else:
+        form = MyUserChangeForm(instance=request.user)
+        second_form = ProfileForm(instance=profile)
+
+    args = {'form': form,
+            'second_form': second_form,
+            'heading_text': 'You are editing user ' + request.user.first_name + " " + request.user.last_name,
+            'button_text': 'Save Changes',
+            'teams': teams}
+
+    return render(request, 'form.html', args)
+
+
+@csrf_protect
+def new_user(request):
+    if not request.user.is_superuser:
+        messages.error(request, "you are not authorized to create users")
+        return redirect('profile')
+
+    else:
+        if request.method == 'POST':
+            form = NewUserForm(request.POST)
+            if form.is_valid():
+                user = form.save(commit=False)
+                user.username = user.email
+                user.is_staff = True
+                user.save()
+                messages.success(request, "You have created a new user " + user.username)
+                return redirect(reverse('profile'))
+
+        else:
+            form = NewUserForm()
+
+            args = {'form': form,
+                    'heading_text': 'You are creating a new User!',
+                    'button_text': 'Save User'}
+
+            return render(request, 'form.html', args)
+
+
 def login(request):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
@@ -32,8 +118,12 @@ def login(request):
                                      password=request.POST.get('password'))
 
             if user is not None:
+                try:
+                    Profile.objects.get(user=user)
+                except Profile.DoesNotExist:
+                    Profile.objects.create(user=user)
                 auth.login(request, user)
-                messages.error(request, "You have successfully logged in")
+                messages.success(request, "You have successfully logged in")
                 return redirect(reverse('profile'))
             else:
                 form.add_error(None, "Your username or password was not recognised")
@@ -41,7 +131,8 @@ def login(request):
     else:
         form = UserLoginForm()
 
-    args = {'form': form, 'teams': Team.objects.all().order_by("-name")}
+    args = {'form': form,
+            'teams': Team.objects.all().order_by("-name")}
     args.update(csrf(request))
     return render(request, 'login.html', args)
 
@@ -92,8 +183,7 @@ def edit_team(request, id):
 
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'You are editing ' + team.name + 'Team?',
-                                         'button_text': 'Save Changes',
-                                         'teams': Team.objects.all().order_by("-name")})
+                                         'button_text': 'Save Changes'})
 
 
 def delete_team(request, id):
@@ -190,7 +280,7 @@ def get_team(request, id):
     team_name = get_object_or_404(Team, pk=id)
     return render(request, "team.html",
                   {'team_name': team_name,
-                   'managers_list': User.objects.all(),
+                   'managers_list': User.objects.filter(profile__team=id),
                    'team_list': Player.objects.filter(team__id=id),
                    'teams': Team.objects.all().order_by("-name")})
 
@@ -198,6 +288,7 @@ def get_team(request, id):
 def get_teams(request):
     return render(request, "teams.html",
                   {'teams': Team.objects.all().order_by("-name"),
+                   'managers_list': User.objects.all(),
                    'team_list': Player.objects.all()})
 
 
@@ -210,5 +301,10 @@ def get_info(request):
 def profile(request):
     return render(request, 'profile.html',
                   {'teams': Team.objects.all().order_by("-name")})
+
+
+
+
+
 
 

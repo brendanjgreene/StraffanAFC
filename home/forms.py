@@ -1,7 +1,7 @@
 from django import forms
-from models import Team, Player
-from news.models import Subject
-from django.contrib.auth.forms import UserCreationForm
+from models import Team, Player, Profile
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.models import User
 
 
 class TeamForm(forms.ModelForm):
@@ -37,7 +37,39 @@ class PlayerForm(forms.ModelForm):
 
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'unless you changed it your username is your email address'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'unless you changed it your password is your email address'}))
 
 
+class NewUserForm(UserCreationForm):
+
+    class Meta:
+        model = User
+        fields = ['email']
+        widgets = {'email': forms.TextInput(attrs={'placeholder': "This will also be the username."})}
+
+
+class MyUserChangeForm(UserChangeForm):
+    def __init__(self, *args, **kwargs):
+        super(MyUserChangeForm, self).__init__(*args, **kwargs)
+        del self.fields['password']
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'first_name', 'last_name')
+
+
+class MyPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super(MyPasswordChangeForm, self).__init__(*args, **kwargs)
+        del self.fields['old_password']
+
+    class Meta:
+        model = User
+        exclude = ()
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('team', 'mobile', 'title')

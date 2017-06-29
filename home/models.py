@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 from django.db import models
-from django.contrib.auth.models import AbstractUser, UserManager
-from django.utils import timezone
+from django.contrib.auth.models import AbstractUser, User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Team(models.Model):
@@ -17,10 +18,6 @@ class StaffTitle(models.Model):
         app_label = "home"
 
     name = models.CharField(max_length=255)
-    is_staff = models.BooleanField(default=True,
-                                   help_text='Designates whether the user can log into this admin site.')
-    is_superuser = models.BooleanField(default=False,
-                                       help_text='Designates whether the user can log into all admin site.')
 
     def __unicode__(self):
         return self.name
@@ -43,23 +40,19 @@ class Player(models.Model):
         return self.name + " " + self.last_name
 
 
-class AccountUserManager(UserManager):
-    def _create_user(self, username, email, password,
-                     is_staff, is_superuser, **extra_fields):
-        """
-       Creates and saves a User with the given username, email and password.
-       """
-        now = timezone.now()
-        if not email:
-            raise ValueError('The given username must be set')
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, related_name='staff_name', blank=True, null=True)
+    mobile = models.CharField(max_length=20, blank=True, null=True)
+    title = models.ForeignKey(StaffTitle, related_name='staff_name', blank=True, null=True)
 
-        email = self.normalize_email(email)
-        user = self.model(username=email, email=email,
-                          is_staff=is_staff, is_active=True,
-                          is_superuser=is_superuser,
-                          date_joined=now, team=models.ForeignKey(Team, related_name='user_name'), **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
 
-        return user
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
 
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
