@@ -46,6 +46,8 @@ class Profile(models.Model):
     mobile = models.CharField(max_length=20, blank=True, null=True)
     title = models.ForeignKey(StaffTitle, related_name='staff_name', blank=True, null=True)
 
+    image = models.ImageField(upload_to="images", blank=True, null=True)
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

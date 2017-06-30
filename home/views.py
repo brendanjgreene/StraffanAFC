@@ -61,8 +61,8 @@ def edit_profile(request):
         profile = Profile.objects.create(user=request.user)
 
     if request.method == 'POST':
-        second_form = ProfileForm(request.POST or None, instance=profile)
         form = MyUserChangeForm(request.POST, instance=request.user)
+        second_form = ProfileForm(request.POST or None, request.FILES, instance=profile)
         if form.is_valid() and second_form.is_valid():
             form.save()
             second_form.save()

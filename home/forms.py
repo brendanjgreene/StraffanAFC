@@ -72,4 +72,4 @@ class MyPasswordChangeForm(PasswordChangeForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('team', 'mobile', 'title')
+        fields = ('team', 'mobile', 'title', 'image')
