@@ -8,7 +8,7 @@ class TeamForm(forms.ModelForm):
 
     class Meta:
         model = Team
-        fields = ['name']
+        fields = ['name', 'age']
 
 
 class TeamDeleteForm(forms.ModelForm):

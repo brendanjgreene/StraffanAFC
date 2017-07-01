@@ -12,22 +12,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.conf.urls import url
+from PIL import Image, ExifTags
 
 
-teams = Team.objects.all().order_by("-name")
-
-'''def new_post(request):
-    if request.method == "POST":
-        form = BlogPostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect(post_detail, post.pk)
-    else:
-        form = BlogPostForm()
-    return render(request, 'blogpostform.html', {'form': form})'''
+teams = Team.objects.all()
 
 
 def change_your_password(request):
@@ -49,7 +37,8 @@ def change_your_password(request):
 
     args = {'form': form,
             'heading_text': request.user.username + ": " + request.user.first_name + " Are you sure you want to change your password",
-            'button_text': 'Confirm Password Change'}
+            'button_text': 'Confirm Password Change',
+            'teams': teams}
 
     return render(request, 'form.html', args)
 
@@ -64,6 +53,25 @@ def edit_profile(request):
         form = MyUserChangeForm(request.POST, instance=request.user)
         second_form = ProfileForm(request.POST or None, request.FILES, instance=profile)
         if form.is_valid() and second_form.is_valid():
+            '''try:
+                image = Image.open(second_form.image)
+                for orientation in ExifTags.TAGS.keys():
+                    if ExifTags.TAGS[orientation] == 'Orientation':
+                        break
+                exif = dict(image._getexif().items())
+
+                if exif[orientation] == 3:
+                    image = image.rotate(180, expand=True)
+                elif exif[orientation] == 6:
+                    image = image.rotate(270, expand=True)
+                elif exif[orientation] == 8:
+                    image = image.rotate(90, expand=True)
+                image.save(second_form.image)
+                image.close()
+
+            except (AttributeError, KeyError, IndexError):
+                # cases: image don't have getexif
+                pass'''
             form.save()
             second_form.save()
             messages.success(request, 'Your profile was succesfully updated!')
@@ -105,7 +113,8 @@ def new_user(request):
 
             args = {'form': form,
                     'heading_text': 'You are creating a new User!',
-                    'button_text': 'Save User'}
+                    'button_text': 'Save User',
+                    'teams': teams}
 
             return render(request, 'form.html', args)
 
@@ -114,6 +123,13 @@ def login(request):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
         if form.is_valid():
+            user = auth.authenticate(username=request.POST.get('username'))
+            if user is not None:
+                try:
+                    Profile.objects.get(user=user)
+                except Profile.DoesNotExist:
+                    Profile.objects.create(user=user)
+                Profile.objects.create(user=user)
             user = auth.authenticate(username=request.POST.get('username'),
                                      password=request.POST.get('password'))
 
@@ -132,7 +148,7 @@ def login(request):
         form = UserLoginForm()
 
     args = {'form': form,
-            'teams': Team.objects.all().order_by("-name")}
+            'teams': teams}
     args.update(csrf(request))
     return render(request, 'login.html', args)
 
@@ -165,7 +181,7 @@ def new_team(request):
                                                       'subject_form_desc': subject_form_desc,
                                                       'heading_text': 'You are creating a new Team!',
                                                       'button_text': 'Save Team',
-                                                      'teams': Team.objects.all().order_by("-name")})
+                                                      'teams': teams})
 
 
 def edit_team(request, id):
@@ -183,7 +199,8 @@ def edit_team(request, id):
 
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'You are editing ' + team.name + 'Team?',
-                                         'button_text': 'Save Changes'})
+                                         'button_text': 'Save Changes',
+                                         'teams': teams})
 
 
 def delete_team(request, id):
@@ -205,7 +222,7 @@ def delete_team(request, id):
                                                          'team will also be deleted.  '
                                                          'We suggest you reassign these players and other items first!',
                                          'button_text': 'Click to confirm deletion of ' + team.name + ' Team',
-                                         'teams': Team.objects.all().order_by("-name")})
+                                         'teams': teams})
 
 
 def new_player(request):
@@ -224,7 +241,7 @@ def new_player(request):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'You are creating a new player!',
                                          'button_text': 'Save Player',
-                                         'teams': Team.objects.all().order_by("-name")})
+                                         'teams': teams})
 
 
 def edit_player(request, id):
@@ -243,7 +260,7 @@ def edit_player(request, id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'You are editing ' + player.name + ' ' + player.last_name,
                                          'button_text': 'Save Player',
-                                         'teams': Team.objects.all().order_by("-name")})
+                                         'teams': teams})
 
 
 def delete_player(request, id):
@@ -262,18 +279,18 @@ def delete_player(request, id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Are you sure you want to delete ' + player.name + ' ' + player.last_name + "!",
                                          'button_text': 'confirm delete ' + player.name + ' ' + player.last_name + "!",
-                                         'teams': Team.objects.all().order_by("-name")})
+                                         'teams': teams})
 
 
 def get_index(request):
     return render(request, 'index.html',
-                  {'teams': Team.objects.all().order_by("-name")})
+                  {'teams': teams})
 
 
 def get_players(request):
     return render(request, "players.html",
                   {'player_list': Player.objects.all().order_by("-date_of_birth"),
-                   'teams': Team.objects.all().order_by("-name")})
+                   'teams': teams})
 
 
 def get_team(request, id):
@@ -282,25 +299,26 @@ def get_team(request, id):
                   {'team_name': team_name,
                    'managers_list': User.objects.filter(profile__team=id),
                    'team_list': Player.objects.filter(team__id=id),
-                   'teams': Team.objects.all().order_by("-name")})
+                   'teams': teams
+                   })
 
 
 def get_teams(request):
     return render(request, "teams.html",
-                  {'teams': Team.objects.all().order_by("-name"),
+                  {'teams': teams,
                    'managers_list': User.objects.all(),
                    'team_list': Player.objects.all()})
 
 
 def get_info(request):
     return render(request, 'about.html',
-                  {'teams': Team.objects.all().order_by("-name")})
+                  {'teams': Team.objects.all()})
 
 
 @login_required(login_url='/login/')
 def profile(request):
     return render(request, 'profile.html',
-                  {'teams': Team.objects.all().order_by("-name")})
+                  {'teams': teams})
 
 
 

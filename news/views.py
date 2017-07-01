@@ -11,6 +11,8 @@ from polls.forms import PollSubjectForm, PollForm
 from polls.models import PollSubject
 from home.models import Team, Player
 
+teams = Team.objects.all()
+
 
 @login_required()
 def new_subject(request):
@@ -28,7 +30,7 @@ def new_subject(request):
     return render(request, 'news/subject-form.html', {'form': form,
                                          'form_action': reverse('forum'),
                                          'button_text': 'Save Subject',
-                                         'teams': Team.objects.all().order_by("-name")})
+                                         'teams': teams})
 
 @login_required
 def new_thread(request, subject_id):
@@ -92,7 +94,7 @@ def new_thread(request, subject_id):
         'subject': subject,
         'poll_form': poll_form,
         'poll_subject_formset': poll_subject_formset,
-        'teams': Team.objects.all().order_by("-name")
+        'teams': teams
     }
 
     args.update(csrf(request))
@@ -101,20 +103,20 @@ def new_thread(request, subject_id):
 
 
 def forum(request):
-    return render(request, 'news/news.html', {'subjects': Subject.objects.all(),
-                                              'teams': Team.objects.all().order_by("-name")})
+    return render(request, 'news/news.html', {'subjects': Subject.objects.all().order_by('team'),
+                                              'teams': teams})
 
 
 def threads(request, subject_id):
     subject = get_object_or_404(Subject, pk=subject_id)
     return render(request, 'news/threads.html', {'subject': subject,
-                                                 'teams': Team.objects.all().order_by("-name")})
+                                                 'teams': teams})
 
 
 def thread(request, thread_id):
     thread_ = get_object_or_404(Thread, pk=thread_id)
     args = {'thread': thread_,
-            'teams': Team.objects.all().order_by("-name")}
+            'teams': teams}
     args.update(csrf(request))
     return render(request, 'news/thread.html', args)
 
