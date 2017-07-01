@@ -13,13 +13,15 @@
     <h2 class="col-sm-12">Managers</h2>
     <table class="table table-striped">
         <thead>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
+        <th></th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
         </thead>
     <tbody>
     {% for managers in managers_list %}
             <tr>
+            <td>{{ managers.profile.title }}</td>
                 <td>{{ managers.first_name }} {{ managers.last_name }}</td>
                 <td>{{ managers.profile.mobile }}</td>
                 <td>{{ managers.email }}</td>
@@ -27,7 +29,7 @@
         {% endfor %}
     </tbody>
     </table>
-    {% if user.is_staff %}
+    {% if user.is_superuser or user.profile.team == team_name %}
         <h2 class="col-sm-12">Players</h2>
         <table class="table table-striped">
         <thead>

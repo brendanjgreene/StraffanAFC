@@ -1,18 +1,22 @@
 
 <h1 class="text-info col-md-12">
     <a href="/team/{{ team.id }}">{{ team.name }} Team</a>
-        {% if user.is_superuser %}
         <div class="pull-right">
+        {% if user.is_superuser or user.profile.team == team %}
             <a href="{% url 'edit_team' team.id %}"><i class="fa fa-pencil-square-o"></i></a>
-            <a href="{% url 'delete_team' team.id %}"><i class="fa fa-trash-o"></i></a>
-        </div>
         {% endif %}
+        {% if user.is_superuser %}
+            <a href="{% url 'delete_team' team.id %}"><i class="fa fa-trash-o"></i></a>
+        {% endif %}
+        </div>
 </h1>
 
     <h2>Managers</h2>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
+            <th></th>
             <th>Name</th>
+            <th></th>
             <th>Phone</th>
             <th>Email</th>
         </thead>
@@ -20,7 +24,10 @@
     {% for managers in managers_list %}
         {% if managers.profile.team_id == team.id %}
         <tr>
-            <td>{{ managers.first_name }}{{ managers.last_name }}</td>
+        <td><img src="/media/{{ managers.profile.image }}" alt="Image not Found" onerror="this.onerror=null;this.src='http://placehold.it/100';" style="width:40px; height: 40px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
+</td>
+            <td>{{ managers.first_name }} {{ managers.last_name }}</td>
+            <td>{{ managers.profile.title }}</td>
             <td>{{ managers.profile.mobile }}</td>
             <td>{{ managers.email }}</td>
         </tr>
@@ -28,7 +35,7 @@
     {% endfor %}
     </tbody>
     </table>
-    {% if user.is_staff %}
+    {% if user.is_superuser or user.profile.team == team %}
         <h2>Players</h2>
         <table class="table table-striped">
         <thead>

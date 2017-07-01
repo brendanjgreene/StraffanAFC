@@ -1,41 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2 class="text-info">Success!</h2>
-    <p>You are logged in as</p>
-    <h3>{{ user.first_name }} {{ user.last_name }}</h3>
-    <h4>{{ user.profile.title }} {{ user.profile.team }}</h4>
-    <h4>Phone: {{ user.profile.mobile }}</h4>
-    <h5>Username: {{ user.username }}</h5>
-    <h5>Your last login was: {{ user.last_login }}</h5>
-    <h2 class="text-info">Subscription Details</h2>
-    {% if user.username == user.email %}
-        <p>you are still using you temporary password, we recommend you chose a new one!</p>
-    {% endif %}
-    <div class='btn-group'>
-        <button type="button" class="btn btn-info" onclick="location.href='{% url "change_your_password" %}'">Change your Password</button>
-        <button type="button" class="btn btn-success" onclick="location.href='{% url "edit_profile" %}'">Edit Your Profile</button>
+<div class="row">
+    <h2 class="text-info col-xs-12">Profile</h2>
+    <div class="col-md-2 col-sm-3 text-center">
+        <p>You are logged in as</p>
+        {% if user.profile.image %}
+        <img src="/media/{{ user.profile.image }}" alt="Image not Found" onerror="this.onerror=null;this.src='http://placehold.it/100';" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
+        {% endif %}
     </div>
-    <hr>
-    {% if user.is_staff %}
-        <p>As a Manager you have access to edit items related to your team</p>
-        {% if user.profile.team.id != None %}
-        <div class="btn-group">
-        <button type="button" class="btn btn-primary" onclick="location.href='{% url "edit_team" user.profile.team.id %}'">Edit your Team's Name</button>
-        <button type="button" class="btn btn-info" onclick="location.href='{% url "get_team" user.profile.team.id %}'">View your Team</button>
-        </div>
-            {% endif %}
-    {% endif %}
-    <hr>
-
-    {% if user.is_superuser %}
-        <p>As a Administrator you have unlimited access</p>
-        <div class="btn-group">
-            <button type="button" class="btn btn-primary" onclick="location.href='/team/new/'">Create New Team</button>
-            <button type="button" class="btn btn-info" onclick="location.href='/admin/home/team/'">Edit Team</button>
-            <button type="button" class="btn btn-success" onclick="location.href='/players/new/'">Create New Player</button>
-            <button type="button" class="btn btn-primary" onclick="location.href='/players/'">See All Players</button>
-        </div>
-    {% endif %}
-
-
+    <div class="col-md-9 col-sm-8">
+        <h3 class="text-info">{{ user.first_name }} {{ user.last_name }}</h3>
+        <h4>{{ user.profile.title }} - {{ user.profile.team }}</h4>
+        <h4>Phone: {{ user.profile.mobile }}</h4>
+        <h5>Username: {{ user.username }}</h5>
+        <h5>Your last login was: {{ user.last_login }}</h5>
+    </div>
+</div>
+<hr>
+{% if user.username == user.email %}
+<p>you are still using your temporary password, we recommend you chose a new one!</p>
+{% endif %}
+<div class="btn-group btn-group-justified">
+    <a type="button" class="btn btn-info" onclick="location.href='{% url "change_your_password" %}'">Change your Password</a>
+    <a type="button" class="btn btn-success" onclick="location.href='{% url "edit_profile" %}'">Edit Your Profile</a>
+</div>
+<hr>
+{% if user.is_staff %}
+<p>As a Manager you have access to edit items related to your team</p>
+{% if user.profile.team.id != None %}
+<div class="btn-group btn-group-justified">
+    <a type="button" class="btn btn-primary" onclick="location.href='{% url "edit_team" user.profile.team.id %}'">Edit your Team's Name</a>
+    <a type="button" class="btn btn-info" onclick="location.href='{% url "get_team" user.profile.team.id %}'">View your Team</a>
+</div>
+{% endif %}
+{% endif %}
+<hr>
+{% if user.is_superuser %}
+<p>As a Administrator you have unlimited access</p>
+<div class="btn-group btn-group-justified ">
+    <a type="button" class="btn btn btn-primary" onclick="location.href='/team/new/'">Create New Team</a>
+    <a type="button" class="btn btn-success" onclick="location.href='/players/new/'">Create New Player</a>
+    <a type="button" class="btn btn-default" onclick="location.href='/players/'">See All Players</a>
+    <a type="button" class="btn btn-warning" onclick="location.href='/newuser/'">Create New User</a>
+</div>
+{% endif %}
 {% endblock %}

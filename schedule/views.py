@@ -7,7 +7,7 @@ import pandas as pd
 
 
 def get_schedule(request):
-    return render(request, 'schedule/schedule.html', {'teams': Team.objects.all().order_by("-name")})
+    return render(request, 'schedule/schedule.html', {'teams': Team.objects.all()})
 
 
 '''def get_schedule(request):

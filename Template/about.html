@@ -19,6 +19,43 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzoE4I4KLfRtJS78yFMQnDf7l_YfvgFNo&callback=initMap">
     </script>
+    <script>
+    document.addEventListener('keydown', function (event) {
+  var esc = event.which == 27,
+      nl = event.which == 13,
+      el = event.target,
+      input = el.nodeName != 'INPUT' && el.nodeName != 'TEXTAREA',
+      data = {};
+
+  if (input) {
+    if (esc) {
+      // restore state
+      document.execCommand('undo');
+      el.blur();
+    } else if (nl) {
+      // save
+      data[el.getAttribute('data-name')] = el.innerHTML;
+
+      // we could send an ajax request to update the field
+      /*
+      $.ajax({
+        url: window.location.toString(),
+        data: data,
+        type: 'post'
+      });
+      */
+      log(JSON.stringify(data));
+
+      el.blur();
+      event.preventDefault();
+    }
+  }
+}, true);
+
+function log(s) {
+  document.getElementById('debug').innerHTML = 'value changed to: ' + s;
+}
+    </script>
 {% endblock %}
 
 {% block title %}Contact - {{ block.super }}{% endblock %}
@@ -27,11 +64,15 @@
     <div class="col-sm-12">
         <div class="col-sm-6">
             <h1>Club Administration</h1>
-            <blockquote class="blockquote-reverse">
-                <h3 class="text-muted">Club Secretary</h3>
-                <h4>Name:   Ger Doyle</h4>
-                <h4>Phone:  +353 (86) 796-4748</h4>
-                <h4>Email:  straffanafc@eircom.net</h4>
+            {% if user.is_superuser %}
+                <blockquote contenteditable="" class="blockquote-reverse">
+            {% else %}
+                <blockquote class="blockquote-reverse">
+            {% endif %}
+                <h3 contenteditable="False"class="text-muted">Club Secretary</h3>
+                <h4 contenteditable="inherit">Name:   Ger Doyle</h4>
+                <h4 contenteditable="False">Phone:  +353 (86) 796-4748</h4>
+                <h4 contenteditable="inherit">Email:  straffanafc@eircom.net</h4>
             </blockquote>
             <blockquote class="blockquote-reverse">
                 <h3 class="text-muted">Club Treasurer</h3>
@@ -40,7 +81,7 @@
                 <h4>Email:  straffanafc@eircom.net</h4>
             </blockquote>
             <blockquote class="blockquote-reverse">
-                <h3 class="text-warning">Team Managers can be found in the <a href="/teams/">Teams</a> section</h3>
+                <h3 class="text-warning">Team Managers can be found in the <a class="text-info" href="/teams/">Teams</a> section</h3>
             </blockquote>
         </div>
 

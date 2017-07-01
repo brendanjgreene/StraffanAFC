@@ -43,8 +43,11 @@
          <h1>{{ heading_text }}</h1>
        {% csrf_token %}
        {{ form|as_bootstrap }}
-         {% if second_form != None %}
+         {% if second_form %}
              {{ second_form|as_bootstrap }}
+         {% endif %}
+         {% if third_form %}
+             {{ third_form|as_bootstrap }}
          {% endif %}
        <div class="form-group">
          <button type="submit" class="btn btn-primary">{{button_text}}</button>
