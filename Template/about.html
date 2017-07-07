@@ -64,25 +64,21 @@ function log(s) {
     <div class="col-sm-12">
         <div class="col-sm-6">
             <h1>Club Administration</h1>
-            {% if user.is_superuser %}
-                <blockquote contenteditable="" class="blockquote-reverse">
-            {% else %}
+            {% for staff in staff %}
+                {% if staff.profile.title != '' %}
                 <blockquote class="blockquote-reverse">
-            {% endif %}
-                <h3 contenteditable="False"class="text-muted">Club Secretary</h3>
-                <h4 contenteditable="inherit">Name:   Ger Doyle</h4>
-                <h4 contenteditable="False">Phone:  +353 (86) 796-4748</h4>
-                <h4 contenteditable="inherit">Email:  straffanafc@eircom.net</h4>
-            </blockquote>
-            <blockquote class="blockquote-reverse">
-                <h3 class="text-muted">Club Treasurer</h3>
-                <h4>Name:   Ger Doyle</h4>
-                <h4>Phone:  +353 (86) 796-4748</h4>
-                <h4>Email:  straffanafc@eircom.net</h4>
-            </blockquote>
-            <blockquote class="blockquote-reverse">
-                <h3 class="text-warning">Team Managers can be found in the <a class="text-info" href="/teams/">Teams</a> section</h3>
-            </blockquote>
+                <h3 class="text-muted">{{ staff.profile.title }} {{ staff.profile.team }}</h3>
+                    {% if staff.profile.image %}
+                        <div class="col-md-2 col-sm-3 text-center" style="height: inherit">
+                            <img src="/media/{{ staff.profile.image }}" alt="Image not Found" onerror="this.onerror=null;this.src='http://placehold.it/100';" style="width:75px; height: 75px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
+                        </div>
+                    {% endif %}
+                <h4>Name: {{ staff.first_name }} {{ staff.last_name }} </h4>
+                <h4>Phone: {{ staff.profile.mobile }}</h4>
+                <h4>Email:  {{ staff.email }}</h4>
+                </blockquote>
+                {% endif %}
+            {% endfor %}
         </div>
 
         <div class="col-sm-6">

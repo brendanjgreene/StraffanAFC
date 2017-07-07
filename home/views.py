@@ -53,25 +53,6 @@ def edit_profile(request):
         form = MyUserChangeForm(request.POST, instance=request.user)
         second_form = ProfileForm(request.POST or None, request.FILES, instance=profile)
         if form.is_valid() and second_form.is_valid():
-            '''try:
-                image = Image.open(second_form.image)
-                for orientation in ExifTags.TAGS.keys():
-                    if ExifTags.TAGS[orientation] == 'Orientation':
-                        break
-                exif = dict(image._getexif().items())
-
-                if exif[orientation] == 3:
-                    image = image.rotate(180, expand=True)
-                elif exif[orientation] == 6:
-                    image = image.rotate(270, expand=True)
-                elif exif[orientation] == 8:
-                    image = image.rotate(90, expand=True)
-                image.save(second_form.image)
-                image.close()
-
-            except (AttributeError, KeyError, IndexError):
-                # cases: image don't have getexif
-                pass'''
             form.save()
             second_form.save()
             messages.success(request, 'Your profile was succesfully updated!')
@@ -304,15 +285,23 @@ def get_team(request, id):
 
 
 def get_teams(request):
+    # color = '#06c'
+    # i could use a method similar to this to implement user changeable colors
+    # See https://stackoverflow.com/questions/17901341/django-how-to-make-a-variable-available-to-all-templates
+    # i would need to create a Club model in a club app with TEMPLATE_CONTEXT PROCESSOR
+    # second_color = '#006'
     return render(request, "teams.html",
                   {'teams': teams,
+                   # 'color': color,
+                   # 'second_color': second_color,
                    'managers_list': User.objects.all(),
                    'team_list': Player.objects.all()})
 
 
 def get_info(request):
     return render(request, 'about.html',
-                  {'teams': Team.objects.all()})
+                  {'teams': Team.objects.all(),
+                   'staff': User.objects.all().order_by('profile__title__name')})
 
 
 @login_required(login_url='/login/')

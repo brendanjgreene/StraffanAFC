@@ -27,6 +27,7 @@
             <a class="navbar-brand" href="/">
                 <img src="/static/Images/straffan%20afc.png" alt="Straffan Logo">
             </a>
+            <a class="navbar-brand" style="padding: 19.5px" href="/"> Straffan A.F.C. </a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
@@ -74,7 +75,7 @@
     {% endif %}
     </div>
 </div>
-<div class="container">
+<div class="container" style="background-color: {{ second_color }}">
        {% block content %}
        {% endblock %}
     <!--hr> these buttons
@@ -85,7 +86,7 @@
 </div>
 
 <div id="footer">
-    <div class="container-fluid" style="padding-top: 15px">
+    <div class="container-fluid" style="padding-top: 15px; background-color: {{ color }}">
         <div class="footer">
 
 
@@ -99,9 +100,12 @@
                 <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true" aria-label="instagram"></i></a></li>
             </ul>
 
-            <p class="col-sm-4 text-center">Site Designed by <a href="https://github.com/brendanjgreene" target="_blank">Brendan Greene!</a></p>
+            <div class="col-sm-4 text-center">Site Designed by <a href="https://github.com/brendanjgreene" target="_blank">Brendan Greene!</a>
+
+            <p><a href="http://kdfl.ie/Documents/kdflregistration.pdf">Registration Form</a></p>
+            </div>
             <ul class="col-sm-4 list-inline text-right">
-                <li><button class="btn btn-success" onclick="goBack()"><i class="fa fa-arrow-left fa-2x" aria-hidden="true" aria-label="previous page"></i></button></li>
+                <li><button class="btn btn-success" style="background-color: {{ color }}" onclick="goBack()"><i class="fa fa-arrow-left fa-2x" aria-hidden="true" aria-label="previous page"></i></button></li>
                 <li><button class="btn btn-success"><a href="#"><i class="fa fa-arrow-up fa-2x" aria-hidden="true" aria-label="to top of page"></i></a></li></button>
             </ul>
 
