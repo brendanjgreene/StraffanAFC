@@ -47,6 +47,7 @@ When this repository is ready for deployment you will be able to :
 
 1. Fork this repository
 2. Navigate to the local directory where you forked this repository on your Terminal or command line and Run the following commands:
+* `pip install requirements.txt` to make sure the necessary requirements are installed
 * `python manage.py createsuperuser` in order to create an initial user with administration privileges
 * `python manage.py makemigrations` to ensure the database is ready to be setup
 * `python manage.py migrate` to run migrations and setup database
