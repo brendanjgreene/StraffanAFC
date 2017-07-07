@@ -13,22 +13,22 @@ to do it themselves using the UI that has been set up in advance.
 A Club administrator (i.e. club secretary who has been setup with superuser privileges) is able to manage the website 
 using the methods and forms provided by the app without having technological "coding skills" to accomplish the following:
 * Create Edit and Delete Teams and in creating a Team set up a news feed for them
-* Create Managers (and other staff) and assign them to a team and assign them username and password which they can use for Logon privileges
-* Create Players and assign (or reassign) them to a Team
+* Create Edit and Delete Managers (and other staff) and assign them to a team and assign them username and password which they can use for Logon privileges
+* Create Edit and Delete Players and assign (or reassign) them to a Team
 * View the Databases containing sensitive information and control who else can see it.
 * Post relevant Club News for everyone to see
 
 
 Managers and other staff can:
 * Update their own profile information to insure details available to the public are up to date
-* update their password
+* Update their password
 * Share news about their prospective teams
 * View the relevant information about the players on their team in the database
 
 Visitors and Members of the club without logon privileges:
-* see and view News about the club
-* use links to access Registration forms etc.
-* see information about upcoming games
+* See and view News about the club
+* Use links to access Registration forms etc.
+* See information about upcoming games
 
 ### Not Yet implemented
 Superuser will be able to 
