@@ -11,5 +11,4 @@ DATABASES = {
 }
 
 DATABASES['default'] = dj_database_url.parse(
-    "mysql://b9ea85138f376b:5e9d7db4@eu-cdbr-west-01.cleardb.com/heroku_c94194baf431fad?reconnect=true")
-#  mysql://b9ea85138f376b:5e9d7db4@eu-cdbr-west-01.cleardb.com/heroku_c94194baf431fad?
+    "mysql://ba2db3b0c1d81f:654a3797@eu-cdbr-west-01.cleardb.com/heroku_00b5e60d3f182f9?reconnect=true")

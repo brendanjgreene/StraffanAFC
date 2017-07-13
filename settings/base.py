@@ -32,8 +32,6 @@ INSTALLED_APPS = [
 
 INTERNAL_IPS = ('127.0.0.1',)
 
-AUTHENTICATION_BACKENDS = 'django.contrib.auth.backends.ModelBackend'
-
 LOGIN_URL = '/login/'
 
 MIDDLEWARE_CLASSES = [
