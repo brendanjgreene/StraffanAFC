@@ -21,3 +21,4 @@ requests==2.14.2
 six==1.10.0
 sqlparse==0.2.3
 gunicorn==19.4
+whitenoise==3.2
