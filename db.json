@@ -37,24 +37,6 @@
 },
 {
     "fields": {
-        "username": "straffanafc@straffan.com",
-        "first_name": "",
-        "last_name": "",
-        "is_active": true,
-        "is_superuser": false,
-        "is_staff": false,
-        "last_login": null,
-        "groups": [],
-        "user_permissions": [],
-        "password": "pbkdf2_sha256$20000$rnk2Z2UEUJJC$32KcQRGp5sd47UkT7k+NUOV96lWS8M0VS4ZrCEYqyLg=",
-        "email": "straffanafc@straffan.com",
-        "date_joined": "2017-06-28T11:06:34.543Z"
-    },
-    "model": "auth.user",
-    "pk": 16
-},
-{
-    "fields": {
         "username": "ghj2@GHJ.COM",
         "first_name": "Elizabeth",
         "last_name": "Quinn",
@@ -70,24 +52,6 @@
     },
     "model": "auth.user",
     "pk": 18
-},
-{
-    "fields": {
-        "username": "medb@medb.ie",
-        "first_name": "",
-        "last_name": "",
-        "is_active": true,
-        "is_superuser": false,
-        "is_staff": true,
-        "last_login": null,
-        "groups": [],
-        "user_permissions": [],
-        "password": "pbkdf2_sha256$20000$TwgjKrpBGnoK$oN8mkvRg9dxJgFe7TpvmmvU2bjPCwYgjja7g2FM7TJI=",
-        "email": "medb@medb.ie",
-        "date_joined": "2017-06-28T13:26:18.722Z"
-    },
-    "model": "auth.user",
-    "pk": 22
 },
 {
     "fields": {
