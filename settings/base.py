@@ -9,7 +9,7 @@ SECRET_KEY = '^lnyvsn+3sam$)!9w%zr$&g+x)0_t6c5^06^r_t)x^te4n2)3+'
 
 SITE_ID = 2
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # need to add heroku.app when it is setup
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'straffanafc.herokuapp.com']  # need to add heroku.app when it is setup
 INTERNAL_IPS = ('127.0.0.1',)
 
 
