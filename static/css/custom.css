@@ -13,10 +13,12 @@ body{
     background-color: #0F7E50;
     background-size: 100%;
     bottom: 0;
+    color: #222222;
     height: auto;
     left: 0;
     position: fixed;
     right: 0;
+    text-align: center;
 }
 .list-inline .fa {
     color: #222222;
@@ -54,4 +56,31 @@ body{
 
 #to-top {
     margin-bottom: 15px;
+}
+/* to override user agent stylesheet */
+.list-horizontal {
+    padding-left: 0;
+}
+.list-horizontal li {
+	display:inline-block;
+    text-align: center;
+}
+.list-horizontal li:before {
+	content: '\00a0\2022\00a0\00a0';
+	color:#999;
+	color:rgba(0,0,0,0.5);
+	font-size:11px;
+}
+.list-horizontal li:first-child:before {
+	content: '';
+}
+#footer button{
+    color: #222222;
+}
+#footer button a{
+    color: #222222;
+}
+#social li{
+    padding: 0 4% 0 4%;
+
 }

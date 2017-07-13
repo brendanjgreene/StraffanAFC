@@ -88,27 +88,23 @@
 <div id="footer">
     <div class="container-fluid" style="padding-top: 15px; background-color: {{ color }}">
         <div class="footer">
+                <button class="btn btn-success" style="background-color: {{ color }}; float: left" onclick="goBack()"><i class="fa fa-arrow-left fa-2x" aria-hidden="true" aria-label="previous page"></i></button></li>
+                <button class="btn btn-success" style="background-color: {{ color }}; float: right"><a href="#"><i class="fa fa-arrow-up fa-2x" aria-hidden="true" aria-label="to top of page"></i></a></li></button>
 
-
-
-
-            <ul class="col-sm-4 list-inline pull-left">
-                <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook fa-2x" aria-hidden="true" aria-label="facebook"></i></a></li>
-                <li><a href="https://plus.google.com" target="_blank"><i class="fa fa-google-plus fa-2x" aria-hidden="true" aria-label="google plus"></i></a></li>
+            <ul class="list-inline" id="social">
+                <li><a href="https://www.facebook.com" target="_blank" ><i class="fa fa-facebook fa-2x" aria-hidden="true" aria-label="facebook"></i></a></li>
                 <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter fa-2x" aria-hidden="true" aria-label="twiiter"></i></a></li>
                 <li><a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube fa-2x" aria-hidden="true" aria-label="you tube"></i></a></li>
                 <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true" aria-label="instagram"></i></a></li>
             </ul>
-
-            <div class="col-sm-4 text-center">Site Designed by <a href="https://github.com/brendanjgreene" target="_blank">Brendan Greene!</a>
-
-            <p><a href="http://kdfl.ie/Documents/kdflregistration.pdf">Registration Form</a></p>
-            </div>
-            <ul class="col-sm-4 list-inline text-right">
-                <li><button class="btn btn-success" style="background-color: {{ color }}" onclick="goBack()"><i class="fa fa-arrow-left fa-2x" aria-hidden="true" aria-label="previous page"></i></button></li>
-                <li><button class="btn btn-success"><a href="#"><i class="fa fa-arrow-up fa-2x" aria-hidden="true" aria-label="to top of page"></i></a></li></button>
+            <ul class="list-inline">
+                <li>Site Designed by <a href="https://github.com/brendanjgreene" target="_blank">Brendan Greene!</a></li>
             </ul>
-
+            <h3>Important Links</h3>
+            <ul class="list-horizontal">
+            <li><a href="http://kdfl.ie/Documents/kdflregistration.pdf" target="_blank">Registration Form</a></li>
+            <li><a href="http://kdfl.ie/Documents/kdflregistration.pdf">Registration Form</a></li>
+            </ul>
         </div>
     </div>
 </div>
