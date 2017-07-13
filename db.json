@@ -1,0 +1,2430 @@
+[
+{
+    "fields": {
+        "username": "brendangreene",
+        "first_name": "Brendan",
+        "last_name": "Greene",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2017-07-01T11:41:37.277Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$tDobvsU8vtpJ$8/kz8SeFVv1B6kfZ6rm075CSyadTJyYKdF3E0YJmWNY=",
+        "email": "brendanjgreene@gmail.com",
+        "date_joined": "2017-05-16T15:08:47Z"
+    },
+    "model": "auth.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "username": "grace@grace.com",
+        "first_name": "Grace",
+        "last_name": "Greene",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": true,
+        "last_login": "2017-06-30T22:54:15.890Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$pbBAOv6ySguC$FI+xXaV64YgLuEi8GVOyuyZsHEtEH9WUX88+c54Z5hs=",
+        "email": "grace@grace.com",
+        "date_joined": "2017-06-28T11:04:16.325Z"
+    },
+    "model": "auth.user",
+    "pk": 15
+},
+{
+    "fields": {
+        "username": "straffanafc@straffan.com",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": null,
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$rnk2Z2UEUJJC$32KcQRGp5sd47UkT7k+NUOV96lWS8M0VS4ZrCEYqyLg=",
+        "email": "straffanafc@straffan.com",
+        "date_joined": "2017-06-28T11:06:34.543Z"
+    },
+    "model": "auth.user",
+    "pk": 16
+},
+{
+    "fields": {
+        "username": "ghj2@GHJ.COM",
+        "first_name": "Elizabeth",
+        "last_name": "Quinn",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": true,
+        "last_login": "2017-06-30T22:33:42.533Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$QDdfG6tIZw2F$yJMegiIJszCnEnQsbbSaossBAMPwGt36VPgMjdeJNpk=",
+        "email": "ghj2@GHJ.COM",
+        "date_joined": "2017-06-28T11:13:32Z"
+    },
+    "model": "auth.user",
+    "pk": 18
+},
+{
+    "fields": {
+        "username": "medb@medb.ie",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": true,
+        "last_login": null,
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$TwgjKrpBGnoK$oN8mkvRg9dxJgFe7TpvmmvU2bjPCwYgjja7g2FM7TJI=",
+        "email": "medb@medb.ie",
+        "date_joined": "2017-06-28T13:26:18.722Z"
+    },
+    "model": "auth.user",
+    "pk": 22
+},
+{
+    "fields": {
+        "username": "newuser1@withprofile.com2",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": true,
+        "last_login": "2017-06-29T11:44:25.163Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$VdKtQKrokREG$CYMTJt48ROLX6HkGVhkFzaiDAA2xPupC6H6Sdc1+eNY=",
+        "email": "newuser1@withprofile.com2",
+        "date_joined": "2017-06-29T09:31:56.487Z"
+    },
+    "model": "auth.user",
+    "pk": 32
+},
+{
+    "fields": {
+        "expire_date": "2017-06-23T18:21:59.933Z",
+        "session_data": "ZGIzZGQyNjU3ZmM5MzgzOTNiMTg1MWU4NjUzYjgwZWVkNWIyZjIxZTp7Il9hdXRoX3VzZXJfaGFzaCI6ImJhM2MxMmExNzhkNzc1ZDg0YzVlNjdkNDQ4MDE1MDdiODk1MGM0MjIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "2ylh8du9x0lkdko38yapy5sxj48fxyt8"
+},
+{
+    "fields": {
+        "expire_date": "2017-07-15T11:41:37.305Z",
+        "session_data": "NmM3MmY1MzM3YjcxNTI0ZjMwNjdjZWUxM2Q5YzIyZDI4ZGZkZGY5NTp7Il9hdXRoX3VzZXJfaGFzaCI6ImMyOWY3ZTcyMDI1YTc5NjA4NTA1Yzg5Y2FmYzhmMGE1ZDU3MTA2MzAiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "5w0dyptwn5ngbe9h6gqf9zh6a73faobx"
+},
+{
+    "fields": {
+        "expire_date": "2017-07-09T20:00:08.604Z",
+        "session_data": "ZGIzZGQyNjU3ZmM5MzgzOTNiMTg1MWU4NjUzYjgwZWVkNWIyZjIxZTp7Il9hdXRoX3VzZXJfaGFzaCI6ImJhM2MxMmExNzhkNzc1ZDg0YzVlNjdkNDQ4MDE1MDdiODk1MGM0MjIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "81zyeqs8mzspzp529t94k30nru81r94w"
+},
+{
+    "fields": {
+        "expire_date": "2017-07-08T14:09:32.796Z",
+        "session_data": "ZGIzZGQyNjU3ZmM5MzgzOTNiMTg1MWU4NjUzYjgwZWVkNWIyZjIxZTp7Il9hdXRoX3VzZXJfaGFzaCI6ImJhM2MxMmExNzhkNzc1ZDg0YzVlNjdkNDQ4MDE1MDdiODk1MGM0MjIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "90bgumsyy6k0gqhpgx75jwlr19i73r4p"
+},
+{
+    "fields": {
+        "expire_date": "2017-05-31T16:50:16.105Z",
+        "session_data": "ZGIzZGQyNjU3ZmM5MzgzOTNiMTg1MWU4NjUzYjgwZWVkNWIyZjIxZTp7Il9hdXRoX3VzZXJfaGFzaCI6ImJhM2MxMmExNzhkNzc1ZDg0YzVlNjdkNDQ4MDE1MDdiODk1MGM0MjIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "tkrlhw2afdlt15tpjbqfau82g7w8fz9j"
+},
+{
+    "fields": {
+        "age": 11,
+        "name": "U11 White"
+    },
+    "model": "home.team",
+    "pk": 1
+},
+{
+    "fields": {
+        "age": 100,
+        "name": "Masters"
+    },
+    "model": "home.team",
+    "pk": 2
+},
+{
+    "fields": {
+        "age": 35,
+        "name": "Seniors"
+    },
+    "model": "home.team",
+    "pk": 3
+},
+{
+    "fields": {
+        "age": 11,
+        "name": "U11 Green"
+    },
+    "model": "home.team",
+    "pk": 4
+},
+{
+    "fields": {
+        "age": 8,
+        "name": "U8"
+    },
+    "model": "home.team",
+    "pk": 63
+},
+{
+    "fields": {
+        "age": 9,
+        "name": "U9"
+    },
+    "model": "home.team",
+    "pk": 64
+},
+{
+    "fields": {
+        "age": 12,
+        "name": "U12"
+    },
+    "model": "home.team",
+    "pk": 65
+},
+{
+    "fields": {
+        "name": "Manager"
+    },
+    "model": "home.stafftitle",
+    "pk": 1
+},
+{
+    "fields": {
+        "name": "Club Secretary"
+    },
+    "model": "home.stafftitle",
+    "pk": 2
+},
+{
+    "fields": {
+        "name": "Team Administrator"
+    },
+    "model": "home.stafftitle",
+    "pk": 3
+},
+{
+    "fields": {
+        "parent_name": "Brendan Greene",
+        "last_name": "Greene",
+        "name": "Grace",
+        "mobile": "0863918623",
+        "date_of_birth": "2005-12-08",
+        "team": 1,
+        "email": "brendanjgreene@gmail.com"
+    },
+    "model": "home.player",
+    "pk": 1
+},
+{
+    "fields": {
+        "parent_name": "Joe Blog Sr",
+        "last_name": "Doyle",
+        "name": "Joseph",
+        "mobile": "0860000000",
+        "date_of_birth": "2006-04-14",
+        "team": 4,
+        "email": "bhghg@gh.com"
+    },
+    "model": "home.player",
+    "pk": 3
+},
+{
+    "fields": {
+        "parent_name": "na",
+        "last_name": "Greene",
+        "name": "Brendan",
+        "mobile": "0863918623",
+        "date_of_birth": "1971-01-28",
+        "team": 2,
+        "email": "brendanjgreene@gmail.com"
+    },
+    "model": "home.player",
+    "pk": 5
+},
+{
+    "fields": {
+        "parent_name": "Ita Purcell",
+        "last_name": "Purcell",
+        "name": "Martin",
+        "mobile": "0864002401",
+        "date_of_birth": "2006-03-26",
+        "team": 1,
+        "email": "ita.purcell@gmail.com"
+    },
+    "model": "home.player",
+    "pk": 6
+},
+{
+    "fields": {
+        "parent_name": "parent",
+        "last_name": "lastname",
+        "name": "new player",
+        "mobile": "number",
+        "date_of_birth": "2005-12-08",
+        "team": 3,
+        "email": "email@email.com"
+    },
+    "model": "home.player",
+    "pk": 10
+},
+{
+    "fields": {
+        "parent_name": "Helen Dennehy",
+        "last_name": "Cronin",
+        "name": "Conn",
+        "mobile": "0863413888",
+        "date_of_birth": "2006-03-26",
+        "team": 64,
+        "email": "helendennehy@yahoo.co.uk"
+    },
+    "model": "home.player",
+    "pk": 12
+},
+{
+    "fields": {
+        "parent_name": "Pavel",
+        "last_name": "Saleksejevs",
+        "name": "Max",
+        "mobile": "888",
+        "date_of_birth": "1967-06-07",
+        "team": 4,
+        "email": "uuu@jhk.co"
+    },
+    "model": "home.player",
+    "pk": 17
+},
+{
+    "fields": {
+        "mobile": "",
+        "image": "",
+        "title": 0,
+        "user": [
+            "newuser1@withprofile.com2"
+        ],
+        "team": 3
+    },
+    "model": "home.profile",
+    "pk": 1
+},
+{
+    "fields": {
+        "mobile": "086-391-8623",
+        "image": "images/Photo_on_03-06-2016_at_14.32_v0GiRnj.jpg",
+        "title": 1,
+        "user": [
+            "brendangreene"
+        ],
+        "team": 1
+    },
+    "model": "home.profile",
+    "pk": 2
+},
+{
+    "fields": {
+        "mobile": "000",
+        "image": "",
+        "title": 3,
+        "user": [
+            "ghj2@GHJ.COM"
+        ],
+        "team": 1
+    },
+    "model": "home.profile",
+    "pk": 3
+},
+{
+    "fields": {
+        "mobile": "77",
+        "image": "images/fullsizeoutput_b59_wdyOg0I.jpeg",
+        "title": 2,
+        "user": [
+            "grace@grace.com"
+        ],
+        "team": 3
+    },
+    "model": "home.profile",
+    "pk": 4
+},
+{
+    "fields": {
+        "domain": "example.com",
+        "name": "example.com"
+    },
+    "model": "sites.site",
+    "pk": 2
+},
+{
+    "fields": {
+        "domain": "localhost",
+        "name": "localhost"
+    },
+    "model": "sites.site",
+    "pk": 3
+},
+{
+    "fields": {
+        "registration_required": false,
+        "title": "About Straffan AFC",
+        "url": "/pages/about/",
+        "template_name": "",
+        "sites": [
+            2,
+            3
+        ],
+        "content": "This Page will be about Straffan AFC",
+        "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 1
+},
+{
+    "fields": {
+        "registration_required": false,
+        "title": "Contact Page",
+        "url": "/pages/contact/",
+        "template_name": "",
+        "sites": [
+            2,
+            3
+        ],
+        "content": "This will have contact information",
+        "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 2
+},
+{
+    "fields": {
+        "registration_required": false,
+        "title": "club secretary",
+        "url": "/about/clubsecretary/",
+        "template_name": "",
+        "sites": [
+            2,
+            3
+        ],
+        "content": "Ger Doyle",
+        "enable_comments": false
+    },
+    "model": "flatpages.flatpage",
+    "pk": 3
+},
+{
+    "fields": {
+        "team": 1,
+        "name": "U11 White",
+        "description": "<p>This is where you will find news for the Under 11 white team</p>"
+    },
+    "model": "news.subject",
+    "pk": 1
+},
+{
+    "fields": {
+        "team": 63,
+        "name": "U8",
+        "description": "<p>Team news for the Under 8 Team</p>"
+    },
+    "model": "news.subject",
+    "pk": 6
+},
+{
+    "fields": {
+        "team": 64,
+        "name": "U9",
+        "description": "<p>Team news for the under 9 Team</p>"
+    },
+    "model": "news.subject",
+    "pk": 7
+},
+{
+    "fields": {
+        "team": 65,
+        "name": "U12",
+        "description": "<p>under 12 news</p>"
+    },
+    "model": "news.subject",
+    "pk": 8
+},
+{
+    "fields": {
+        "created_at": "2017-06-23T11:59:19.461Z",
+        "subject": 1,
+        "name": "thread",
+        "user": [
+            "brendangreene"
+        ]
+    },
+    "model": "news.thread",
+    "pk": 1
+},
+{
+    "fields": {
+        "created_at": "2017-06-29T16:08:05.988Z",
+        "subject": 6,
+        "name": "u8 thread",
+        "user": [
+            "brendangreene"
+        ]
+    },
+    "model": "news.thread",
+    "pk": 4
+},
+{
+    "fields": {
+        "created_at": "2017-06-29T16:12:48.626Z",
+        "subject": 7,
+        "name": "new thread",
+        "user": [
+            "brendangreene"
+        ]
+    },
+    "model": "news.thread",
+    "pk": 5
+},
+{
+    "fields": {
+        "comment": "<p>save me</p>",
+        "created_at": "2017-06-29T16:00:38Z",
+        "image": "images/Photo_on_03-06-2016_at_14.32_UGFRfqJ.jpg",
+        "user": [
+            "brendangreene"
+        ],
+        "thread": 1
+    },
+    "model": "news.post",
+    "pk": 3
+},
+{
+    "fields": {
+        "comment": "<p>ghkgjhkhjkjhkjnmb</p>",
+        "created_at": "2017-06-29T17:24:38.547Z",
+        "image": "",
+        "user": [
+            "brendangreene"
+        ],
+        "thread": 1
+    },
+    "model": "news.post",
+    "pk": 9
+},
+{
+    "fields": {
+        "comment": "<p>jkhlkjkjhkl</p>",
+        "created_at": "2017-06-29T17:31:58.968Z",
+        "image": "images/IMG_4504.JPG",
+        "user": [
+            "brendangreene"
+        ],
+        "thread": 1
+    },
+    "model": "news.post",
+    "pk": 10
+},
+{
+    "fields": {
+        "comment": "",
+        "created_at": "2017-07-01T00:22:08.142Z",
+        "image": "images/IMG_8823.JPG",
+        "user": [
+            "grace@grace.com"
+        ],
+        "thread": 4
+    },
+    "model": "news.post",
+    "pk": 11
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-16T16:58:37.911Z",
+        "object_repr": "localhost",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "sites",
+            "site"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 1
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-16T17:01:56.086Z",
+        "object_repr": "/pages/about/ -- About Straffan AFC",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "flatpages",
+            "flatpage"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 2
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-16T17:11:57.461Z",
+        "object_repr": "/pages/contact/ -- Contact Page",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "flatpages",
+            "flatpage"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 3
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-17T11:13:06.232Z",
+        "object_repr": "Grace Greene",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 4
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-17T14:45:13.521Z",
+        "object_repr": "Cassius Cronin",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 5
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-17T15:03:40.358Z",
+        "object_repr": "Team object",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 6
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-17T15:03:45.378Z",
+        "object_repr": "Team object",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 7
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-17T15:04:17.107Z",
+        "object_repr": "Team object",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 8
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-17T15:04:28.178Z",
+        "object_repr": "Team object",
+        "object_id": "4",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 9
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-17T15:21:27.440Z",
+        "object_repr": "Team object",
+        "object_id": "4",
+        "change_message": "Changed team_name.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 10
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-17T15:21:30.881Z",
+        "object_repr": "Team object",
+        "object_id": "3",
+        "change_message": "No fields changed.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 11
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-17T15:21:33.980Z",
+        "object_repr": "Team object",
+        "object_id": "2",
+        "change_message": "No fields changed.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 12
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-17T15:21:40.869Z",
+        "object_repr": "Team object",
+        "object_id": "5",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 13
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T09:50:54.989Z",
+        "object_repr": "Player object",
+        "object_id": "1",
+        "change_message": "Changed email.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 14
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T09:52:03.854Z",
+        "object_repr": "Player object",
+        "object_id": "2",
+        "change_message": "Changed email.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 15
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-18T09:54:30.822Z",
+        "object_repr": "Player object",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 16
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T10:38:25.585Z",
+        "object_repr": "Player object",
+        "object_id": "2",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 17
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T10:38:38.571Z",
+        "object_repr": "Player object",
+        "object_id": "1",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 18
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T10:40:45.309Z",
+        "object_repr": "Player object",
+        "object_id": "1",
+        "change_message": "No fields changed.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 19
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T10:46:10.340Z",
+        "object_repr": "Player object",
+        "object_id": "1",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 20
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T10:46:19.129Z",
+        "object_repr": "Player object",
+        "object_id": "2",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 21
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T10:46:44.978Z",
+        "object_repr": "Player object",
+        "object_id": "3",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 22
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T13:25:50.892Z",
+        "object_repr": "Player object",
+        "object_id": "3",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 23
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T13:26:58.042Z",
+        "object_repr": "Player object",
+        "object_id": "3",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 24
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T13:27:03.794Z",
+        "object_repr": "Player object",
+        "object_id": "2",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 25
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T13:27:09.707Z",
+        "object_repr": "Player object",
+        "object_id": "1",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 26
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T13:27:14.366Z",
+        "object_repr": "Player object",
+        "object_id": "2",
+        "change_message": "No fields changed.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 27
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T15:17:09.647Z",
+        "object_repr": "Team object",
+        "object_id": "5",
+        "change_message": "No fields changed.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 28
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T15:17:16.198Z",
+        "object_repr": "Team object",
+        "object_id": "4",
+        "change_message": "No fields changed.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 29
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-05-18T15:21:45.412Z",
+        "object_repr": "Team object",
+        "object_id": "6",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 30
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T15:22:12.040Z",
+        "object_repr": "Team object",
+        "object_id": "1",
+        "change_message": "No fields changed.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 31
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T15:22:15.768Z",
+        "object_repr": "Player object",
+        "object_id": "1",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 32
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-05-18T15:27:04.876Z",
+        "object_repr": "45667",
+        "object_id": "6",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 33
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T15:29:55.587Z",
+        "object_repr": "brendangreene",
+        "object_id": "1",
+        "change_message": "Changed first_name and last_name.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 34
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-05-18T15:41:21.550Z",
+        "object_repr": "CassiusCronin",
+        "object_id": "2",
+        "change_message": "Changed team.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "player"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 35
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-05-19T13:28:08.324Z",
+        "object_repr": "bhbjk",
+        "object_id": "7",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 36
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-05-19T21:21:42.355Z",
+        "object_repr": "test team",
+        "object_id": "11",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 37
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-05-19T21:40:24.963Z",
+        "object_repr": "Yes",
+        "object_id": "12",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 38
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:04:02.403Z",
+        "object_repr": "bkjklhkj",
+        "object_id": "20",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 39
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:04:02.415Z",
+        "object_repr": "bkjklhkj",
+        "object_id": "19",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 40
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:04:02.428Z",
+        "object_repr": "bkjklhkj",
+        "object_id": "18",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 41
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:04:02.439Z",
+        "object_repr": "bkjklhkj",
+        "object_id": "17",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 42
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:04:02.452Z",
+        "object_repr": "bkjklhkj",
+        "object_id": "16",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 43
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:04:02.464Z",
+        "object_repr": "bkjklhkj",
+        "object_id": "15",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 44
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:04:02.475Z",
+        "object_repr": "bkjklhkj",
+        "object_id": "14",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 45
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:04:02.486Z",
+        "object_repr": "bkjklhkj",
+        "object_id": "13",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 46
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:13:07.767Z",
+        "object_repr": "ghhyyyh",
+        "object_id": "24",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 47
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:13:07.780Z",
+        "object_repr": "ghhyyyh",
+        "object_id": "23",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 48
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:13:07.796Z",
+        "object_repr": "ghhyyyh",
+        "object_id": "22",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 49
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-09T15:13:07.807Z",
+        "object_repr": "ghhyyyh",
+        "object_id": "21",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 50
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-06-10T16:34:22.530Z",
+        "object_repr": "StaffTitle object",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "stafftitle"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 51
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-10T16:34:30.383Z",
+        "object_repr": "StaffTitle object",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "stafftitle"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 52
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-06-10T17:03:32.976Z",
+        "object_repr": "StaffTitle object",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "stafftitle"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 53
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-06-10T17:04:33.794Z",
+        "object_repr": "Club Secretary",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "stafftitle"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 54
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-06-10T17:05:04.386Z",
+        "object_repr": "Team Administrator",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "stafftitle"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 55
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-06-22T19:44:11.129Z",
+        "object_repr": "bbb@bbb.com",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 56
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-06-22T19:47:23.154Z",
+        "object_repr": "bbb@bbb.com",
+        "object_id": "2",
+        "change_message": "Changed is_staff.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 57
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-06-23T10:58:31.050Z",
+        "object_repr": "U11 White",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "news",
+            "subject"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 58
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-06-23T14:12:14.987Z",
+        "object_repr": "ghjkg",
+        "object_id": "25",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 59
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-06-23T14:12:24.598Z",
+        "object_repr": "ghjkg",
+        "object_id": "25",
+        "change_message": "No fields changed.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 60
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-24T14:07:58.531Z",
+        "object_repr": "ghjkg",
+        "object_id": "25",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 61
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-24T17:35:47.976Z",
+        "object_repr": "kjhjkhlj",
+        "object_id": "31",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 62
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-24T17:35:47.996Z",
+        "object_repr": "kjhjkhlj",
+        "object_id": "30",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 63
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-24T17:35:48.014Z",
+        "object_repr": "kjhjkhlj",
+        "object_id": "29",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 64
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-24T17:35:48.036Z",
+        "object_repr": "kjhjkhlj",
+        "object_id": "28",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 65
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-24T17:35:48.048Z",
+        "object_repr": "kjhjkhlj",
+        "object_id": "27",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 66
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-24T17:35:48.061Z",
+        "object_repr": "fjhgk",
+        "object_id": "26",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "home",
+            "team"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 67
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-06-25T19:36:21.563Z",
+        "object_repr": "carolinedennehygreene@gmail.co",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 68
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-26T00:24:13.396Z",
+        "object_repr": "nn",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "news",
+            "subject"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 69
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-26T00:34:47.481Z",
+        "object_repr": "<p>kj;kjkj</p>",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "news",
+            "post"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 70
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-26T00:34:47.495Z",
+        "object_repr": "<p>jhl</p>",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "news",
+            "post"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 71
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-26T00:35:10.382Z",
+        "object_repr": "jhlkj",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "news",
+            "thread"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 72
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-26T00:35:10.395Z",
+        "object_repr": "hjkl",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "news",
+            "thread"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 73
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T10:23:24.641Z",
+        "object_repr": "",
+        "object_id": "4",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 74
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.599Z",
+        "object_repr": "",
+        "object_id": "5",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 75
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.621Z",
+        "object_repr": "bbb@bbb.com",
+        "object_id": "2",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 76
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.642Z",
+        "object_repr": "gh@gh.com",
+        "object_id": "9",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 77
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.656Z",
+        "object_repr": "ghgj@ghj.com",
+        "object_id": "11",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 78
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.667Z",
+        "object_repr": "ghgj@ghj.comm",
+        "object_id": "12",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 79
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.677Z",
+        "object_repr": "ghgj@ghj.commmm",
+        "object_id": "13",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 80
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.690Z",
+        "object_repr": "ghgj@ghj.commmmmggg",
+        "object_id": "14",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 81
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.702Z",
+        "object_repr": "grace",
+        "object_id": "7",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 82
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.712Z",
+        "object_repr": "grace@grace.ie",
+        "object_id": "6",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 83
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.723Z",
+        "object_repr": "peanut@peanut.com",
+        "object_id": "10",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 84
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-28T11:03:16.735Z",
+        "object_repr": "tess@tess.ie",
+        "object_id": "8",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 85
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T10:40:58.684Z",
+        "object_repr": "",
+        "object_id": "19",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 86
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.438Z",
+        "object_repr": "alan@alan.com",
+        "object_id": "17",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 87
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.451Z",
+        "object_repr": "bbb@fgghiuhllhli.vom",
+        "object_id": "28",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 88
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.462Z",
+        "object_repr": "big@big.com",
+        "object_id": "24",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 89
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.475Z",
+        "object_repr": "bigger@me.com",
+        "object_id": "25",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 90
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.488Z",
+        "object_repr": "ghy@ghykl.com",
+        "object_id": "21",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 91
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.502Z",
+        "object_repr": "hhko@gghkjlh.com",
+        "object_id": "29",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 92
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.515Z",
+        "object_repr": "jerk@jerk.com",
+        "object_id": "23",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 93
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.526Z",
+        "object_repr": "jerky@jerky.com",
+        "object_id": "26",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 94
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.539Z",
+        "object_repr": "jim",
+        "object_id": "20",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 95
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.552Z",
+        "object_repr": "newuser1@withprofile.com",
+        "object_id": "31",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 96
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.563Z",
+        "object_repr": "newuser@withprofile.com",
+        "object_id": "30",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 97
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-29T11:52:53.575Z",
+        "object_repr": "penis@penis.com",
+        "object_id": "27",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 98
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-06-29T16:50:45.990Z",
+        "object_repr": "<p>ughgk</p>",
+        "object_id": "4",
+        "change_message": "Changed image.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "news",
+            "post"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 99
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-06-29T16:51:03.220Z",
+        "object_repr": "<p>save me</p>",
+        "object_id": "3",
+        "change_message": "Changed image.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "news",
+            "post"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 100
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-06-29T16:52:49.195Z",
+        "object_repr": "<p>save me</p>",
+        "object_id": "3",
+        "change_message": "Changed image.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "news",
+            "post"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 101
+},
+{
+    "fields": {
+        "action_flag": 2,
+        "action_time": "2017-06-30T13:06:16.725Z",
+        "object_repr": "ghj2@GHJ.COM",
+        "object_id": "18",
+        "change_message": "Changed is_staff.",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 102
+},
+{
+    "fields": {
+        "action_flag": 3,
+        "action_time": "2017-06-30T22:42:20.419Z",
+        "object_repr": "carolinedennehygreene@gmail.co",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 103
+},
+{
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2017-07-01T15:45:51.112Z",
+        "object_repr": "/about/clubsecretary/ -- club secretary",
+        "object_id": "3",
+        "change_message": "",
+        "user": [
+            "brendangreene"
+        ],
+        "content_type": [
+            "flatpages",
+            "flatpage"
+        ]
+    },
+    "model": "admin.logentry",
+    "pk": 104
+}
+]
