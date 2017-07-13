@@ -9,5 +9,3 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-DATABASES['default'] = dj_database_url.config("CLEARDB_DATABASE_URL")
