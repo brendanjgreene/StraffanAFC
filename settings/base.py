@@ -1,5 +1,3 @@
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -7,10 +5,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '^lnyvsn+3sam$)!9w%zr$&g+x)0_t6c5^06^r_t)x^te4n2)3+'
 
-SITE_ID = 2
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'straffanafc.herokuapp.com']  # need to add heroku.app when it is setup
-INTERNAL_IPS = ('127.0.0.1',)
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'straffanafc.herokuapp.com', ]  # need to add heroku.app when it is setup
+SITE_ID = 2
 
 
 # Application definition
