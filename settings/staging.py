@@ -10,5 +10,3 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse(
-    "mysql://ba2db3b0c1d81f:654a3797@eu-cdbr-west-01.cleardb.com/heroku_00b5e60d3f182f9?reconnect=true")
