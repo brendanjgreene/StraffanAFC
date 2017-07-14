@@ -10,7 +10,7 @@
         "last_login": "2017-07-14T12:40:18.380Z",
         "groups": [],
         "user_permissions": [],
-        "password": "pbkdf2_sha256$20000$OkVOQEqwCrAW$AxLRISYWG4YpXn8CcncnoOk+bLCz3Qvf5wf6QYU4xTc=",
+        "password": "pbkdf2_sha256$20000$HSatMersboPJ$U2zo1cEFq83eqFnY1dLG72XQnU2GQ+/ObTBqBGBcf4Y=",
         "email": "brendanjgreene@gmail.com",
         "date_joined": "2017-07-14T12:39:29.836Z"
     },
@@ -19,11 +19,19 @@
 },
 {
     "fields": {
-        "expire_date": "2017-07-28T12:40:18.411Z",
-        "session_data": "ODk5MWVmNWM5MTkwNjVjNTIwMmRhY2ZhMGU0MzExODBmM2YxNWFjNjp7Il9hdXRoX3VzZXJfaGFzaCI6ImY4MDg1ODVhZDViNjY2Zjc2NmJlMGViODliNWI2NDcyMWVmODRhZWMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+        "expire_date": "2017-07-28T12:57:49.210Z",
+        "session_data": "ZTZiNzA4NWQyODIxN2ZjYzhjOGU2YjhkNDBmMjhmNGJiNjc4NTkzNjp7Il9hdXRoX3VzZXJfaGFzaCI6IjE4YTgwMmVlYzlkZmMxYjgyZGRlMWMyZjgxYWRhNDVlN2I2NDY5ZDIiLCJfYXV0aF91c2VyX2lkIjoiMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIn0="
     },
     "model": "sessions.session",
     "pk": "nza6wptilcn4muw8doau2h3hdpu55rfe"
+},
+{
+    "fields": {
+        "age": 11,
+        "name": "u11 White"
+    },
+    "model": "home.team",
+    "pk": 1
 },
 {
     "fields": {
@@ -45,5 +53,14 @@
     },
     "model": "sites.site",
     "pk": 2
+},
+{
+    "fields": {
+        "team": 1,
+        "name": "u11 White",
+        "description": "<p>the Under 11's white team plays in the Under 11 Major 2 Red Division</p>"
+    },
+    "model": "news.subject",
+    "pk": 1
 }
 ]
