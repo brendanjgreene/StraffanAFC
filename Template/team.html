@@ -13,7 +13,6 @@
     <h2 class="col-sm-12">Managers</h2>
     <table class="table table-striped">
         <thead>
-        <th></th>
         <th>Name</th>
         <th>Phone</th>
         <th>Email</th>
@@ -21,7 +20,6 @@
     <tbody>
     {% for managers in managers_list %}
             <tr>
-            <td>{{ managers.profile.title }}</td>
                 <td>{{ managers.first_name }} {{ managers.last_name }}</td>
                 <td>{{ managers.profile.mobile }}</td>
                 <td>{{ managers.email }}</td>
