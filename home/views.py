@@ -31,7 +31,7 @@ def change_your_password(request):
             messages.success(request, request.user.username + '. Your password was successfully updated!')
             return redirect('profile')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = PasswordChangeForm(request.user)
 
@@ -58,7 +58,7 @@ def edit_profile(request):
             messages.success(request, 'Your profile was succesfully updated!')
             return redirect(reverse('profile'))
         else:
-            messages.error(request, 'Please correct the error below')
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = MyUserChangeForm(instance=request.user)
         second_form = ProfileForm(instance=profile)
@@ -89,6 +89,9 @@ def new_user(request):
                 messages.success(request, "You have created a new user " + user.username)
 
                 return redirect(reverse('profile'))
+
+            else:
+                messages.error(request, 'Please correct the errors below.')
 
         else:
             form = NewUserForm()
@@ -156,6 +159,9 @@ def new_team(request):
             messages.success(request, "You have added the " + team.name + " Team!")
 
             return redirect("get_team", team.id)
+        else:
+            messages.error(request, 'Please correct the errors below.')
+
     else:
         team_form = TeamForm()
         subject_form_desc = SubjectFormDesc()
@@ -176,6 +182,8 @@ def edit_team(request, id):
             messages.success(request, "the " + team.name + " was edited!")
 
             return redirect(reverse('get_team', args={team.pk}))
+        else:
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = TeamForm(instance=team)
 
@@ -217,6 +225,8 @@ def new_player(request):
             messages.success(request, "You have added " + player.name + " " + player.last_name + " to " + player.team.name + " Team!")
 
             return redirect('get_team', player.team_id)
+        else:
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = PlayerForm()
 
@@ -236,6 +246,8 @@ def edit_player(request, id):
             messages.success(request, "You have edited " + player.name + ' ' + player.last_name + "!")
 
             return redirect('get_team', player.team_id)
+        else:
+            messages.error(request, 'Please correct the errors below.')
     else:
         form = PlayerForm(instance=player)
 
