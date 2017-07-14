@@ -7,7 +7,7 @@
         "is_active": true,
         "is_superuser": true,
         "is_staff": true,
-        "last_login": "2017-07-01T11:41:37.277Z",
+        "last_login": "2017-07-14T08:17:14.372Z",
         "groups": [],
         "user_permissions": [],
         "password": "pbkdf2_sha256$20000$tDobvsU8vtpJ$8/kz8SeFVv1B6kfZ6rm075CSyadTJyYKdF3E0YJmWNY=",
@@ -52,6 +52,14 @@
     },
     "model": "auth.user",
     "pk": 18
+},
+{
+    "fields": {
+        "expire_date": "2017-07-28T08:17:14.412Z",
+        "session_data": "NmM3MmY1MzM3YjcxNTI0ZjMwNjdjZWUxM2Q5YzIyZDI4ZGZkZGY5NTp7Il9hdXRoX3VzZXJfaGFzaCI6ImMyOWY3ZTcyMDI1YTc5NjA4NTA1Yzg5Y2FmYzhmMGE1ZDU3MTA2MzAiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "24cvuw33aaw7vfo4mjk5peajwif0kb92"
 },
 {
     "fields": {
