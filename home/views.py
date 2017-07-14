@@ -322,9 +322,9 @@ def get_info(request):
 @login_required(login_url='/login/')
 def profile(request):
     return render(request, 'profile.html',
-                  {'teams': Team.objects.all()})
+                  {'teams': teams})
 
-Team.objects.all()
+teams = Team.objects.all()
 
 
 

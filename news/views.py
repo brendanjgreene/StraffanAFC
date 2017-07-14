@@ -38,28 +38,28 @@ def new_thread(request, subject_id):
     poll_subject_formset = formset_factory(PollSubjectForm, extra=3)
     if request.method == "POST":
         thread_form = ThreadForm(request.POST)
-        post_form = PostForm(request.POST)
+        post_form = PostForm(request.POST, request.FILES)
         poll_form = PollForm(request.POST)
         poll_subject_formset = poll_subject_formset(request.POST)
         if thread_form.is_valid() and post_form.is_valid():
             if request.POST.get('is_a_poll', None) and poll_form.is_valid() and poll_subject_formset.is_valid():
 
-                thread = thread_form.save(False)
+                thread = thread_form.save(commit=False)
                 thread.subject = subject
                 thread.user = request.user
                 thread.save()
 
-                post = post_form.save(False)
+                post = post_form.save(commit=False)
                 post.user = request.user
                 post.thread = thread
                 post.save()
 
-                poll = poll_form.save(False)
+                poll = poll_form.save(commit=False)
                 poll.thread = thread
                 poll.save()
 
                 for subject_form in poll_subject_formset:
-                    subject = subject_form.save(False)
+                    subject = subject_form.save(commit=False)
                     subject.poll = poll
                     subject.save()
 
@@ -69,12 +69,12 @@ def new_thread(request, subject_id):
 
             else:
 
-                thread = thread_form.save(False)
+                thread = thread_form.save(commit=False)
                 thread.subject = subject
                 thread.user = request.user
                 thread.save()
 
-                post = post_form.save(False)
+                post = post_form.save(commit=False)
                 post.user = request.user
                 post.thread = thread
                 post.save()
@@ -84,7 +84,7 @@ def new_thread(request, subject_id):
                 return redirect(reverse('thread', args={thread.pk}))
     else:
         thread_form = ThreadForm()
-        post_form = PostForm(request.POST)
+        post_form = PostForm()
         poll_form = PollForm()
         poll_subject_formset = poll_subject_formset()
 
@@ -160,7 +160,7 @@ def edit_post(request, thread_id, post_id):
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            messages.success(request, "You have updated your thread!")
+            messages.success(request, "You have updated your Post!")
 
             return redirect(reverse('thread', args={thread.pk}))
     else:
