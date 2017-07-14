@@ -55,7 +55,7 @@ def edit_profile(request):
         if form.is_valid() and second_form.is_valid():
             form.save()
             second_form.save()
-            messages.success(request, 'Your profile was succesfully updated!')
+            messages.success(request, 'Your profile was successfully updated!')
             return redirect(reverse('profile'))
         else:
             messages.error(request, 'Please correct the errors below.')
@@ -150,21 +150,23 @@ def new_team(request):
         subject_form_desc = SubjectFormDesc(request.POST)
         if team_form.is_valid() and subject_form_desc.is_valid():
             team = team_form.save(commit=False)
-            team.save()
             subject = subject_form_desc.save(commit=False)
             subject.name = team.name
             subject.team_id = team.id
             subject.save()
+            team.save()
 
             messages.success(request, "You have added the " + team.name + " Team!")
 
             return redirect("get_team", team.id)
+
         else:
             messages.error(request, 'Please correct the errors below.')
 
     else:
         team_form = TeamForm()
         subject_form_desc = SubjectFormDesc()
+
     return render(request, 'team_subject_form.html', {'team_form': team_form,
                                                       'subject_form_desc': subject_form_desc,
                                                       'heading_text': 'You are creating a new Team!',

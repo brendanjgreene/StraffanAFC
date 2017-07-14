@@ -147,7 +147,7 @@ def new_post(request, thread_id):
     }
     args.update(csrf(request))
 
-    return render(request, 'news/post-form.html', args)
+    return render(request, 'form.html', args)
 
 
 @login_required

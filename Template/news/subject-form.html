@@ -14,7 +14,7 @@
 {% block content %}
  <section>
    <div class="col-md-9">
-     <form method="post" action="{{ form_action }}">
+     <form method="post" enctype="multipart/form-data" action="{{ form_action }}">
        {% csrf_token %}
        {{ form|as_bootstrap }}
        <div class="form-group">
