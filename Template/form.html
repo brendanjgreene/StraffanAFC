@@ -50,7 +50,8 @@
              {{ third_form|as_bootstrap }}
          {% endif %}
        <div class="form-group">
-         <button type="submit" class="btn btn-primary">{{button_text}}</button>
+         <button type="submit" class="btn btn-primary pull-right">{{button_text}}</button>
+           <button type="reset" class="btn btn-info" value="Reset">Reset</button>
            <button type="button" class="btn btn-danger" onclick="window.history.back()">Cancel</button>
        </div>
      </form>

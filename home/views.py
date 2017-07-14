@@ -87,17 +87,18 @@ def new_user(request):
                 user.is_staff = True
                 user.save()
                 messages.success(request, "You have created a new user " + user.username)
+
                 return redirect(reverse('profile'))
 
         else:
             form = NewUserForm()
 
-            args = {'form': form,
-                    'heading_text': 'You are creating a new User!',
-                    'button_text': 'Save User',
-                    'teams': teams}
+        args = {'form': form,
+                'heading_text': 'You are creating a new User!',
+                'button_text': 'Save User',
+                'teams': teams}
 
-            return render(request, 'form.html', args)
+        return render(request, 'form.html', args)
 
 
 def login(request):
