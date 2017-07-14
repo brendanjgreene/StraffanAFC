@@ -38,7 +38,7 @@ def change_your_password(request):
     args = {'form': form,
             'heading_text': request.user.username + ": " + request.user.first_name + " Are you sure you want to change your password",
             'button_text': 'Confirm Password Change',
-            'teams': teams}
+            'teams': Team.objects.all()}
 
     return render(request, 'form.html', args)
 
@@ -67,7 +67,7 @@ def edit_profile(request):
             'second_form': second_form,
             'heading_text': 'You are editing user ' + request.user.first_name + " " + request.user.last_name,
             'button_text': 'Save Changes',
-            'teams': teams}
+            'teams': Team.objects.all()}
 
     return render(request, 'form.html', args)
 
@@ -99,7 +99,7 @@ def new_user(request):
         args = {'form': form,
                 'heading_text': 'You are creating a new User!',
                 'button_text': 'Save User',
-                'teams': teams}
+                'teams': Team.objects.all()}
 
         return render(request, 'form.html', args)
 
@@ -171,7 +171,7 @@ def new_team(request):
                                                       'subject_form_desc': subject_form_desc,
                                                       'heading_text': 'You are creating a new Team!',
                                                       'button_text': 'Save Team',
-                                                      'teams': teams})
+                                                      'teams': Team.objects.all()})
 
 
 def edit_team(request, id):
@@ -192,7 +192,7 @@ def edit_team(request, id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'You are editing ' + team.name + 'Team?',
                                          'button_text': 'Save Changes',
-                                         'teams': teams})
+                                         'teams': Team.objects.all()})
 
 
 def delete_team(request, id):
@@ -214,7 +214,7 @@ def delete_team(request, id):
                                                          'team will also be deleted.  '
                                                          'We suggest you reassign these players and other items first!',
                                          'button_text': 'Click to confirm deletion of ' + team.name + ' Team',
-                                         'teams': teams})
+                                         'teams': Team.objects.all()})
 
 
 def new_player(request):
@@ -235,7 +235,7 @@ def new_player(request):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'You are creating a new player!',
                                          'button_text': 'Save Player',
-                                         'teams': teams})
+                                         'teams': Team.objects.all()})
 
 
 def edit_player(request, id):
@@ -256,7 +256,7 @@ def edit_player(request, id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'You are editing ' + player.name + ' ' + player.last_name,
                                          'button_text': 'Save Player',
-                                         'teams': teams})
+                                         'teams': Team.objects.all()})
 
 
 def delete_player(request, id):
@@ -275,7 +275,7 @@ def delete_player(request, id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Are you sure you want to delete ' + player.name + ' ' + player.last_name + "!",
                                          'button_text': 'confirm delete ' + player.name + ' ' + player.last_name + "!",
-                                         'teams': teams})
+                                         'teams': Team.objects.all()})
 
 
 def get_index(request):
@@ -295,7 +295,7 @@ def get_team(request, id):
                   {'team_name': team_name,
                    'managers_list': User.objects.filter(profile__team=id),
                    'team_list': Player.objects.filter(team__id=id),
-                   'teams': teams
+                   'teams': Team.objects.all()
                    })
 
 
@@ -306,7 +306,7 @@ def get_teams(request):
     # i would need to create a Club model in a club app with TEMPLATE_CONTEXT PROCESSOR
     # second_color = '#006'
     return render(request, "teams.html",
-                  {'teams': teams,
+                  {'teams': Team.objects.all(),
                    # 'color': color,
                    # 'second_color': second_color,
                    'managers_list': User.objects.all(),
@@ -322,7 +322,7 @@ def get_info(request):
 @login_required(login_url='/login/')
 def profile(request):
     return render(request, 'profile.html',
-                  {'teams': teams})
+                  {'teams': Team.objects.all()})
 
 
 
