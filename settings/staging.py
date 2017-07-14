@@ -4,9 +4,11 @@ import settings
 
 DEBUG = False
 
+INSTALLED_APPS.append('storages')
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mydatabase',
     }
 }
