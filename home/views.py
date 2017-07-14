@@ -324,6 +324,9 @@ def profile(request):
     return render(request, 'profile.html',
                   {'teams': Team.objects.all()})
 
+Team.objects.all()
+
+
 
 
 
