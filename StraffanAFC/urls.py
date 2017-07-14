@@ -18,7 +18,7 @@ from home import views as home_views
 from django.conf import settings
 from schedule import views as schedule_views
 from news import views as news_views
-from settings import MEDIA_ROOT
+from settings.base import MEDIA_ROOT
 from django.views.static import serve
 
 
