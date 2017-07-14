@@ -1,0 +1,49 @@
+[
+{
+    "fields": {
+        "username": "brendangreene",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2017-07-14T12:40:18.380Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$OkVOQEqwCrAW$AxLRISYWG4YpXn8CcncnoOk+bLCz3Qvf5wf6QYU4xTc=",
+        "email": "brendanjgreene@gmail.com",
+        "date_joined": "2017-07-14T12:39:29.836Z"
+    },
+    "model": "auth.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "expire_date": "2017-07-28T12:40:18.411Z",
+        "session_data": "ODk5MWVmNWM5MTkwNjVjNTIwMmRhY2ZhMGU0MzExODBmM2YxNWFjNjp7Il9hdXRoX3VzZXJfaGFzaCI6ImY4MDg1ODVhZDViNjY2Zjc2NmJlMGViODliNWI2NDcyMWVmODRhZWMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session",
+    "pk": "nza6wptilcn4muw8doau2h3hdpu55rfe"
+},
+{
+    "fields": {
+        "mobile": null,
+        "image": "",
+        "title": null,
+        "user": [
+            "brendangreene"
+        ],
+        "team": null
+    },
+    "model": "home.profile",
+    "pk": 1
+},
+{
+    "fields": {
+        "domain": "example.com",
+        "name": "example.com"
+    },
+    "model": "sites.site",
+    "pk": 2
+}
+]

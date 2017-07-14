@@ -11,6 +11,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('home', '0001_initial'),
     ]
 
     operations = [
@@ -20,6 +21,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('comment', tinymce.models.HTMLField(blank=True)),
                 ('created_at', models.DateTimeField(default=django.utils.timezone.now)),
+                ('image', models.ImageField(null=True, upload_to=b'images', blank=True)),
             ],
         ),
         migrations.CreateModel(
@@ -28,6 +30,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=255)),
                 ('description', tinymce.models.HTMLField()),
+                ('team', models.ForeignKey(related_name='subject_team', blank=True, to='home.Team', null=True)),
             ],
         ),
         migrations.CreateModel(
