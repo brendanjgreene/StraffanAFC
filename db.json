@@ -2,8 +2,8 @@
 {
     "fields": {
         "username": "brendangreene",
-        "first_name": "",
-        "last_name": "",
+        "first_name": "Brendan",
+        "last_name": "Greene",
         "is_active": true,
         "is_superuser": true,
         "is_staff": true,
@@ -27,8 +27,8 @@
 },
 {
     "fields": {
-        "mobile": null,
-        "image": "",
+        "mobile": "086-391-8623",
+        "image": "images/Photo_on_03-06-2016_at_14.32.jpg",
         "title": null,
         "user": [
             "brendangreene"
