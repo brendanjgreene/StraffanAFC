@@ -54,6 +54,9 @@ class Profile(models.Model):
 
     image = models.ImageField(upload_to="images", blank=True, null=True)
 
+    def __unicode__(self):
+        return self.user.username
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
