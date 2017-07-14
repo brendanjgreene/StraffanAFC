@@ -35,19 +35,6 @@
 },
 {
     "fields": {
-        "mobile": "086-391-8623",
-        "image": "images/Photo_on_03-06-2016_at_14.32.jpg",
-        "title": null,
-        "user": [
-            "brendangreene"
-        ],
-        "team": null
-    },
-    "model": "home.profile",
-    "pk": 2
-},
-{
-    "fields": {
         "domain": "example.com",
         "name": "example.com"
     },
