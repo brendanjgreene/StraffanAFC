@@ -2,7 +2,9 @@ from base import *
 import dj_database_url
 import settings
 
-DEBUG = True
+DEBUG = False
+
+SECRET_KEY = 'SECRET_KEY'
 
 INSTALLED_APPS.append('storages')
 
