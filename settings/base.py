@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^lnyvsn+3sam$)!9w%zr$&g+x)0_t6c5^06^r_t)x^te4n2)3+'
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'straffanafc.herokuapp.com', ]  # need to add heroku.app when it is setup
+ALLOWED_HOSTS = ['straffanafc.herokuapp.com', '127.0.0.1', 'localhost', ]
 SITE_ID = 2
 
 
@@ -89,7 +89,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join('straffanafc.herokuapp.com', 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),  # static directory at the project level
