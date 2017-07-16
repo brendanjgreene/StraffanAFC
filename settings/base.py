@@ -92,5 +92,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),  # static directory at the project level
+    os.path.join(BASE_DIR, "static", 'media'),  # static directory at the project level
 )
