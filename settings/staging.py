@@ -2,7 +2,7 @@ from base import *
 import dj_database_url
 import settings
 
-DEBUG = False
+DEBUG = True
 
 INSTALLED_APPS.append('storages')
 
