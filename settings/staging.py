@@ -32,5 +32,5 @@ DATABASES['default'] = dj_database_url.config("CLEARDB_DATABASE_URL")
 
 # DO NOT DO THIS! delete if doesnt work
 MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+MEDIA_ROOT = 'storages.backends.s3boto.S3BotoStorage'
 #  delete
