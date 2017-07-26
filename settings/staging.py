@@ -1,12 +1,14 @@
 from base import *
 import dj_database_url
-import settings
 
 DEBUG = False
 
 SECRET_KEY = 'SECRET_KEY'
 
 INSTALLED_APPS.append('storages')
+
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 DATABASES = {
     'default': {

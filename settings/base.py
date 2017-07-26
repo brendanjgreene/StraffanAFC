@@ -8,7 +8,7 @@ SECRET_KEY = '^lnyvsn+3sam$)!9w%zr$&g+x)0_t6c5^06^r_t)x^te4n2)3+'
 
 ALLOWED_HOSTS = ['straffanafc.herokuapp.com', '127.0.0.1', 'localhost', ]
 SITE_ID = 2
-
+INTERNAL_IPS = ('127.0.0.1',)
 
 # Application definition
 
@@ -29,8 +29,6 @@ INSTALLED_APPS = [
     'news',
     'polls',
 ]
-
-INTERNAL_IPS = ('127.0.0.1',)
 
 LOGIN_URL = '/login/'
 

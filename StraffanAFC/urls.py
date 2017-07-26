@@ -24,8 +24,10 @@ from django.views.static import serve
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', home_views.get_index, name='index'),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
+
+    # HOME
+    url(r'^$', home_views.get_index, name='index'),
     url(r'^players/$', home_views.get_players, name='players'),
     url(r'^team/(?P<id>\d+)$', home_views.get_team, name='get_team'),
     url(r'^teams/$', home_views.get_teams, name='get_teams'),
@@ -37,14 +39,14 @@ urlpatterns = [
     url(r'^team/delete/(?P<id>\d+)$', home_views.delete_team, name='delete_team'),
     url(r'^players/edit/(?P<id>\d+)$', home_views.edit_player, name='edit-player'),
     url(r'^players/delete/(?P<id>\d+)$', home_views.delete_player, name='delete-player'),
-    url(r'^schedule/', schedule_views.get_schedule, name='schedule'),
     url(r'^newuser/$', home_views.new_user, name='new_user'),
     url(r'^edit_profile/$', home_views.edit_profile, name='edit_profile'),
     url(r'^change_your_password/$', home_views.change_your_password, name='change_your_password'),
     url(r'^login/$', home_views.login, name='login'),
     url(r'^logout/$', home_views.logout, name='logout'),
+    url(r'^schedule/', schedule_views.get_schedule, name='schedule'),
 
-    # FORUM
+    # NEWS
     url(r'^news/$', news_views.forum, name='forum'),
     url(r'^new_subject', news_views.new_subject, name='new_subject'),
     url(r'^threads/(?P<subject_id>\d+)/$', news_views.threads, name='threads'),
@@ -54,6 +56,8 @@ urlpatterns = [
     url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', news_views.edit_post, name='edit_post'),
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', news_views.delete_post, name='delete_post'),
     url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', news_views.thread_vote, name='cast_vote'),
+
+    # MEDIA
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 ]
 
