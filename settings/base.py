@@ -1,9 +1,10 @@
 import os
+from secret import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^lnyvsn+3sam$)!9w%zr$&g+x)0_t6c5^06^r_t)x^te4n2)3+'
+SECRET_KEY = 'LOCAL_SECRET_KEY'
 
 
 ALLOWED_HOSTS = ['straffanafc.herokuapp.com', '127.0.0.1', 'localhost']
