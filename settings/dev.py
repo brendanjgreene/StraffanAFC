@@ -1,6 +1,10 @@
 from base import *
+from secret import *
 
 DEBUG = True
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = LOCAL_SECRET_KEY
 
 INSTALLED_APPS.append('debug_toolbar')
 
