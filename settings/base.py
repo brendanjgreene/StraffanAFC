@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'schedule',
     'news',
     'polls',
+    'storages',
 ]
 
 LOGIN_URL = '/login/'

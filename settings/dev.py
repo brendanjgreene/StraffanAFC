@@ -10,6 +10,10 @@ INSTALLED_APPS.append('debug_toolbar')
 
 MIDDLEWARE_CLASSES.append('debug_toolbar.middleware.DebugToolbarMiddleware',)
 
+# THIS IS OK BECAUSE I AM USING AWS FOR MEDIAFILES ONLY!
+MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
