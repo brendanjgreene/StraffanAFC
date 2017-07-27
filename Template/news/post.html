@@ -19,7 +19,7 @@
     </div>
 {% if post.image %}
     <div class="container col-xs-12">
-        <img src="/media/{{ post.image }}" style="width: inherit;">
+        <img src="{{ post.image.url }}" style="width: inherit;">
     </div>
 {% endif %}
 </section>

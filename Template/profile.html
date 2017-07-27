@@ -5,7 +5,7 @@
     <div class="col-md-3 col-sm-4 text-center">
         <p>You are logged in as</p>
         {% if user.profile.image %}
-        <img src="/media/{{ user.profile.image }}" alt="Image not Found" onerror="this.onerror=null;this.src='http://placehold.it/100';" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
+        <img src="{{ user.profile.image.url }}" alt="Image not Found" onerror="this.onerror=null;this.src='http://placehold.it/100';" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
         {% endif %}
     </div>
     <div class="col-md-4 col-sm-5">
