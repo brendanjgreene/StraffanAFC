@@ -70,7 +70,7 @@ function log(s) {
                 <h3 class="text-muted">{{ staff.profile.title }} {{ staff.profile.team }}</h3>
                     {% if staff.profile.image %}
                         <div class="col-md-2 col-sm-3 text-center" style="height: inherit">
-                            <img src="/media/{{ staff.profile.image }}" alt="Image not Found" onerror="this.onerror=null;this.src='http://placehold.it/100';" style="width:75px; height: 75px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
+                            <img src="{{ staff.profile.image.url }}" alt="Image not Found" onerror="this.onerror=null;this.src='http://placehold.it/100';" style="width:75px; height: 75px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
                         </div>
                     {% endif %}
                 <h4>Name: {{ staff.first_name }} {{ staff.last_name }} </h4>

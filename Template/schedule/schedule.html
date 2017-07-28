@@ -2,25 +2,27 @@
 {% block content %}
     <h1 class="text-info">{{ team_name }} </h1>
     <h2>Upcoming Under Age Games</h2>
-    <!--table class="table table-striped">
+    <table class="table table-striped">
         <thead>
             <th>Home</th>
             <th>Away</th>
             <th>Venue</th>
-            <th>Time</th>
-            <th>Referee</th>
+            <th>Time - Date</th>
         </thead>
     <tbody>
+            {% for i in games_list %}
+                <tr>
+                    <td colspan="4"><strong>{{ i.4 }}</strong></td>
+                </tr>
             <tr>
-                <td>{{ home }}</td>
-                <td>{{ away }}</td>
-                <td>{{ venue }}</td>
-                <td>{{ time }}</td>
-                <td>{{ referee }}</td>
-            </tr>
-    </tbody>
-    </table-->
+                <td>{{ i.0 }}</td>
+                <td>{{ i.1 }}</td>
+                <td>{{ i.2 }}</td>
+                <td>{{ i.3 }} - {{ i.5 }} </td>
 
-<iframe class="col-sm-12" height="500px" src="http://www.kdul.ie/roundup.aspx?oid=1012&show=f&cid=10095">
-</iframe>
+            </tr>
+            {% endfor %}
+    </tbody>
+    </table>
+
 {% endblock %}
