@@ -291,7 +291,7 @@ def get_players(request):
 
 def get_team(request, id):
     team_name = get_object_or_404(Team, pk=id)
-    return render(request, "team.html",
+    return render(request, "teams.html",
                   {'team_name': team_name,
                    'managers_list': User.objects.filter(profile__team=id),
                    'team_list': Player.objects.filter(team__id=id),
