@@ -18,12 +18,12 @@
             {% autoescape off %}
                 {{ subject.description }}
             {% endautoescape %}
+<h3>
+Click <a href="/threads/{{ subject.id }}">Here</a> for team news
+</h3>
         {% endif %}
     {% endfor %}
 </h2>
-<h3>
-Click <a href="/threads/{{ team.id }}">Here</a> for team news
-</h3>
 </div>
 <div class="col-md-12">
 
