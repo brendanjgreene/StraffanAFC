@@ -177,7 +177,7 @@ def new_team(request):
 
 def edit_team(request, id):
     team = get_object_or_404(Team, pk=id)
-    subject = get_object_or_404(Subject, pk=id)
+    subject = get_object_or_404(Subject, team_id=id)
     if request.method == "POST":
         form = TeamForm(request.POST, request.FILES, instance=team)
         second_form = SubjectFormDesc(request.POST, request.FILES, instance=subject)
