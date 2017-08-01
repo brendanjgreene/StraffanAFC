@@ -153,9 +153,10 @@ def new_team(request):
             team = team_form.save(commit=False)
             subject = subject_form_desc.save(commit=False)
             subject.name = team.name
+            team.save()
+            # team.save() needs to be her so team.id is created before subject.team_id
             subject.team_id = team.id
             subject.save()
-            team.save()
 
             messages.success(request, "You have added the " + team.name + " Team!")
 
