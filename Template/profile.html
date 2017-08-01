@@ -40,7 +40,7 @@ Edit Your Password or Profile Here.
 <h3 class="text-info">Managers have access to edit items related to their team Here.</h3>
 {% if user.profile.team.id != None %}
 <div class="btn-group btn-group-justified">
-    <a type="button" class="btn btn-primary" onclick="location.href='{% url "edit_team" user.profile.team.id %}'">Edit Team Name</a>
+    <a type="button" class="btn btn-primary" onclick="location.href='{% url "edit_team" user.profile.team.id %}'">Edit Team</a>
     <a type="button" class="btn btn-info" onclick="location.href='{% url "get_team" user.profile.team.id %}'">View Team</a>
 </div>
 {% endif %}

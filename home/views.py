@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
 from news.forms import SubjectFormDesc
+from news.models import Subject
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
@@ -176,10 +177,16 @@ def new_team(request):
 
 def edit_team(request, id):
     team = get_object_or_404(Team, pk=id)
+    subject = get_object_or_404(Subject, pk=id)
     if request.method == "POST":
         form = TeamForm(request.POST, request.FILES, instance=team)
-        if form.is_valid():
+        second_form = SubjectFormDesc(request.POST, request.FILES, instance=subject)
+        if form.is_valid() and second_form.is_valid():
             team = form.save(commit=False)
+            subject = second_form.save(commit=False)
+            subject.name = team.name
+            subject.team_id = team.id
+            subject.save()
             team.save()
             messages.success(request, "the " + team.name + " was edited!")
 
@@ -188,8 +195,10 @@ def edit_team(request, id):
             messages.error(request, 'Please correct the errors below.')
     else:
         form = TeamForm(instance=team)
+        second_form = SubjectFormDesc(instance=subject)
 
     return render(request, 'form.html', {'form': form,
+                                         'second_form': second_form,
                                          'heading_text': 'You are editing ' + team.name + 'Team?',
                                          'button_text': 'Save Changes',
                                          'teams': Team.objects.all()})
@@ -291,8 +300,10 @@ def get_players(request):
 
 def get_team(request, id):
     team_name = get_object_or_404(Team, pk=id)
-    return render(request, "teams.html",
+    return render(request, "team.html",
                   {'team_name': team_name,
+                   'team': Team.objects.filter(id=id),
+                   'subjects': Subject.objects.all(),
                    'managers_list': User.objects.filter(profile__team=id),
                    'team_list': Player.objects.filter(team__id=id),
                    'teams': Team.objects.all()

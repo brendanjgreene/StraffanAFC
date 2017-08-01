@@ -1,6 +1,7 @@
 
 <h1 class="text-info col-md-12">
     <a href="/team/{{ team.id }}">{{ team.name }} Team</a>
+
         <div class="pull-right">
         {% if user.is_superuser or user.profile.team == team %}
             <a href="{% url 'edit_team' team.id %}"><i class="fa fa-pencil-square-o"></i></a>
@@ -10,6 +11,21 @@
         {% endif %}
         </div>
 </h1>
+<div class="col-md-12">
+<h2>
+    {% for subject in subjects %}
+        {% if subject.team_id == team.id %}
+            {% autoescape off %}
+                {{ subject.description }}
+            {% endautoescape %}
+        {% endif %}
+    {% endfor %}
+</h2>
+<h3>
+Click <a href="/threads/{{ team.id }}">Here</a> for team news
+</h3>
+</div>
+<div class="col-md-12">
 
     <h2>Managers</h2>
     <table class="table table-striped">
@@ -74,5 +90,6 @@
 
         </table>
     {% endif %}
+</div>
 
 
