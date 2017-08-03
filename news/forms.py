@@ -3,8 +3,8 @@ from .models import Thread, Post, Subject
 from tinymce.models import HTMLField
 
 
-class ThreadForm(forms.ModelForm):
-    name = forms.CharField(label="Thread name")
+class StoryForm(forms.ModelForm):
+    name = forms.CharField(label="Story Title")
     is_a_poll = forms.BooleanField(label="Include a poll?", required=False)
 
     class Meta:

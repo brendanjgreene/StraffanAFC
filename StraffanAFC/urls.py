@@ -47,11 +47,11 @@ urlpatterns = [
     url(r'^schedule/', schedule_views.get_schedule, name='schedule'),
 
     # NEWS
-    url(r'^news/$', news_views.forum, name='forum'),
+    url(r'^news/$', news_views.news, name='forum'),
     url(r'^new_subject', news_views.new_subject, name='new_subject'),
-    url(r'^threads/(?P<subject_id>\d+)/$', news_views.threads, name='threads'),
-    url(r'^new_thread/(?P<subject_id>\d+)/$', news_views.new_thread, name='new_thread'),
-    url(r'^thread/(?P<thread_id>\d+)/$', news_views.thread, name='thread'),
+    url(r'^subject/(?P<subject_id>\d+)/$', news_views.subject, name='threads'),
+    url(r'^new_story/(?P<subject_id>\d+)/$', news_views.new_story, name='new_story'),
+    url(r'^story/(?P<thread_id>\d+)/$', news_views.story, name='story'),
     url(r'^post/new/(?P<thread_id>\d+)/$', news_views.new_post, name='new_post'),
     url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', news_views.edit_post, name='edit_post'),
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', news_views.delete_post, name='delete_post'),

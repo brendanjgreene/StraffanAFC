@@ -2,17 +2,23 @@
 {% load news_extras %}
 {% block content %}
    {% load bootstrap_tags %}
+    <div class="jumbotron col-sm-12">
+    {% if user.is_staff %}
+               <a class="btn btn-success pull-right" href="{% url "new_subject" %}">Create new News Subject</a>
+        {% endif %}
+    </div>
    {% for subject in subjects %}
-       <section class="subject jumbotron">
-           <h2><a href="{% url "threads" subject.id %}">{{ subject.name }}</a></h2>
+       <section class="jumbotron">
+           <h1>
+               {{ subject.name }}
+               News
+           </h1>
            <p>
-               <a href="{% url "threads" subject.id %}">
                    {% autoescape off %}{{ subject.description }}{% endautoescape %}
-               </a>
            </p>
            <table class="table table-striped">
                <tr>
-                   <th>THREADS</th>
+                   <th>STORIES</th>
                    <th>POSTS</th>
                </tr>
                <tr>
@@ -20,6 +26,7 @@
                    <td>{{ subject|get_total_subject_posts }}</td>
                </tr>
            </table>
+               <a class="btn btn-success" href="{% url "threads" subject.id %}">See Stories</a>
        </section>
    {% endfor %}
 {% endblock %}

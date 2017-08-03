@@ -6,6 +6,7 @@
     <div class="row header">
         <div class="container-fluid jumbotron">
         <h2>{{ thread.subject }}</h2>
+        {% autoescape off %}{{ subject.description }}{% endautoescape %}
             <h1>{{ thread.name }}</h1>
             <div class="col-md-12">
                 <table class="table">
@@ -60,7 +61,7 @@
                 {% if user.is_authenticated %}
                     <a href="{% url 'new_post' thread.id %}" class="btn btn-primary">New post</a>
                 {% endif %}
-                <a href="/news/" class="btn btn-warning">Back to News</a>
+                <a href="/news/" class="btn btn-success">Back to News</a>
             </div>
             {% for post in thread.posts.all %}
                 {% include "news/post.html" %}

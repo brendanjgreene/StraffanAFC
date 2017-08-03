@@ -15,7 +15,8 @@
 {% block content %}
    <section>
        <div class="col-md-9">
-           <form method="post" enctype="multipart/form-data" action="{% url 'new_thread' subject.id %}">
+           <form method="post" enctype="multipart/form-data" action="{% url 'new_story' subject.id %}">
+           <h1>{{ heading_text }}</h1>
                {% csrf_token %}
                <div class="form-group">
                    {{ thread_form | as_bootstrap }}
@@ -30,7 +31,7 @@
                    {% endfor %}
                </div>
                <div class="form-group">
-                   <button type="submit" class="btn-primary"> Post New Thread</button>
+                   <button type="submit" class="btn-primary"> Start New Story</button>
                </div>
            </form>
        </div>

@@ -5,11 +5,11 @@ from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
-from .forms import ThreadForm, PostForm, SubjectForm
+from .forms import StoryForm, PostForm, SubjectForm
 from django.forms import formset_factory
 from polls.forms import PollSubjectForm, PollForm
 from polls.models import PollSubject
-from home.models import Team, Player
+from home.models import Team, Player, User
 
 teams = Team.objects.all()
 
@@ -24,20 +24,25 @@ def new_subject(request):
 
             messages.success(request, "You have added a new News Subject!")
 
-            return redirect(forum)
+            return redirect(news)
     else:
         form = SubjectForm()
-    return render(request, 'news/subject-form.html', {'form': form,
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'Create new News Subject',
                                          'form_action': reverse('forum'),
                                          'button_text': 'Save Subject',
                                          'teams': teams})
 
+# need edit subject
+# need delete subject
+
+
 @login_required
-def new_thread(request, subject_id):
+def new_story(request, subject_id):
     subject = get_object_or_404(Subject, pk=subject_id)
     poll_subject_formset = formset_factory(PollSubjectForm, extra=3)
     if request.method == "POST":
-        thread_form = ThreadForm(request.POST)
+        thread_form = StoryForm(request.POST)
         post_form = PostForm(request.POST, request.FILES)
         poll_form = PollForm(request.POST)
         poll_subject_formset = poll_subject_formset(request.POST)
@@ -65,7 +70,7 @@ def new_thread(request, subject_id):
 
                 messages.success(request, "You have created a new thread with a poll!")
 
-                return redirect(reverse('thread', args={thread.pk}))
+                return redirect(reverse('story', args={thread.pk}))
 
             else:
 
@@ -81,15 +86,16 @@ def new_thread(request, subject_id):
 
                 messages.success(request, "You have created a new thread!")
 
-                return redirect(reverse('thread', args={thread.pk}))
+                return redirect(reverse('story', args={thread.pk}))
     else:
-        thread_form = ThreadForm()
+        thread_form = StoryForm()
         post_form = PostForm()
         poll_form = PollForm()
         poll_subject_formset = poll_subject_formset()
 
     args = {
         'thread_form': thread_form,
+        'heading_text': 'Start new Story',
         'post_form': post_form,
         'subject': subject,
         'poll_form': poll_form,
@@ -101,24 +107,27 @@ def new_thread(request, subject_id):
 
     return render(request, 'news/thread_form.html', args)
 
+# need edit story and delete story functions
 
-def forum(request):
+
+def news(request):
     return render(request, 'news/news.html', {'subjects': Subject.objects.all().order_by('team'),
                                               'teams': teams})
 
 
-def threads(request, subject_id):
+def subject(request, subject_id):
     subject = get_object_or_404(Subject, pk=subject_id)
-    return render(request, 'news/threads.html', {'subject': subject,
+    return render(request, 'news/subject.html', {'subject': subject,
+                                                 'users': User.objects.all(),
                                                  'teams': teams})
 
 
-def thread(request, thread_id):
+def story(request, thread_id):
     thread_ = get_object_or_404(Thread, pk=thread_id)
     args = {'thread': thread_,
             'teams': teams}
     args.update(csrf(request))
-    return render(request, 'news/thread.html', args)
+    return render(request, 'news/story.html', args)
 
 
 @login_required
@@ -135,12 +144,13 @@ def new_post(request, thread_id):
 
             messages.success(request, "Your post has been added to the thread!")
 
-            return redirect(reverse('thread', args={thread.pk}))
+            return redirect(reverse('story', args={thread.pk}))
     else:
         form = PostForm()
 
     args = {
         'form': form,
+        'heading_text': 'Add Post',
         'form_action': reverse('new_post', args={thread.id}),
         'button_text': 'Make Post',
         'teams': Team.objects.all().order_by("-name")
@@ -162,19 +172,20 @@ def edit_post(request, thread_id, post_id):
             post.save()
             messages.success(request, "You have updated your Post!")
 
-            return redirect(reverse('thread', args={thread.pk}))
+            return redirect(reverse('story', args={thread.pk}))
     else:
         form = PostForm(instance=post)
 
     args = {
         'form': form,
+        'heading_text': 'Edit Post',
         'form_action': reverse('edit_post', kwargs={"thread_id": thread.id, "post_id": post.id}),
         'button_text': 'Update Post',
         'teams': Team.objects.all().order_by("-name")
     }
     args.update(csrf(request))
 
-    return render(request, 'news/post-form.html', args)
+    return render(request, 'form.html', args)
 
 
 @login_required
@@ -182,10 +193,10 @@ def delete_post(request, thread_id, post_id):
     post = get_object_or_404(Post, pk=post_id)
     thread_id = post.thread.id
     post.delete()
-
+    # need are you sure you want to delete see team delete in home.views for ideas
     messages.success(request, "Your post was deleted!")
 
-    return redirect(reverse('thread', args={thread_id}))
+    return redirect(reverse('story', args={thread_id}))
 
 
 @login_required
@@ -196,7 +207,7 @@ def thread_vote(request, thread_id, subject_id):
 
     if subject:
         messages.error(request, "You already voted on this! You're not trying to cheat are you?")
-        return redirect(reverse('thread', args={thread_id}))
+        return redirect(reverse('story', args={thread_id}))
 
     subject = PollSubject.objects.get(id=subject_id)
 
@@ -204,4 +215,4 @@ def thread_vote(request, thread_id, subject_id):
 
     messages.success(request, "We've registered your vote!")
 
-    return redirect(reverse('thread', args={thread_id}))
+    return redirect(reverse('story', args={thread_id}))

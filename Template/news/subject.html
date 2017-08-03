@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load news_extras %}
+{% block content %}
+    <div class="row header">
+        <div class="jumbotron">
+            <h1>{{ subject.name }}</h1>
+            {% autoescape off %}{{ subject.description }}{% endautoescape %}
+        </div>
+    </div>
+    <div class="col-md-12">
+    <div class="btn-group">
+        {% if user.is_authenticated %}
+            <a href="{% url 'new_story' subject.id %}" class="btn btn-primary">New Story</a>
+        {% endif %}
+        <a href="/news/" class="btn btn-success">Back to Club News</a>
+    </div>
+        <hr>
+    <table class="table table-striped">
+        {% if subject.threads.all %}
+        <thead>
+            <th>Story</th>
+            <th>Started</th>
+            <th>Owner</th>
+        </thead>
+        {% endif %}
+    <tbody>
+        {% for thread in subject.threads.all %}
+            <tr>
+                <td>
+                    <strong>
+                        <a href="{% url 'story' thread.id %}">{{ thread.name }}</a>
+                    </strong>
+                </td>
+                <td>
+                    <time datetime="{{ thread.created_at }}">
+                        {{ thread.created_at|started_time }}
+                    </time>
+                </td>
+                <td>
+                {% for user in users %}
+                    {% if user.id == thread.user_id %}
+                        {{ user.first_name }} {{ user.last_name }}
+                    {% endif %}
+                {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </div>
+{% endblock %}
