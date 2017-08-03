@@ -2,6 +2,7 @@ from django.shortcuts import render
 import requests
 from home.views import Team
 from bs4 import BeautifulSoup
+import re
 
 
 def get_schedule(request):
@@ -13,6 +14,7 @@ def get_schedule(request):
 
     # Turn the HTML into a Beautiful Soup object
     soup = BeautifulSoup(r.content, 'html.parser')
+
     # find all active games using the class
     games = soup.find_all(class_='ui-state-default')
     # create an empty list
@@ -31,7 +33,28 @@ def get_schedule(request):
         details = [home, away, venue, time, league, date]
         games_list.append(details)
 
+    url2 = 'http://kdfl.ie/fixtures2016.php'
+    r2 = requests.get(url2)
+
+    pattern = re.compile('Straffan')
+    datepattern = re.compile('2017')
+
+    kdfl = BeautifulSoup(r2.content, 'html.parser')
+    kdfltable = kdfl.find(id='kdflfixtures')
+    kdflrow = kdfltable.find('tr')
+    kdflitem = kdflrow.find('td')
+    kdflbr = kdflitem.find_all('br')
+
+    line_list = []
+    for i in kdflbr:
+        line = i.findPreviousSibling(text=pattern)
+        line_date = i.findPreviousSibling(text=datepattern)
+        if line is not None:
+            line_details = [line, line_date]
+            line_list.append(line_details)
+
     args = {
+        'Line': line_list[0:1],
         'games_list': games_list,
         'teams': Team.objects.all()
     }

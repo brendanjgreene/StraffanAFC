@@ -24,5 +24,22 @@
             {% endfor %}
     </tbody>
     </table>
+    <div>
+    <h2>Next Upcoming Senior Games</h2>
+    <table class="table table-striped">
+        <thead>
+            <th>Home Team v Away Team, Venue, Time, Referee</th>
+        <th>Date</th>
+        </thead>
+    <tbody>
+    {% for line in Line %}
+            <tr>
+                <td>{{ line.0 }}</td> <!-- home -->
+                <td>{{ line.1 }}</td>
+            </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
 
 {% endblock %}
