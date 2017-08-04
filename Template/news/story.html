@@ -6,13 +6,13 @@
     <div class="row header">
         <div class="container-fluid jumbotron">
         <h2>{{ thread.subject }}</h2>
-            <h1 class="col-sm-9">{{ thread.name }}</h1>
-        <div class="col-sm-2" style="margin: 5% 2%">
+            <h1>{{ thread.name }}</h1>
         {% if user.is_superuser %}
+            <p>
                     <a href="{% url 'edit_story' thread.id %}" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></a>
                     <a href="{% url 'delete_story' thread.id %}" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
+            </p>
         {% endif %}
-        </div>
             <br>
             <div class="col-md-12">
                 <table class="table">
