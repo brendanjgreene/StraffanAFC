@@ -38,23 +38,29 @@ def get_schedule(request):
 
     pattern = re.compile('Straffan')
     datepattern = re.compile('2017')
+    divisionpattern = re.compile('Division')
 
     kdfl = BeautifulSoup(r2.content, 'html.parser')
     kdfltable = kdfl.find(id='kdflfixtures')
-    kdflrow = kdfltable.find('tr')
-    kdflitem = kdflrow.find('td')
-    kdflbr = kdflitem.find_all('br')
-
+    kdflbr = kdfltable.find_all('br')
     line_list = []
     for i in kdflbr:
-        line = i.findPreviousSibling(text=pattern)
-        line_date = i.findPreviousSibling(text=datepattern)
+        pline = i.findPreviousSibling(text=pattern)
+        if pline is not None:
+            line_list.append(pline)
+    # to remove duplicates
+    line_list = list(set(line_list))
+    l_list = []
+    for l in line_list:
+        line = l
+        line_date = l.findPreviousSibling(text=datepattern)
+        division = l.findPreviousSibling(text=divisionpattern)
         if line is not None:
-            line_details = [line, line_date]
-            line_list.append(line_details)
+            line_details = [line, division, line_date]
+            l_list.append(line_details)
 
     args = {
-        'Line': line_list[0:1],
+        'Line': l_list,
         'games_list': games_list,
         'teams': Team.objects.all()
     }

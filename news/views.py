@@ -34,6 +34,7 @@ def new_subject(request):
                                          'teams': teams})
 
 # need edit subject
+# def edit_subjecy(request, subject.id)
 # need delete subject
 
 
