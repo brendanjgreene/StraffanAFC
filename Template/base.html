@@ -17,17 +17,22 @@
     <script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script-->
     {% block head_js %}{% endblock %}
 </head>
-<body>
-<nav class="navbar navbar-default navbar-fixed-top">
+<body style="background-image: url({{ club.backgroundImage.url }})">
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color: {{ club.mainColor }}">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>Menu <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="/">
+                {% if club %}
+                <img src="{{ club.clubLogo.url }}" style="width:100px; height: 100px" class="img-circle" alt="Club Logo">
+                {% else %}
                 <img src="/static/Images/straffan%20afc.png" alt="Straffan Logo">
+                {% endif %}
             </a>
-            <a class="navbar-brand" style="padding: 19.5px; float: right" href="/"> Straffan A.F.C. </a>
+            <a class="navbar-brand" style="padding: 19.5px; float: right" href="/">{% if club %}{{ club.name }}
+                {% else %}Straffan A.F.C.{% endif %} </a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
@@ -75,21 +80,15 @@
     {% endif %}
     </div>
 </div>
-<div class="container" style="background-color: {{ second_color }}">
+<div class="container" style="background-color: {{ club.secondColor }}">
        {% block content %}
        {% endblock %}
-    <!--hr> these buttons
-<div>
-<button class="btn btn-success pull-right" onclick="goBack()">Go Back</button>
-    <a href="#"><button class="btn btn-primary" >To Top</button></a>
-</div-->
 </div>
-
 <div id="footer">
-    <div class="container-fluid" style="padding-top: 15px; background-color: {{ color }}">
+    <div class="container-fluid" style="padding-top: 15px; background-color: {{ club.mainColor }}">
         <div class="footer">
-                <button class="btn btn-success" style="background-color: {{ color }}; float: left" onclick="goBack()"><i class="fa fa-arrow-left fa-2x" aria-hidden="true" aria-label="previous page"></i></button></li>
-                <button class="btn btn-success" style="background-color: {{ color }}; float: right"><a href="#"><i class="fa fa-arrow-up fa-2x" aria-hidden="true" aria-label="to top of page"></i></a></li></button>
+                <button class="btn btn-success" style="background-color: {{ club.mainColor }}; float: left" onclick="goBack()"><i class="fa fa-arrow-left fa-2x" aria-hidden="true" aria-label="previous page"></i></button></li>
+                <button class="btn btn-success" style="background-color: {{ club.mainColor }}; float: right"><a href="#"><i class="fa fa-arrow-up fa-2x" aria-hidden="true" aria-label="to top of page"></i></a></li></button>
 
             <ul class="list-inline" id="social">
                 <li><a href="https://www.facebook.com" target="_blank" ><i class="fa fa-facebook fa-2x" aria-hidden="true" aria-label="facebook"></i></a></li>

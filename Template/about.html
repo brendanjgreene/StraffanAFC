@@ -5,7 +5,10 @@
 {% block head_js %}
     <script>
     function initMap() {
-        var uluru = {lat: 53.3155368, lng: -6.5964982};
+        var uluru = {
+            lat: {% if club.lat %}{{ club.lat }}{% else %}53.3155368{% endif %},
+            lng: {% if club.long %}{{ club.long }}{% else %}-6.5964982{% endif %}
+        };
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 14,
             center: uluru
@@ -82,9 +85,18 @@ function log(s) {
         </div>
 
         <div class="col-sm-6">
-            <h1>Lodge Park</h1>
-            <h4 class="text-info">Click <a href="https://www.google.ie/maps/dir//53.3155,-6.5965/@53.3154074,-6.5970157,177m/data=!3m1!1e3!4m8!1m7!3m6!1s0x0:0x0!2zNTPCsDE4JzU1LjgiTiA2wrAzNSc0Ny40Ilc!3b1!8m2!3d53.315491!4d-6.596508" target="_blank">
-                Here</a> for direction to Lodge Park using Google Maps</h4>
+            <h1>{% if club.homefield %}
+                {{ club.homefield }}
+                {% else %}
+                Lodge Park
+            {% endif %}
+            </h1>
+            <h4 class="text-info">Click <a href="https://www.google.ie/maps/dir//{% if club.lat %}{{ club.lat }}{% else %}53.3155{% endif %},{% if club.long %}{{ club.long }}{% else %}-6.5965/@53.3154074,-6.5970157,177m/data=!3m1!1e3!4m8!1m7!3m6!1s0x0:0x0!2zNTPCsDE4JzU1LjgiTiA2wrAzNSc0Ny40Ilc!3b1!8m2!3d53.315491!4d-6.596508{% endif %}" target="_blank">
+                Here</a> for direction to {% if club.homefield %}
+                {{ club.homefield }}
+                {% else %}
+                Lodge Park
+            {% endif %} using Google Maps</h4>
             <div id="map"></div>
         </div>
     </div>

@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'news',
     'polls',
     'storages',
+    'club',
 ]
 
 LOGIN_URL = '/login/'
@@ -56,6 +57,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'club.context_processors.club_processor'
             ],
         },
     },
