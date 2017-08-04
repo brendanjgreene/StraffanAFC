@@ -12,6 +12,34 @@ class StoryForm(forms.ModelForm):
         fields = ['name']
 
 
+class EditStoryForm(forms.ModelForm):
+    name = forms.CharField(label="Story Title")
+
+    class Meta:
+        model = Thread
+        fields = ['name']
+
+
+class DeleteStoryForm(forms.ModelForm):
+
+    class Meta:
+        model = Thread
+        fields = []
+
+
+class SubjectDeleteForm(forms.ModelForm):
+
+    class Meta:
+        model = Subject
+        fields = []
+
+
+class PostDeleteForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = []
+
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post

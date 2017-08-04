@@ -26,7 +26,7 @@
                    <td>{{ subject|get_total_subject_posts }}</td>
                </tr>
            </table>
-               <a class="btn btn-success" href="{% url "threads" subject.id %}">See Stories</a>
+               <a class="btn btn-success" href="{% url "subjects" subject.id %}">See Stories</a>
        </section>
    {% endfor %}
 {% endblock %}

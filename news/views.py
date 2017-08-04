@@ -5,7 +5,7 @@ from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
-from .forms import StoryForm, PostForm, SubjectForm
+from .forms import StoryForm, PostForm, SubjectForm, SubjectDeleteForm, PostDeleteForm, EditStoryForm, DeleteStoryForm
 from django.forms import formset_factory
 from polls.forms import PollSubjectForm, PollForm
 from polls.models import PollSubject
@@ -33,9 +33,46 @@ def new_subject(request):
                                          'button_text': 'Save Subject',
                                          'teams': teams})
 
-# need edit subject
-# def edit_subjecy(request, subject.id)
-# need delete subject
+
+@login_required()
+def edit_subject(request, subject_id):
+    subject = get_object_or_404(Subject, pk=subject_id)
+    if request.method == "POST":
+        form = SubjectForm(request.POST, request.FILES, instance=subject)
+        if form.is_valid():
+            subject = form.save(commit=False)
+            subject.save()
+
+            messages.success(request, "You have edited " + subject.name + "!")
+
+            return redirect(reverse('subjects', args={subject.id}))
+    else:
+        form = SubjectForm(instance=subject)
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'Edit News Subject',
+                                         'form_action': reverse('edit_subject', kwargs={"subject_id": subject.id}),
+                                         'button_text': 'Save Subject',
+                                         'teams': teams})
+
+
+@login_required
+def delete_subject(request, id):
+    subject = get_object_or_404(Subject, pk=id)
+    if request.method == "POST":
+        form = SubjectDeleteForm(request.POST, instance=subject)
+        subject.delete()
+
+        messages.success(request, "The " + subject.name + " subject was deleted!")
+
+        return redirect('forum')
+    else:
+        form = SubjectDeleteForm(instance=subject)
+
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'Are you sure you want to delete the Subject: '
+                                         + subject.name + '.  All associated Stories and Posts will also be deleted',
+                                         'button_text': 'Confirm deletion of ' + subject.name,
+                                         'teams': Team.objects.all()})
 
 
 @login_required
@@ -108,7 +145,55 @@ def new_story(request, subject_id):
 
     return render(request, 'news/thread_form.html', args)
 
-# need edit story and delete story functions
+
+@login_required
+def edit_story(request, thread_id):
+    thread = get_object_or_404(Thread, pk=thread_id)
+    if request.method == "POST":
+        form = EditStoryForm(request.POST, instance=thread)
+        if form.is_valid():
+
+            thread = form.save(commit=False)
+            thread.save()
+
+            messages.success(request, "You have edited " + thread.name + "!")
+
+            return redirect(reverse('story', args={thread.pk}))
+
+    else:
+        form = EditStoryForm(instance=thread)
+
+    args = {
+        'form': form,
+        'heading_text': 'Edit Story',
+        'button_text': 'Confirm Story Edit',
+        'teams': teams
+    }
+
+    args.update(csrf(request))
+
+    return render(request, 'form.html', args)
+
+
+@login_required
+def delete_story(request, thread_id):
+    thread = get_object_or_404(Thread, pk=thread_id)
+    subject_id = thread.subject.id
+    if request.method == "POST":
+        form = DeleteStoryForm(request.POST, instance=thread)
+        thread.delete()
+
+        messages.success(request, "The " + thread.name + " story was deleted!")
+
+        return redirect(reverse('subjects', args={subject_id}))
+    else:
+        form = DeleteStoryForm(instance=thread)
+
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'Are you sure you want to delete the story: '
+                                         + thread.name,
+                                         'button_text': 'Confirm deletion of ' + thread.name,
+                                         'teams': Team.objects.all()})
 
 
 def news(request):
@@ -193,11 +278,21 @@ def edit_post(request, thread_id, post_id):
 def delete_post(request, thread_id, post_id):
     post = get_object_or_404(Post, pk=post_id)
     thread_id = post.thread.id
-    post.delete()
-    # need are you sure you want to delete see team delete in home.views for ideas
-    messages.success(request, "Your post was deleted!")
+    if request.method == "POST":
+        form = PostDeleteForm(request.POST, instance=post)
+        post.delete()
 
-    return redirect(reverse('story', args={thread_id}))
+        messages.success(request, "The " + post.comment + " post was deleted!")
+
+        return redirect(reverse('story', args={thread_id}))
+    else:
+        form = PostDeleteForm(instance=post)
+
+    return render(request, 'form.html', {'form': form,
+                                         'heading_text': 'Are you sure you want to delete the post: '
+                                         + post.comment,
+                                         'button_text': 'Confirm deletion of ' + post.comment,
+                                         'teams': Team.objects.all()})
 
 
 @login_required

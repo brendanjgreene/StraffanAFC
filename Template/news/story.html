@@ -6,8 +6,14 @@
     <div class="row header">
         <div class="container-fluid jumbotron">
         <h2>{{ thread.subject }}</h2>
-        {% autoescape off %}{{ subject.description }}{% endautoescape %}
-            <h1>{{ thread.name }}</h1>
+            <h1 class="col-sm-9">{{ thread.name }}</h1>
+        <div class="col-sm-2" style="margin: 5% 2%">
+        {% if user.is_superuser %}
+                    <a href="{% url 'edit_story' thread.id %}" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></a>
+                    <a href="{% url 'delete_story' thread.id %}" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
+        {% endif %}
+        </div>
+            <br>
             <div class="col-md-12">
                 <table class="table">
                     <tbody>
@@ -23,9 +29,11 @@
                                 </time>
                             </td>
                             <td>{{ thread.user.username }}</td>
-                            {% if thread.posts.count > 0 %}
-                                <td>{% last_posted_user_name thread %}</td>
-                            {% endif %}
+                            <td>
+                                {% if thread.posts.count > 0 %}
+                                    {% last_posted_user_name thread %}
+                                {% endif %}
+                            </td>
                         </tr>
                     </tbody>
                 </table>

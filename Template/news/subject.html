@@ -5,6 +5,10 @@
         <div class="jumbotron">
             <h1>{{ subject.name }}</h1>
             {% autoescape off %}{{ subject.description }}{% endautoescape %}
+                {% if user.is_superuser %}
+                    <a href="{% url 'edit_subject' subject.id %}" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></a>
+                    <a href="{% url 'delete_subject' subject.id %}" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
+                {% endif %}
         </div>
     </div>
     <div class="col-md-12">
