@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Straffan AFC</title>
+    <title>{% if club.name %}{{ club.name }}{% else %}Straffan AFC{% endif %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content>
     <meta name="author" content="Brendan Greene">
@@ -26,12 +26,12 @@
             </button>
             <a class="navbar-brand" href="/">
                 {% if club %}
-                <img src="{{ club.clubLogo.url }}" style="width:100px; height: 100px" class="img-circle" alt="Club Logo">
+                <img src="{{ club.clubLogo.url }}" style="width:120px; height: 120px" alt="Club Logo">
                 {% else %}
                 <img src="/static/Images/straffan%20afc.png" alt="Straffan Logo">
                 {% endif %}
             </a>
-            <a class="navbar-brand" style="padding: 19.5px; float: right" href="/">{% if club %}{{ club.name }}
+            <a class="navbar-brand" style="padding: 19.5px; float: right" href="/">{% if club.name %}{{ club.name }}
                 {% else %}Straffan A.F.C.{% endif %} </a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-1">

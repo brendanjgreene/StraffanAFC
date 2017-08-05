@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Welcome to {% if club %}{{ club.name }}{% else %}Straffan A.F.C.{% endif %}  Website</h2>
+    <h2>Welcome to {% if club.name %}{{ club.name }}{% else %}Straffan A.F.C.{% endif %}  Website</h2>
+    {% if club.description %}
+    {% autoescape off %}{{ club.description }}{% endautoescape %}
+    {% else %}
     <p><strong>Straffan A.F.C.</strong> was founded in <strong>1978</strong> and we have had many ups and downs during our history.</p>
     <p>The Club won its first league title back in <strong>1981</strong> and our most recent in <strong>2012</strong>.</p>
     <p>Our under age section is growing all the time.</p>
+    {% endif %}
 {% endblock %}
