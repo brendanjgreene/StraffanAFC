@@ -2,5 +2,5 @@ from models import Club
 
 
 def club_processor(request):
-    club = Club.objects.first()
+    club = Club.objects.last()
     return {'club': club}

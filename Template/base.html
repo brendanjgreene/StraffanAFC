@@ -25,7 +25,7 @@
                 <span class="sr-only">Toggle navigation</span>Menu <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="/">
-                {% if club %}
+                {% if club.clubLogo %}
                 <img src="{{ club.clubLogo.url }}" style="width:120px; height: 120px" alt="Club Logo">
                 {% else %}
                 <img src="/static/Images/straffan%20afc.png" alt="Straffan Logo">
