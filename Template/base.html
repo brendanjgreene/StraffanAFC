@@ -17,7 +17,7 @@
     <script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script-->
     {% block head_js %}{% endblock %}
 </head>
-<body style="background-image: url({{ club.backgroundImage.url }})">
+<body {% if club.backgroundImage %}style="background-image: url({{ club.backgroundImage.url }})"{% endif %}>
 <nav class="navbar navbar-default navbar-fixed-top" style="background-color: {{ club.mainColor }}">
     <div class="container-fluid">
         <div class="navbar-header">
