@@ -27,11 +27,10 @@ class DeleteStoryForm(forms.ModelForm):
         fields = []
 
 
-class SubjectDeleteForm(forms.ModelForm):
-
+class PostForm(forms.ModelForm):
     class Meta:
-        model = Subject
-        fields = []
+        model = Post
+        fields = ['comment', 'image']
 
 
 class PostDeleteForm(forms.ModelForm):
@@ -39,11 +38,6 @@ class PostDeleteForm(forms.ModelForm):
         model = Post
         fields = []
 
-
-class PostForm(forms.ModelForm):
-    class Meta:
-        model = Post
-        fields = ['comment', 'image']
 
 
 class SubjectForm(forms.ModelForm):
@@ -58,3 +52,8 @@ class SubjectFormDesc(forms.ModelForm):
         fields = ['description']
 
 
+class SubjectDeleteForm(forms.ModelForm):
+
+    class Meta:
+        model = Subject
+        fields = []

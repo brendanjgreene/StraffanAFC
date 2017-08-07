@@ -15,22 +15,20 @@
         <h5>Username: {{ user.username }}</h5>
         <h5>Your last login was: {{ user.last_login }}</h5>
     </div>
-{% if user.is_staff %}
+    {% if user.is_staff %}
     <div class="col-md-4 col-sm-5">
         <h3 class="text-warning">Important all staff are required to complete Garda Vetting!</h3>
         <a type="button" class="btn btn-warning" onclick="location.href='http://www.fai.ie/sites/default/files/atoms/files/FAI%20Garda%20Vetting.pdf'">Garda Vetting</a>
     </div>
-{% endif %}
+    {% endif %}
 </div>
 <hr>
-
 <h3 class="text-info">
     {% if user.username == user.email %}
-        You are still using your temporary password, Please choose a new one!
+    You are still using your temporary password, Please choose a new one!
     {% endif %}
-Edit Your Password or Profile Here.
+    Edit Your Password or Profile Here.
 </h3>
-
 <div class="btn-group btn-group-justified">
     <a type="button" class="btn btn-info" onclick="location.href='{% url "change_your_password" %}'">Change Password</a>
     <a type="button" class="btn btn-success" onclick="location.href='{% url "edit_profile" %}'">Edit Profile</a>
@@ -52,9 +50,9 @@ Edit Your Password or Profile Here.
     <a type="button" class="btn btn btn-primary" onclick="location.href='/team/new/'">Create Team</a>
     <a type="button" class="btn btn-success" onclick="location.href='/players/new/'">Create Player</a>
 </div>
-    <div class="btn-group btn-group-justified">
+<div class="btn-group btn-group-justified">
     <a type="button" class="btn btn-default" onclick="location.href='/players/'">See Players</a>
     <a type="button" class="btn btn-warning" onclick="location.href='/newuser/'">Create User</a>
-    </div>
+</div>
 {% endif %}
 {% endblock %}

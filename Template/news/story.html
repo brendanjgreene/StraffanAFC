@@ -43,9 +43,7 @@
                     <div class="col-md-9">
                         <h2>Poll</h2>
                         <strong>{{ thread.poll.question }}</strong>
-
                         <p>Here's how the votes are so far</p>
-
                         {% for subject in thread.poll.subjects.all %}
                             <div class="col-md-9">
                                 <strong>{{ subject.name }}</strong>
@@ -58,8 +56,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         {% endfor %}
                     </div>
                 </div>

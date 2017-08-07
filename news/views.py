@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from news.models import Subject, Post, Thread
 from django.shortcuts import redirect
-from django.contrib import messages, auth
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
@@ -9,7 +9,7 @@ from .forms import StoryForm, PostForm, SubjectForm, SubjectDeleteForm, PostDele
 from django.forms import formset_factory
 from polls.forms import PollSubjectForm, PollForm
 from polls.models import PollSubject
-from home.models import Player, User
+from home.models import User
 
 
 @login_required()
@@ -45,6 +45,7 @@ def edit_subject(request, subject_id):
             return redirect(reverse('subjects', args={subject.id}))
     else:
         form = SubjectForm(instance=subject)
+
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Edit News Subject',
                                          'form_action': reverse('edit_subject', kwargs={"subject_id": subject.id}),

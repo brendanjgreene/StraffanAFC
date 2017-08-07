@@ -4,30 +4,29 @@
 {% block head_js %}
 <script src="{% static 'js/tinymce/tinymce.min.js' %}"></script>
 <script type="text/javascript">
- tinyMCE.init({
-   mode: "textareas",
-   theme: "modern",
-   plugins: "paste"
-});
+    tinyMCE.init({
+        mode: "textareas",
+        theme: "modern",
+        plugins: "paste"
+    });
 </script>
 {% endblock %}
 {% block title %}
     {{ team }}
 {% endblock %}
 {% block content %}
- <section>
-   <div class="col-md-9">
-     <form method="post" action="{{ form_action }}">
-         <h1>{{ heading_text }}</h1>
-       {% csrf_token %}
-       {{ team_form|as_bootstrap }}
-         {{ subject_form_desc|as_bootstrap }}
-       <div class="form-group">
-         <button type="submit" class="btn btn-primary">{{button_text}}</button>
-           <button class="btn btn-danger" onclick="goBack()">Cancel</button>
-       </div>
-     </form>
-
-   </div>
- </section>
+    <section>
+        <div class="col-md-9">
+            <form method="post" action="{{ form_action }}">
+                <h1>{{ heading_text }}</h1>
+                {% csrf_token %}
+                {{ team_form|as_bootstrap }}
+                {{ subject_form_desc|as_bootstrap }}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">{{button_text}}</button>
+                    <button class="btn btn-danger" onclick="goBack()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </section>
 {% endblock %}

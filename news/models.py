@@ -34,9 +34,6 @@ class Post(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
 
     image = models.ImageField(upload_to="images", blank=True, null=True)
-    # requires from settings import MEDIA_ROOT in url.py and
-    # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    # MEDIA_URL = '/media/' in settings
 
     def publish(self):
         self.published_date = timezone.now()

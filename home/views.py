@@ -305,15 +305,8 @@ def get_team(request, id):
 
 
 def get_teams(request):
-    # color = '#06c'
-    # i could use a method similar to this to implement user changeable colors
-    # See https://stackoverflow.com/questions/17901341/django-how-to-make-a-variable-available-to-all-templates
-    # i would need to create a Club model in a club app with TEMPLATE_CONTEXT PROCESSOR
-    # second_color = '#006'
     return render(request, "teams.html",
                   {'teams': Team.objects.all(),
-                   # 'color': color,
-                   # 'second_color': second_color,
                    'managers_list': User.objects.all(),
                    'team_list': Player.objects.all()})
 
