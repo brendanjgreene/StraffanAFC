@@ -9,9 +9,7 @@ from .forms import StoryForm, PostForm, SubjectForm, SubjectDeleteForm, PostDele
 from django.forms import formset_factory
 from polls.forms import PollSubjectForm, PollForm
 from polls.models import PollSubject
-from home.models import Team, Player, User
-
-teams = Team.objects.all()
+from home.models import Player, User
 
 
 @login_required()
@@ -30,8 +28,7 @@ def new_subject(request):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Create new News Subject',
                                          'form_action': reverse('forum'),
-                                         'button_text': 'Save Subject',
-                                         'teams': teams})
+                                         'button_text': 'Save Subject',})
 
 
 @login_required()
@@ -51,8 +48,7 @@ def edit_subject(request, subject_id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Edit News Subject',
                                          'form_action': reverse('edit_subject', kwargs={"subject_id": subject.id}),
-                                         'button_text': 'Save Subject',
-                                         'teams': teams})
+                                         'button_text': 'Save Subject'})
 
 
 @login_required
@@ -71,8 +67,7 @@ def delete_subject(request, id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Are you sure you want to delete the Subject: '
                                          + subject.name + '.  All associated Stories and Posts will also be deleted',
-                                         'button_text': 'Confirm deletion of ' + subject.name,
-                                         'teams': Team.objects.all()})
+                                         'button_text': 'Confirm deletion of ' + subject.name})
 
 
 @login_required
@@ -138,7 +133,6 @@ def new_story(request, subject_id):
         'subject': subject,
         'poll_form': poll_form,
         'poll_subject_formset': poll_subject_formset,
-        'teams': teams
     }
 
     args.update(csrf(request))
@@ -167,7 +161,6 @@ def edit_story(request, thread_id):
         'form': form,
         'heading_text': 'Edit Story',
         'button_text': 'Confirm Story Edit',
-        'teams': teams
     }
 
     args.update(csrf(request))
@@ -192,26 +185,22 @@ def delete_story(request, thread_id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Are you sure you want to delete the story: '
                                          + thread.name,
-                                         'button_text': 'Confirm deletion of ' + thread.name,
-                                         'teams': Team.objects.all()})
+                                         'button_text': 'Confirm deletion of ' + thread.name})
 
 
 def news(request):
-    return render(request, 'news/news.html', {'subjects': Subject.objects.all().order_by('team'),
-                                              'teams': teams})
+    return render(request, 'news/news.html', {'subjects': Subject.objects.all().order_by('team')})
 
 
 def subject(request, subject_id):
     subject = get_object_or_404(Subject, pk=subject_id)
     return render(request, 'news/subject.html', {'subject': subject,
-                                                 'users': User.objects.all(),
-                                                 'teams': teams})
+                                                 'users': User.objects.all()})
 
 
 def story(request, thread_id):
     thread_ = get_object_or_404(Thread, pk=thread_id)
-    args = {'thread': thread_,
-            'teams': teams}
+    args = {'thread': thread_,}
     args.update(csrf(request))
     return render(request, 'news/story.html', args)
 
@@ -239,7 +228,6 @@ def new_post(request, thread_id):
         'heading_text': 'Add Post',
         'form_action': reverse('new_post', args={thread.id}),
         'button_text': 'Make Post',
-        'teams': Team.objects.all().order_by("-name")
     }
     args.update(csrf(request))
 
@@ -267,7 +255,6 @@ def edit_post(request, thread_id, post_id):
         'heading_text': 'Edit Post',
         'form_action': reverse('edit_post', kwargs={"thread_id": thread.id, "post_id": post.id}),
         'button_text': 'Update Post',
-        'teams': Team.objects.all().order_by("-name")
     }
     args.update(csrf(request))
 
@@ -291,8 +278,7 @@ def delete_post(request, thread_id, post_id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Are you sure you want to delete the post: '
                                          + post.comment,
-                                         'button_text': 'Confirm deletion of ' + post.comment,
-                                         'teams': Team.objects.all()})
+                                         'button_text': 'Confirm deletion of ' + post.comment})
 
 
 @login_required
