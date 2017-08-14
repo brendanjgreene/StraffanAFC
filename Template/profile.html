@@ -38,8 +38,8 @@
 <h3 class="text-info">Managers have access to edit items related to their team Here.</h3>
 {% if user.profile.team.id != None %}
 <div class="btn-group btn-group-justified">
-    <a type="button" class="btn btn-primary" onclick="location.href='{% url "edit_team" user.profile.team.id %}'">Edit Team</a>
-    <a type="button" class="btn btn-info" onclick="location.href='{% url "get_team" user.profile.team.id %}'">View Team</a>
+    <a type="button" class="btn btn-info" onclick="location.href='{% url "edit_team" user.profile.team.id %}'">Edit Team</a>
+    <a type="button" class="btn btn-success" onclick="location.href='{% url "get_team" user.profile.team.id %}'">View Team</a>
 </div>
 {% endif %}
 {% endif %}
@@ -47,12 +47,12 @@
 {% if user.is_superuser %}
 <h3 class="text-info">Administrators have access to:</h3>
 <div class="btn-group btn-group-justified">
-    <a type="button" class="btn btn btn-primary" onclick="location.href='/team/new/'">Create Team</a>
+    <a type="button" class="btn btn-info" onclick="location.href='/team/new/'">Create Team</a>
     <a type="button" class="btn btn-success" onclick="location.href='/players/new/'">Create Player</a>
 </div>
 <div class="btn-group btn-group-justified">
-    <a type="button" class="btn btn-default" onclick="location.href='/players/'">See Players</a>
-    <a type="button" class="btn btn-warning" onclick="location.href='/newuser/'">Create User</a>
+    <a type="button" class="btn btn-success" onclick="location.href='/players/'">See Players</a>
+    <a type="button" class="btn btn-info" onclick="location.href='/newuser/'">Create User</a>
 </div>
 {% endif %}
 {% endblock %}
