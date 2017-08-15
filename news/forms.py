@@ -39,7 +39,6 @@ class PostDeleteForm(forms.ModelForm):
         fields = []
 
 
-
 class SubjectForm(forms.ModelForm):
     class Meta:
         model = Subject
