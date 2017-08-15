@@ -11,7 +11,7 @@
                 {% endif %}
         </div>
     </div>
-    <div class="col-md-12">
+    <table class="col-md-12">
     <div class="btn-group">
         {% if user.is_authenticated %}
             <a href="{% url 'new_story' subject.id %}" class="btn btn-primary">New Story</a>
@@ -27,7 +27,7 @@
             <th>Owner</th>
         </thead>
         {% endif %}
-    <tbody>
+        <tbody>
         {% for thread in subject.threads.all %}
             <tr>
                 <td>
@@ -50,5 +50,5 @@
             </tr>
         {% endfor %}
     </tbody>
-    </div>
+    </table>
 {% endblock %}

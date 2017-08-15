@@ -43,10 +43,16 @@
                     <div class="col-md-9">
                         <h2>Poll</h2>
                         <strong>{{ thread.poll.question }}</strong>
+                        {% if user.is_superuser %}
+                            <a href="/admin/polls/poll/{{ thread.poll.id }}"><i class="fa fa-pencil-square-o"></i></a>
+                        {% endif %}
                         <p>Here's how the votes are so far</p>
                         {% for subject in thread.poll.subjects.all %}
                             <div class="col-md-9">
                                 <strong>{{ subject.name }}</strong>
+                                {% if user.is_superuser %}
+                            <a href="/admin/polls/pollsubject/{{ subject.id }}"><i class="fa fa-pencil-square-o"></i></a>
+                        {% endif %}
                                 <span class="pull-right">{{ subject|vote_percentage }}%</span>
                             </div>
                             {% user_vote_button thread subject user %}
