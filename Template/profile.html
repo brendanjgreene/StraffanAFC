@@ -47,12 +47,12 @@
 {% if user.is_superuser %}
 <h3 class="text-info">Administrators have access to:</h3>
 <div class="btn-group btn-group-justified">
-    <a type="button" class="btn btn-info" onclick="location.href='/team/new/'">Create Team</a>
-    <a type="button" class="btn btn-success" onclick="location.href='/players/new/'">Create Player</a>
+    <a type="button" class="btn btn-info" onclick="location.href='/team/new/'">Add Team</a>
+    <a type="button" class="btn btn-success" onclick="location.href='/players/new/'">Add Player</a>
 </div>
 <div class="btn-group btn-group-justified">
     <a type="button" class="btn btn-success" onclick="location.href='/players/'">See Players</a>
-    <a type="button" class="btn btn-info" onclick="location.href='/newuser/'">Create User</a>
+    <a type="button" class="btn btn-info" onclick="location.href='/newuser/'">Add Staff</a>
 </div>
 {% endif %}
 {% endblock %}
