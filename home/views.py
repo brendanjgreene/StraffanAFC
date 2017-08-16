@@ -313,7 +313,7 @@ def get_teams(request):
 
 def get_info(request):
     return render(request, 'about.html',
-                  {'staff': User.objects.all().order_by('profile__title__name')})
+                  {'staff': User.objects.filter(is_staff=True).order_by('profile__title__name')})
 
 
 @login_required(login_url='/login/')
