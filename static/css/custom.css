@@ -84,3 +84,6 @@ body{
     padding: 0 4% 0 4%;
 
 }
+.calling{
+    cursor:url(../Images/phone.png),url(../Images/font-awesome_4-7-0_phone_35_0_007dff_none.png),auto;
+}

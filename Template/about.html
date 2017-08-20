@@ -79,9 +79,7 @@ function log(s) {
                 <h4>{{ staff.first_name }} {{ staff.last_name }} </h4>
                 <h4>
                     <i class="fa fa-phone-square" aria-label="phone"></i>
-                    <a href="tel:{{ staff.profile.mobile }}">
-                    {{ staff.profile.mobile }}
-                    </a>
+                    <a class="calling" href="tel:{{ staff.profile.mobile }}">{{ staff.profile.mobile }}</a>
                     or
                     <a href="sms://{{ staff.profile.mobile }}">
                         <span style="line-height: 1.5em; text-align: center; margin-top: -7px; margin-right: 0.3em;" class="fa-stack">
