@@ -76,9 +76,9 @@ function log(s) {
                             <img src="{{ staff.profile.image.url }}" alt="Image not Found" onerror="this.onerror=null;this.src='http://placehold.it/100';" style="width:75px; height: 75px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
                         </div>
                     {% endif %}
-                <h4>Name: {{ staff.first_name }} {{ staff.last_name }} </h4>
-                <h4>Phone: {{ staff.profile.mobile }}</h4>
-                <h4>Email:  {{ staff.email }}</h4>
+                <h4>{{ staff.first_name }} {{ staff.last_name }} </h4>
+                <h4><i class="fa fa-mobile" aria-label="phone"></i><a href="tel:{{ staff.profile.mobile }}"> {{ staff.profile.mobile }}</a></h4>
+                <h4><i class="fa fa-envelope-square" aria-label="email"></i><a href="mailto:{{ staff.email }}"> {{ staff.email }}</a></h4>
                 </blockquote>
                 {% endif %}
             {% endfor %}

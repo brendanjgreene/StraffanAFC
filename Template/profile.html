@@ -11,9 +11,9 @@
     <div class="col-md-4 col-sm-5">
         <h3 class="text-info">{{ user.first_name }} {{ user.last_name }}</h3>
         <h4>{{ user.profile.title }} {% if user.profile.team %}- {{ user.profile.team }}{% endif %}</h4>
-        <h4>Phone: {{ user.profile.mobile }}</h4>
+        <h4><a href="tel:{{ user.profile.mobile }}"><i class="fa fa-phone" aria-hidden="true" aria-label="phone"></i></a> : {{ user.profile.mobile }}</h4>
         <h5>Username: {{ user.username }}</h5>
-        <h5>eMail: {{ user.email }}</h5>
+        <h5><i class="fa fa-envelope" aria-hidden="true" aria-label="email"></i> - {{ user.email }}</h5>
         <h5>Your last login was: {{ user.last_login }}</h5>
     </div>
     {% if user.is_staff %}
