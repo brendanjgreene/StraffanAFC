@@ -79,6 +79,7 @@ function log(s) {
                 <h4>{{ staff.first_name }} {{ staff.last_name }} </h4>
                 <h4><i class="fa fa-mobile" aria-label="phone"></i><a href="tel:{{ staff.profile.mobile }}"> {{ staff.profile.mobile }}</a></h4>
                 <h4><i class="fa fa-envelope-square" aria-label="email"></i><a href="mailto:{{ staff.email }}"> {{ staff.email }}</a></h4>
+                <a href="sms://{{ staff.profile.mobile }}">Send a SMS message</a>
                 </blockquote>
                 {% endif %}
             {% endfor %}
