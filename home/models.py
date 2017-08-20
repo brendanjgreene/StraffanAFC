@@ -4,6 +4,8 @@ from django.contrib.auth.models import AbstractUser, User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from PIL import Image, ExifTags
+from PIL.ImageOps import fit
+from django.core.files.storage import default_storage as storage
 
 
 class Team(models.Model):
@@ -56,6 +58,31 @@ class Profile(models.Model):
 
     def __unicode__(self):
         return self.user.username
+
+    def save(self, **kwargs):
+        super(Profile, self).save()
+        if self.image:
+            image = Image.open(storage.open(self.image.name))
+            try:
+                for orientation in ExifTags.TAGS.keys():
+                    if ExifTags.TAGS[orientation]=='Orientation':
+                        break
+                exif=dict(image._getexif().items())
+                if exif[orientation] == 3:
+                    image=image.rotate(180, expand=True)
+                elif exif[orientation] == 6:
+                    image=image.rotate(270, expand=True)
+                elif exif[orientation] == 8:
+                    image=image.rotate(90, expand=True)
+            except (AttributeError, KeyError, IndexError):
+                # cases: image don't have getexif
+                pass
+
+            image = fit(image, (200, 200), Image.ANTIALIAS)
+            fh = storage.open(self.image.name, "wb")
+            format = 'png'  # You need to set the correct image format here
+            image.save(fh, format)
+            fh.close()
 
 
 @receiver(post_save, sender=User)
