@@ -72,7 +72,7 @@ function log(s) {
                 <blockquote class="blockquote-reverse">
                 <h3 class="text-muted">{{ staff.profile.title }} {% if staff.profile.team %}: {{ staff.profile.team }} Team {% endif %}</h3>
                     {% if staff.profile.image %}
-                        <div class="col-md-2 col-sm-3 text-center" style="height: inherit">
+                        <div class="col-md-2 text-md-center" style="height: inherit">
                             <img src="{{ staff.profile.image.url }}" alt="Image not Found" onerror="this.onerror=null;this.src='http://placehold.it/100';" style="width:75px; height: 75px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
                         </div>
                     {% endif %}
