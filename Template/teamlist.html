@@ -46,8 +46,8 @@
                     </td>
                     <td>{{ managers.first_name }} {{ managers.last_name }}</td>
                     <td>{{ managers.profile.title }}</td>
-                    <td>{{ managers.profile.mobile }}</td>
-                    <td>{{ managers.email }}</td>
+                    <td><a class="calling" href="tel:{{ managers.profile.mobile }}">{{ managers.profile.mobile }}</a></td>
+                    <td><a href="mailto:{{ managers.email }}"> {{ managers.email }}</a></td>
                 </tr>
             {% endif %}
         {% endfor %}
@@ -56,8 +56,7 @@
         <h2>Players</h2>
         <table class="table table-striped">
             <thead>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Name</th>
                 {% if user.is_superuser or user.profile.team == team %}
                     <th>Parent's Name</th>
                     <th>Phone</th>
@@ -71,11 +70,10 @@
         {% for players in team_list %}
             {% if players.team_id == team.id %}
                 <tr>
-                    <td>{{ players.name }}</td>
-                    <td>{{ players.last_name }}</td>
+                    <td>{{ players.name }} {{ players.last_name }}</td>
                     {% if user.is_superuser or user.profile.team == team %}
                         <td>{{ players.parent_name }}</td>
-                        <td>{{ players.mobile }}</td>
+                        <td><a class="calling" href="tel:{{ players.mobile }}">{{ players.mobile }}</a></td>
                         <td>{{ players.date_of_birth }}</td>
                     {% endif %}
                     {% if user.is_superuser %}

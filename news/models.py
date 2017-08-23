@@ -25,6 +25,9 @@ class Thread(models.Model):
     subject = models.ForeignKey(Subject, related_name='threads')
     created_at = models.DateTimeField(default=timezone.now)
 
+    class Meta:
+        ordering = ['-created_at']
+
     def __unicode__(self):
         return self.name
 
@@ -66,6 +69,9 @@ class Post(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
+
+    class Meta:
+        ordering = ['-created_at']
 
     def __unicode__(self):
         return self.comment
