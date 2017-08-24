@@ -84,7 +84,7 @@ def new_user(request):
                 user.username = user.email
                 user.is_staff = True
                 user.save()
-                messages.success(request, "You have created a new user " + user.username)
+                messages.success(request, "You have created a new user: " + user.username)
 
                 return redirect(reverse('profile'))
 
@@ -196,7 +196,7 @@ def edit_team(request, id):
 
     return render(request, 'form.html', {'form': form,
                                          'second_form': second_form,
-                                         'heading_text': 'You are editing ' + team.name + 'Team?',
+                                         'heading_text': 'You are editing the ' + team.name + ' Team?',
                                          'button_text': 'Save Changes',
                                          })
 
@@ -219,7 +219,7 @@ def delete_team(request, id):
                                                          ' Team?  All of the Players and News Associated with this '
                                                          'team will also be deleted.  '
                                                          'We suggest you reassign these players and other items first!',
-                                         'button_text': 'Click to confirm deletion of ' + team.name + ' Team',
+                                         'button_text': 'Click to confirm deletion of the ' + team.name + ' Team',
                                          })
 
 

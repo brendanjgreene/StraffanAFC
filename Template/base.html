@@ -16,7 +16,8 @@
 
     {% block head_js %}{% endblock %}
 </head>
-<body {% if club.backgroundImage %}style="background-image: url({{ club.backgroundImage.url }})"{% endif %}>
+<body {% if club.backgroundImage %} style="background-image: url({{ club.backgroundImage.url }})"{% endif %}>
+<a id="backToTop" class="btn-success" style="background-color: {{ club.mainColor }}" onmouseover="this.style.background='gray';" onmouseout="this.style.background='{{ club.mainColor }}'" href="#"><i class="fa fa-arrow-up fa-2x" aria-label="to top of page"></i></a>
 <nav class="navbar navbar-default navbar-fixed-top" style="background-color: {{ club.mainColor }}">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -85,11 +86,10 @@
        {% block content %}
        {% endblock %}
 </div>
+
 <div id="footer">
     <div class="container-fluid" style="padding-top: 15px; background-color: {{ club.mainColor }}">
         <div class="footer">
-                <button class="btn btn-success" style="background-color: {{ club.mainColor }}; float: left" onclick="goBack()"><i class="fa fa-arrow-left fa-2x" aria-label="previous page"></i></button></li>
-                <button class="btn btn-success" style="background-color: {{ club.mainColor }}; float: right"><a href="#"><i class="fa fa-arrow-up fa-2x" aria-label="to top of page"></i></a></li></button>
 
             <ul class="list-inline" id="social">
                 <li><a href="https://www.facebook.com" target="_blank" ><i class="fa fa-facebook fa-2x" aria-label="facebook"></i></a></li>
@@ -109,4 +109,17 @@
 <script>
 function goBack() {window.history.back();}
 </script>
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("backToTop").style.display = "block";
+    } else {
+        document.getElementById("backToTop").style.display = "none";
+    }
+}
+</script>
+
 </html>

@@ -279,7 +279,7 @@ def delete_post(request, thread_id, post_id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Are you sure you want to delete the post: '
                                          + post.comment,
-                                         'button_text': 'Confirm deletion of ' + post.comment})
+                                         'button_text': 'Confirm deletion of the' + post.comment + 'post'})
 
 
 @login_required
