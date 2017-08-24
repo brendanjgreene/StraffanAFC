@@ -15,7 +15,7 @@ body{
     color: #222222;
     height: auto;
     left: 0;
-    /* position: fixed; */
+    position: absolute;
     right: 0;
     text-align: center;
 }
@@ -91,7 +91,7 @@ body{
     display: none; /* Hidden by default */
     position: fixed;
     bottom: 22px;
-    right: 15px;
+    right: 22px;
     z-index: 1000;
     border: 1px solid #22b24c;
     background-color: #0F7E50;
