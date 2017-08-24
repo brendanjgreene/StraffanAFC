@@ -4,8 +4,8 @@
    {% load bootstrap_tags %}
     <div class="jumbotron col-sm-12">
     {% if user.is_staff %}
-               <a class="btn btn-success pull-right" style="background-color: {{ club.mainColor }}" href="{% url "new_subject" %}">Create new News Subject</a>
-        {% endif %}
+        <a class="btn btn-success pull-right" style="background-color: {{ club.mainColor }}" href="{% url "new_subject" %}">Create new News Subject</a>
+    {% endif %}
     </div>
    {% for subject in subjects %}
        <section class="jumbotron">
