@@ -3,16 +3,16 @@
 <div class="row">
     <h2 class="text-info col-xs-12">Profile</h2>
     <div class="col-md-3 col-sm-4 text-center">
-        <p>You are logged in as</p>
+        <p>You are logged in as:</p>
         {% if user.profile.image %}
         <img src="{{ user.profile.image.url }}" alt="Image not Found" onerror="this.onerror=null;this.src='http://placehold.it/100';" style="width:100px; height: 100px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
         {% endif %}
+        <p>{{ user.username }}</p>
     </div>
     <div class="col-md-4 col-sm-5">
         <h3 class="text-info">{{ user.first_name }} {{ user.last_name }}</h3>
         <h4>{{ user.profile.title }} {% if user.profile.team %}- {{ user.profile.team }}{% endif %}</h4>
         <h4><i class="fa fa-phone" aria-hidden="true" aria-label="phone"></i> : {{ user.profile.mobile }}</h4>
-        <h5>Username: {{ user.username }}</h5>
         <h5><i class="fa fa-envelope" aria-hidden="true" aria-label="email"></i> - {{ user.email }}</h5>
         <h5>Your last login was: {{ user.last_login }}</h5>
     </div>
