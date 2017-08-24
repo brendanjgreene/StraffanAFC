@@ -44,6 +44,9 @@ class Player(models.Model):
     email = models.EmailField(max_length=255, blank=True, null=True)
     team = models.ForeignKey(Team, related_name='player_name')
 
+    class Meta:
+        ordering = ['date_of_birth']
+
     def __unicode__(self):
         return self.name + " " + self.last_name
 
