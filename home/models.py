@@ -38,10 +38,10 @@ class Player(models.Model):
 
     name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    mobile = models.CharField(max_length=20)
+    mobile = models.CharField(max_length=20, blank=True, null=True)
     parent_name = models.CharField(max_length=255,  blank=True, null=True)
-    date_of_birth = models.DateField()
-    email = models.EmailField(max_length=255)
+    date_of_birth = models.DateField(blank=True, null=True)
+    email = models.EmailField(max_length=255, blank=True, null=True)
     team = models.ForeignKey(Team, related_name='player_name')
 
     def __unicode__(self):
