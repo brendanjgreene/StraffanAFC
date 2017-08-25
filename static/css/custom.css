@@ -8,7 +8,7 @@ height:100%;
 }
 body{
     padding-top: 100px;
-    /* padding-bottom: 100px;  no longer necesaasry if footer isn't fixed */
+    /* padding-bottom: 100px;  no longer necessary if footer isn't fixed */
     background-image: url("/static/Images/IMG_8678.JPG");
     background-size: 100%;
 }
@@ -31,7 +31,11 @@ body{
 .navbar {
     /*background-color: #22b24c; old green maybe use for hover*/
     background-color: #0F7E50;
+    border: none;
 }
+/*.navbar-default {
+    border: none;
+}*/
 
 .navbar-brand a {
     color: #222222;
@@ -74,12 +78,10 @@ body{
 }
 #social li{
     padding: 0 4% 0 4%;
-
 }
 .calling{
     cursor:url(../Images/phone.png),url(../Images/phone.png),auto;
 }
-
 #backToTop {
     display: none; /* Hidden by default */
     position: fixed;
@@ -93,7 +95,7 @@ body{
     border-radius: 4px;
 }
 #backToTop:hover {
-    background-color: #555; /* Add a dark-grey background on hover */
+    background-color: #22b24c; /* Add a dark-grey background on hover */
 }
 #wrap
 {
