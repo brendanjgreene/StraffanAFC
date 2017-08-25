@@ -8,3 +8,4 @@ deployreadme.md
 
 media/images/*
 settings/secret.py
+db.sqlite3
