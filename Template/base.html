@@ -16,6 +16,9 @@
 
     {% block head_js %}{% endblock %}
 </head>
+<div id="wrap">
+<div id="main">
+
 <body {% if club.backgroundImage %} style="background-image: url({{ club.backgroundImage.url }})"{% endif %}>
 <a id="backToTop" class="btn-success" style="background-color: {{ club.mainColor }}" onmouseover="this.style.background='gray';" onmouseout="this.style.background='{{ club.mainColor }}'" href="#"><i class="fa fa-arrow-up fa-2x" aria-label="to top of page"></i></a>
 <nav class="navbar navbar-default navbar-fixed-top" style="background-color: {{ club.mainColor }}">
@@ -86,11 +89,11 @@
        {% block content %}
        {% endblock %}
 </div>
-
-<div id="footer">
+</div>
+</div>
+<div id="footer" class="navbar-">
     <div class="container-fluid" style="padding-top: 15px; background-color: {{ club.mainColor }}">
         <div class="footer">
-
             <ul class="list-inline" id="social">
                 <li><a href="https://www.facebook.com" target="_blank" ><i class="fa fa-facebook fa-2x" aria-label="facebook"></i></a></li>
                 <li><a href="mailto:straffanafc@eircom.net"><i class="fa fa-envelope fa-2x" aria-label="sendemail"></i></a></li>
