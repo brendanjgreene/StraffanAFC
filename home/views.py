@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
 from news.forms import SubjectFormDesc
-from news.models import Subject
+from news.models import Subject, Post
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
@@ -285,7 +285,11 @@ def delete_player(request, id):
 
 
 def get_index(request):
-    return render(request, 'index.html')
+    first_image = Post.objects.exclude(image='').first()
+    images = Post.objects.exclude(image='')[1:]
+    return render(request, 'index.html',
+                  {"images": images,
+                   "first_image": first_image})
 
 
 def get_players(request):
