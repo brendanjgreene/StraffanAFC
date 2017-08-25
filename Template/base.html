@@ -18,9 +18,12 @@
 </head>
 <div id="wrap">
 <div id="main">
-
 <body {% if club.backgroundImage %} style="background-image: url({{ club.backgroundImage.url }})"{% endif %}>
-<a id="backToTop" class="btn-success" style="background-color: {{ club.mainColor }}" onmouseover="this.style.background='gray';" onmouseout="this.style.background='{{ club.mainColor }}'" href="#"><i class="fa fa-arrow-up fa-2x" aria-label="to top of page"></i></a>
+<a id="backToTop" class="btn-success"
+   {% if club.mainColor %}
+   style="background-color: {{ club.mainColor }}" onmouseover="this.style.background='gray';" onmouseout="this.style.background='{{ club.mainColor }}'"
+   {% endif %}
+   href="#"><i class="fa fa-arrow-up fa-2x" aria-label="to top of page"></i></a>
 <nav class="navbar navbar-default navbar-fixed-top" style="background-color: {{ club.mainColor }}">
     <div class="container-fluid">
         <div class="navbar-header">
