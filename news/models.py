@@ -41,6 +41,16 @@ class Post(models.Model):
 
     image = models.ImageField(upload_to="images", blank=True, null=True)
 
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __unicode__(self):
+        return self.comment
+
     def save(self, **kwargs):
         super(Post, self).save()
         if self.image:
@@ -60,18 +70,13 @@ class Post(models.Model):
                 # cases: image don't have getexif
                 pass
 
-            image = fit(image, (200, 200), Image.ANTIALIAS)
+            basewidth = 300
+            wpercent = (basewidth / float(image.size[0]))
+            hsize = int((float(image.size[1]) * float(wpercent)))
+            image = image.resize((basewidth, hsize), Image.ANTIALIAS)
+
+            # image = fit(image, (400, 400), Image.ANTIALIAS)
             fh = storage.open(self.image.name, "wb")
             format = 'png'  # You need to set the correct image format here
             image.save(fh, format)
             fh.close()
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
-
-    class Meta:
-        ordering = ['-created_at']
-
-    def __unicode__(self):
-        return self.comment
