@@ -286,8 +286,6 @@ def delete_player(request, id):
 
 def get_index(request):
     images = Post.objects.exclude(image='')
-    images_length = images.count() - 2
-    images = images[:images_length]
     return render(request, 'index.html',
                   {"images": images})
 
