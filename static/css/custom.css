@@ -120,8 +120,7 @@ padding-bottom:200px; /* this needs to be bigger than footer height*/
 }
 #myCarousel {
     display: flex;
-    /*min-height: 400px;*/
-    overflow: hidden;
+    min-height: 0px;
     align-items: center;
 }
 #myCarouselContainer {

@@ -17,22 +17,18 @@
         <div id="myCarouselContainer" class="col-sm-6">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
-                <!--ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                </ol-->
+                <ol class="carousel-indicators">
+                    {% for image in images %}
+                        <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+                    {%endfor%}
+                </ol>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="{{ first_image.image.url }}" alt="{{ first_image.comment }}" style="width:100%";>
+                {% for image in images %}
+                    <div class="item{% if forloop.first %} active {% endif %}">
+                        <img src="{{ image.image.url }}" alt="{{ image.comment }}" style="width:100%";>
                     </div>
-                    {% for image in images %}
-                        <div class="item">
-                            <img src="{{ image.image.url }}" alt="{{ image.comment }}" style="width:100%";>
-                        </div>
-                    {% endfor %}
+                {% endfor %}
                 </div>
                 <!-- Left and right controls -->
                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -47,17 +43,18 @@
         </div>
     </div>
     <script>
-    // Activate Carousel
-$("#myCarousel").carousel();
+        $(document).ready(function(){
+            // Activate Carousel
+            $("#myCarousel").carousel();
 
-// Enable Carousel Indicators
-$(".item").click(function(){
-    $("#myCarousel").carousel(1);
-});
-
-// Enable Carousel Controls
-$(".left").click(function(){
-    $("#myCarousel").carousel("prev");
-});
+            // Enable Carousel Indicators
+            $(".item").click(function(){
+                $("#myCarousel").carousel(1);
+            });
+            // Enable Carousel Controls
+            $(".left").click(function(){
+                $("#myCarousel").carousel("prev");
+            });
+        });
     </script>
 {% endblock %}

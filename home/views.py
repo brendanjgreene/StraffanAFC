@@ -285,11 +285,9 @@ def delete_player(request, id):
 
 
 def get_index(request):
-    first_image = Post.objects.exclude(image='').first()
-    images = Post.objects.exclude(image='')[1:]
+    images = Post.objects.exclude(image='')
     return render(request, 'index.html',
-                  {"images": images,
-                   "first_image": first_image})
+                  {"images": images,})
 
 
 def get_players(request):
