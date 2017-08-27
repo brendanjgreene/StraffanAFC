@@ -129,7 +129,7 @@ def new_story(request, subject_id):
 
     args = {
         'thread_form': thread_form,
-        'heading_text': 'Start new Story',
+        'heading_text': 'Start new Subject',
         'post_form': post_form,
         'subject': subject,
         'poll_form': poll_form,
