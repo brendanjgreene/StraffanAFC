@@ -1,7 +1,4 @@
-html,body
-{
-height:100%;
-}
+
 :root {
   --main-color: #06c;
   --accent-color: #006;
@@ -130,3 +127,17 @@ padding-bottom:200px; /* this needs to be bigger than footer height*/
 .carousel:hover .carousel-control { visibility: visible; }
 .carousel .carousel-indicators { visibility: hidden; }
 .carousel:hover .carousel-indicators { visibility: visible; }
+
+#patients {
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    background-color: rgba(0,0,0,0.7);
+    height: 50%;
+    width: 50%;
+    text-align: center;
+    padding-top: 25px;
+    color: #f8ff89;
+    font-size: xx-large;
+    z-index: 1031;
+}
