@@ -1,41 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
-        <h2 class="col-sm-12">Players</h2>
-        <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th><strong>Team</strong></th>
-                <th>D.O.B.</th>
-                {% if user.is_superuser %}
-                    <td>
-                    Edit
+    <div class="col-md-12">
+        <h2>All Players</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    {% if user.is_superuser %}
+                        <th></th>
+                        <th>D.O.B.</th>
+                    {% endif %}
+                    <th><strong>Team</strong></th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <td colspan="100%">
+                        {% if user.is_staff %}
+                            <a type="button" class="btn btn-success" onclick="location.href='/players/new/'">Add Player</a>
+                        {% endif %}
                     </td>
-                {% endif %}
-            </tr>
-        </thead>
-        <tbody>
-        {% for players in player_list %}
-            <tr>
-                <td>{{ players.name }}</td>
-                <td>{{ players.last_name }}</td>
-                <td>{{ players.team }}</td>
-                {% if user.is_staff %}
-                    <td>{{ players.date_of_birth|date:"j-M-y"  }}</td>
-                {% endif %}
-                {% if user.is_superuser %}
-                    <td>
-                        <a href="{% url 'edit-player' players.id %}"><i class="fa fa-pencil-square-o"></i></a>
-                        <a href="{% url 'delete-player' players.id %}"><i class="fa fa-trash-o"></i></a>
-                    </td>
-                {% endif %}
-            </tr>
-        {% endfor %}
-        </tbody>
-
-        </table>
-    {% if user.is_staff %}
-        <a type="button" class="btn btn-success" onclick="location.href='/players/new/'">Add Player</a>
-    {% endif %}
+                </tr>
+                </tfoot>
+                <tbody>
+                {% for players in player_list %}
+                    <tr>
+                        <td>{{ players.name }} {{ players.last_name }}</td>
+                        {% if user.is_staff %}
+                            <td>
+                                <a href="{% url 'edit-player' players.id %}"><i class="fa fa-pencil-square-o"></i></a>
+                                {% if user.is_superuser %}
+                                    <br>
+                                    <a href="{% url 'delete-player' players.id %}"><i class="fa fa-trash-o"></i></a>
+                                {% endif %}
+                            </td>
+                            <td>{{ players.date_of_birth|date:"j-M-y"  }}</td>
+                        {% endif %}
+                        <td>{{ players.team }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

@@ -24,21 +24,23 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-            <th></th>
-            <th>Name</th>
-            <!--th></th--><!--this was to make space for managers title remove comments to put back in might be useful for assistant manager-->
-            <th>Phone</th>
-            <th>Email</th>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <!--th></th--><!--this was to make space for managers title remove comments to put back in might be useful for assistant manager-->
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
             </thead>
             <tbody>
             {% for managers in managers_list %}
                 {% if managers.profile.team_id == team.id %}
                     <tr>
-                        <td>
+                        <th>
                             {% if managers.profile.image %}
                                 <img src="{{ managers.profile.image.url }}" alt="Image not Found" onerror="this.onerror=null; this.src='http://placehold.it/100';" style="width:40px; height: 40px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
                             {% endif %}
-                        </td>
+                        </th>
                         <td>{{ managers.first_name }} {{ managers.last_name }}</td>
                         <!--td>{{ managers.profile.title }}</td--><!--managers title redundant unless we have assistant managers-->
                         <td><a class="calling" href="tel:{{ managers.profile.mobile }}">{{ managers.profile.mobile }}</a></td>
@@ -54,40 +56,47 @@
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
-                <th>Name</th>
-                {% if user.is_superuser or user.profile.team == team %}
-                    <th>D.O.B.</th>
-                    <th>Phone</th>
-                    <th>Parent's Name</th>
-                {% endif %}
+                <tr>
+                    <th>Name</th>
+                    {% if user.is_superuser or user.profile.team == team %}
+                        <th></th>
+                        <th>D.O.B.</th>
+                        <th>Phone</th>
+                        <th>Parent's Name</th>
+                    {% endif %}
+                </tr>
                 </thead>
+                        {% if user.is_superuser or user.profile.team == team %}
+                            <tfoot>
+                            <tr>
+                                <td colspan="100%">
+                                    <a type="button" class="btn btn-success" onclick="location.href='/players/new/'">Add Player</a>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        {% endif %}
                 <tbody>
                 {% for players in team_list %}
                     {% if players.team_id == team.id %}
                         <tr>
-                            <td>{{ players.name }} {{ players.last_name }}
-                                <br><span>
+                            <th>{{ players.name }} {{ players.last_name }}</th>
                             {% if user.is_superuser or user.profile.team == team %}
+                                <td>
                                     <a href="{% url 'edit-player' players.id %}"><i class="fa fa-pencil-square-o"></i></a>
-                                {% if user.is_superuser %}
-                                    <a href="{% url 'delete-player' players.id %}"><i class="fa fa-trash-o"></i></a>
-                                {% endif %}
-                            </span>
+                                    {% if user.is_superuser %}<br>
+                                        <a href="{% url 'delete-player' players.id %}"><i class="fa fa-trash-o"></i></a>
+                                    {% endif %}
                                 </td>
                                 <td>{{ players.date_of_birth|date:"j-M-y" }}</td>
                                 <td><a class="calling" href="tel:{{ players.mobile }}">{{ players.mobile }}</a></td>
-                                <td>{{ players.parent_name }}
+                                <td>{{ players.parent_name }}</td>
                             {% endif %}
-                                </td>
                         </tr>
                     {% endif %}
                 {% endfor %}
                 </tbody>
             </table>
         </div>
-    {% if user.is_superuser or user.profile.team == team %}
-        <a type="button" class="btn btn-success" onclick="location.href='/players/new/'">Add Player</a>
-    {% endif %}
 </div>
 
 
