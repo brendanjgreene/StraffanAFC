@@ -124,7 +124,7 @@ padding-bottom:200px; /* this needs to be bigger than footer height*/
     align-items: center;
 }
 #myCarouselContainer {
-    min-height: 450px;
+    min-height: 350px;
 }
 .carousel .carousel-control { visibility: hidden; }
 .carousel:hover .carousel-control { visibility: visible; }
