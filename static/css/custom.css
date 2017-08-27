@@ -141,3 +141,12 @@ padding-bottom:200px; /* this needs to be bigger than footer height*/
     font-size: xx-large;
     z-index: 1031;
 }
+#main > nav > div > div.navbar-header > button:hover{
+   background-color: #22b24c;
+}
+#main > nav > div > div.navbar-header > a:hover,
+#navbar-collapse-1 > ul > li > a:hover,
+#navbar-collapse-1 > ul > li > a:focus {
+    background-color: #22b24c;
+    border: none;
+}
