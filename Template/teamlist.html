@@ -60,26 +60,25 @@
                     <th>Phone</th>
                     <th>Parent's Name</th>
                 {% endif %}
-                {% if user.is_superuser %}
-                    <th>Edit</th>
-                {% endif %}
                 </thead>
                 <tbody>
                 {% for players in team_list %}
                     {% if players.team_id == team.id %}
                         <tr>
-                            <td>{{ players.name }} {{ players.last_name }}</td>
+                            <td>{{ players.name }} {{ players.last_name }}
+                                <br><span>
                             {% if user.is_superuser or user.profile.team == team %}
+                                    <a href="{% url 'edit-player' players.id %}"><i class="fa fa-pencil-square-o"></i></a>
+                                {% if user.is_superuser %}
+                                    <a href="{% url 'delete-player' players.id %}"><i class="fa fa-trash-o"></i></a>
+                                {% endif %}
+                            </span>
+                                </td>
                                 <td>{{ players.date_of_birth|date:"j-M-y" }}</td>
                                 <td><a class="calling" href="tel:{{ players.mobile }}">{{ players.mobile }}</a></td>
-                                <td>{{ players.parent_name }}</td>
+                                <td>{{ players.parent_name }}
                             {% endif %}
-                            {% if user.is_superuser %}
-                                <td>
-                                    <a href="{% url 'edit-player' players.id %}"><i class="fa fa-pencil-square-o"></i></a>
-                                    <a href="{% url 'delete-player' players.id %}"><i class="fa fa-trash-o"></i></a>
                                 </td>
-                            {% endif %}
                         </tr>
                     {% endif %}
                 {% endfor %}
