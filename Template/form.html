@@ -37,26 +37,32 @@
     {{ team }}
 {% endblock %}
 {% block content %}
- <section>
-   <div class="col-md-9">
-     <form method="POST" enctype="multipart/form-data" action="{{ form_action }}">
-         <h1>{{ heading_text }}</h1>
-       {% csrf_token %}
-       {{ form|as_bootstrap }}
-         {% if second_form %}
-             {{ second_form|as_bootstrap }}
-         {% endif %}
-         {% if third_form %}
-             {{ third_form|as_bootstrap }}
-         {% endif %}
-       <div class="form-group">
-         <button type="submit" class="btn btn-primary pull-right">{{button_text}}</button>
-           <button type="reset" class="btn btn-info" value="Reset">Reset</button>
-           <button type="button" class="btn btn-danger" onclick="window.history.back()">Cancel</button>
-       </div>
-     </form>
-
-   </div>
- </section>
-
+    <section>
+        <div class="col-md-9">
+            <form method="POST" enctype="multipart/form-data" action="{{ form_action }}">
+                <h1>{{ heading_text }}</h1>
+                {% csrf_token %}
+                {{ form|as_bootstrap }}
+                {% if second_form %}
+                    {{ second_form|as_bootstrap }}
+                {% endif %}
+                {% if third_form %}
+                    {{ third_form|as_bootstrap }}
+                {% endif %}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary pull-right">{{button_text}}</button>
+                    <button type="reset" class="btn btn-info" value="Reset">Reset</button>
+                    {% if cancelview and cancelid %}<!--for views with an id--><!--see edit_player view-->
+                        <button type="button" class="btn btn-danger" onclick="location.href='{% url cancelview cancelid %}'">Cancel</button>
+                    {% elif cancelview %}<!--for views without an id-->
+                        <button type="button" class="btn btn-danger" onclick="location.href='{% url cancelview %}'">Cancel</button>
+                    {% else %}<!--incase you have forgot to specify cancel view-->
+                        <!--better to have a cancel view than rely on window.history-->
+                        <!--might take more than one cancel if form not completed correctly-->
+                        <button type="button" class="btn btn-danger" onclick="window.history.back()">Cancel</button>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </section>
 {% endblock %}

@@ -28,7 +28,9 @@ def new_subject(request):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Create new News Subject',
                                          'form_action': reverse('forum'),
-                                         'button_text': 'Save Subject',})
+                                         'button_text': 'Save Subject',
+                                         'cancelview': 'forum',
+                                         })
 
 
 @login_required()
@@ -47,6 +49,7 @@ def edit_subject(request, subject_id):
         form = SubjectForm(instance=subject)
 
     return render(request, 'form.html', {'form': form,
+                                         'cancelview': 'forum',
                                          'heading_text': 'Edit News Subject',
                                          'form_action': reverse('edit_subject', kwargs={"subject_id": subject.id}),
                                          'button_text': 'Save Subject'})
@@ -68,7 +71,8 @@ def delete_subject(request, id):
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Are you sure you want to delete the Subject: '
                                          + subject.name + '.  All associated Stories and Posts will also be deleted',
-                                         'button_text': 'Confirm deletion of ' + subject.name})
+                                         'button_text': 'Confirm deletion of ' + subject.name
+                                         })
 
 
 @login_required
@@ -134,6 +138,8 @@ def new_story(request, subject_id):
         'subject': subject,
         'poll_form': poll_form,
         'poll_subject_formset': poll_subject_formset,
+        'cancelview': 'subjects',
+        'cancelid': subject_id,
     }
 
     args.update(csrf(request))
@@ -162,6 +168,8 @@ def edit_story(request, thread_id):
         'form': form,
         'heading_text': 'Edit Story',
         'button_text': 'Confirm Story Edit',
+        'cancelview': 'story',
+        'cancelid': thread_id,
     }
 
     args.update(csrf(request))
@@ -184,6 +192,8 @@ def delete_story(request, thread_id):
         form = DeleteStoryForm(instance=thread)
 
     return render(request, 'form.html', {'form': form,
+                                         'cancelview': 'subjects',
+                                         'cancelid': subject_id,
                                          'heading_text': 'Are you sure you want to delete the story: '
                                          + thread.name,
                                          'button_text': 'Confirm deletion of ' + thread.name})

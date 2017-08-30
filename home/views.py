@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from models import Player, Team, Profile
-from forms import TeamForm, PlayerForm, UserLoginForm, TeamDeleteForm, NewUserForm, MyUserChangeForm, MyPasswordChangeForm, ProfileForm
+from forms import TeamForm, PlayerForm, UserLoginForm, TeamDeleteForm, NewUserForm, \
+    MyUserChangeForm, MyPasswordChangeForm, ProfileForm, PlayerDeleteForm
 from django.shortcuts import redirect
 from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
@@ -34,6 +35,7 @@ def change_your_password(request):
         form = PasswordChangeForm(request.user)
 
     args = {'form': form,
+            'cancelview': 'profile',
             'heading_text': request.user.username + ": " + request.user.first_name + " Are you sure you want to change your password",
             'button_text': 'Confirm Password Change',
             }
@@ -62,6 +64,7 @@ def edit_profile(request):
         second_form = ProfileForm(instance=profile)
 
     args = {'form': form,
+            'cancelview': 'profile',
             'second_form': second_form,
             'heading_text': 'You are editing user ' + request.user.first_name + " " + request.user.last_name,
             'button_text': 'Save Changes',
@@ -95,6 +98,7 @@ def new_user(request):
             form = NewUserForm()
 
         args = {'form': form,
+                'cancelview': 'profile',
                 'heading_text': 'You are creating a new User!',
                 'button_text': 'Save User',
                 }
@@ -149,8 +153,7 @@ def new_team(request):
             team = team_form.save(commit=False)
             subject = subject_form_desc.save(commit=False)
             subject.name = team.name
-            team.save()
-            # team.save() needs to be her so team.id is created before subject.team_id
+            team.save()  # needs to be here so team.id is created before subject.team_id
             subject.team_id = team.id
             subject.save()
 
@@ -165,11 +168,20 @@ def new_team(request):
         team_form = TeamForm()
         subject_form_desc = SubjectFormDesc()
 
+    '''delete this when im sure form.html working
     return render(request, 'team_subject_form.html', {'team_form': team_form,
+                                                      'cancelview': 'profile',
                                                       'subject_form_desc': subject_form_desc,
                                                       'heading_text': 'You are creating a new Team!',
                                                       'button_text': 'Save Team',
-                                                      })
+                                                      })'''
+
+    return render(request, 'form.html', {'form': team_form,
+                                         'second_form': subject_form_desc,
+                                         'cancelview': 'profile',
+                                         'heading_text': 'You are creating a new Team!',
+                                         'button_text': 'Save Team',
+                                         })
 
 
 def edit_team(request, id):
@@ -195,6 +207,8 @@ def edit_team(request, id):
         second_form = SubjectFormDesc(instance=subject)
 
     return render(request, 'form.html', {'form': form,
+                                         'cancelview': 'get_team',
+                                         'cancelid': team.id,
                                          'second_form': second_form,
                                          'heading_text': 'You are editing the ' + team.name + ' Team?',
                                          'button_text': 'Save Changes',
@@ -214,6 +228,8 @@ def delete_team(request, id):
         form = TeamDeleteForm(instance=team)
 
     return render(request, 'form.html', {'form': form,
+                                         'cancelview': 'get_team',
+                                         'cancelid': team.id,
                                          'heading_text': 'Are you sure you want to delete the '
                                                          + team.name +
                                                          ' Team?  All of the Players and News Associated with this '
@@ -260,6 +276,8 @@ def edit_player(request, id):
         form = PlayerForm(instance=player)
 
     return render(request, 'form.html', {'form': form,
+                                         'cancelview': "get_team",
+                                         'cancelid': player.team.id,
                                          'heading_text': 'You are editing ' + player.name + ' ' + player.last_name,
                                          'button_text': 'Save Player',
                                          })
@@ -268,7 +286,7 @@ def edit_player(request, id):
 def delete_player(request, id):
     player = get_object_or_404(Player, pk=id)
     if request.method == "POST":
-        form = TeamForm(request.POST, instance=player)
+        form = PlayerDeleteForm(request.POST, instance=player)
         player.delete()
 
         messages.success(request, player.name + ' ' + player.last_name + " was deleted!")
@@ -276,9 +294,11 @@ def delete_player(request, id):
         return redirect('get_team', player.team_id)
 
     else:
-        form = PlayerForm(instance=player)
+        form = PlayerDeleteForm(instance=player)
 
     return render(request, 'form.html', {'form': form,
+                                         'cancelview': "get_team",
+                                         'cancelid': player.team.id,
                                          'heading_text': 'Are you sure you want to delete ' + player.name + ' ' + player.last_name + "!",
                                          'button_text': 'confirm delete ' + player.name + ' ' + player.last_name + "!",
                                          })

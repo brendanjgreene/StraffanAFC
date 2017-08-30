@@ -1,17 +1,30 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% load staticfiles %}
- 
 {% block head_js %}
     <script src="{% static 'js/tinymce/tinymce.min.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
         tinyMCE.init({mode: "textareas", theme: 'modern', plugins: 'paste'})
+    </script>
+    <script>
+        $(function() {
+            if (!$('#id_is_a_poll').is('checked')) {
+                $('#poll_form').hide()
+            }
 
+            $('#id_is_a_poll').click(function(el) {
+                var poll_form = $('#poll_form')
+
+                if (poll_form.is(":visible")) {
+                    poll_form.hide()
+                } else {
+                    poll_form.show()
+                }
+            })
+        })
     </script>
 {% endblock %}
-
-
 {% block content %}
    <section>
        <div class="col-md-9">
@@ -31,28 +44,19 @@
                    {% endfor %}
                </div>
                <div class="form-group">
-                   <button type="submit" class="btn btn-primary pull-right">Add Subject</button>
-                   <button type="reset" class="btn btn-info" value="Reset">Reset</button>
-                   <button type="button" class="btn btn-danger" onclick="window.history.back()">Cancel</button>
-               </div>
+                    <button type="submit" class="btn btn-primary pull-right">{{button_text}}</button>
+                    <button type="reset" class="btn btn-info" value="Reset">Reset</button>
+                    {% if cancelview and cancelid %}<!--for views with an id--><!--see edit_player view-->
+                        <button type="button" class="btn btn-danger" onclick="location.href='{% url cancelview cancelid %}'">Cancel</button>
+                    {% elif cancelview %}<!--for views without an id-->
+                        <button type="button" class="btn btn-danger" onclick="location.href='{% url cancelview %}'">Cancel</button>
+                    {% else %}<!--incase you have forgot to specify cancel view-->
+                        <!--better to have a cancel view than rely on window.history-->
+                        <!--might take more than one cancel if form not completed correctly-->
+                        <button type="button" class="btn btn-danger" onclick="window.history.back()">Cancel</button>
+                    {% endif %}
+                </div>
            </form>
        </div>
    </section>
-    <script>
-        $(function() {
-            if (!$('#id_is_a_poll').is('checked')) {
-                $('#poll_form').hide()
-            }
-
-            $('#id_is_a_poll').click(function(el) {
-                var poll_form = $('#poll_form')
-
-                if (poll_form.is(":visible")) {
-                    poll_form.hide()
-                } else {
-                    poll_form.show()
-                }
-            })
-        })
-    </script>
 {% endblock %}

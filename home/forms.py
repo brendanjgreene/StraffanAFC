@@ -36,6 +36,13 @@ class PlayerForm(forms.ModelForm):
         }
 
 
+class PlayerDeleteForm(forms.ModelForm):
+
+    class Meta:
+        model = Player
+        fields = []
+
+
 class UserLoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'unless you changed it your username is your email address'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'unless you changed it your password is your email address'}))
