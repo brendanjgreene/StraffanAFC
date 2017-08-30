@@ -30,7 +30,7 @@ class PlayerForm(forms.ModelForm):
             'mobile': forms.TextInput(attrs={'placeholder': "enter Mobile or Parent's Mobile if a minor"}),
             'email': forms.TextInput(attrs={'placeholder': "enter Email or Parent's Email if a minor"}),
             'date_of_birth': forms.DateInput(attrs={
-                'placeholder': 'DD/MM/YYYY',
+                'placeholder': 'mm/dd/yyyy',
                 'id': 'date',
             }),
         }
