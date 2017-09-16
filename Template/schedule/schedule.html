@@ -5,49 +5,50 @@
         <a class="btn btn-success" style="background-color: {{ club.mainColor }}" href="http://www.kdul.ie/roundup.aspx?oid=1012&show=f&cid=10095" target="_blank">
             KDUL
         </a>
-    <table class="table table-striped">
-        <thead>
-            <th>Home</th>
-            <th>Away</th>
-            <th>Venue</th>
-            <th>Time - Date</th>
-        </thead>
-    <tbody>
-            {% for i in games_list %}
-                <tr>
-                    <td colspan="4"><strong>{{ i.4 }}</strong></td>
-                </tr>
-            <tr>
-                <td>{{ i.0 }}</td> <!-- home -->
-                <td>{{ i.1 }}</td> <!-- away -->
-                <td>{{ i.2 }}</td> <!-- venue -->
-                <td>{{ i.3 }} - {{ i.5 }} </td> <!-- Time and Date -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <th>Home</th>
+                <th>Away</th>
+                <th>Venue</th>
+                <th>Time - Date</th>
+            </thead>
+            <tbody>
+                    {% for i in games_list %}
+                        <tr>
+                            <td colspan="4"><strong>{{ i.4 }}</strong></td>
+                        </tr>
+                    <tr>
+                        <td>{{ i.0 }}</td> <!-- home -->
+                        <td>{{ i.1 }}</td> <!-- away -->
+                        <td>{{ i.2 }}</td> <!-- venue -->
+                        <td>{{ i.3 }} - {{ i.5 }} </td> <!-- Time and Date -->
 
-            </tr>
-            {% endfor %}
-    </tbody>
-    </table>
-    <div>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <h2>Senior Games</h2>
     <a class="btn btn-success" style="background-color: {{ club.mainColor }}" href="http://kdfl.ie/fixtures2016.php" target="_blank">
             KDFL
     </a>
-    <table class="table table-striped">
-        <thead>
-            <th>Home Team v Away Team, Venue, Time, Referee</th>
-            <th>Division</th>
-            <th>Date</th>
-        </thead>
-    <tbody>
-    {% for line in Line %}
-            <tr>
-                <td>{{ line.0 }}</td> <!-- home -->
-                <td>{{ line.1 }}</td>
-                <td>{{ line.2 }}</td>
-            </tr>
-    {% endfor %}
-    </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <th>Home Team v Away Team, Venue, Time, Referee</th>
+                <th>Division</th>
+                <th>Date</th>
+            </thead>
+            <tbody>
+            {% for line in Line %}
+                    <tr>
+                        <td>{{ line.0 }}</td> <!-- home -->
+                        <td>{{ line.1 }}</td>
+                        <td>{{ line.2 }}</td>
+                    </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
-
 {% endblock %}
