@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-ALLOWED_HOSTS = ['straffanafc.ie', 'brendanjgreene.tk', 'straffanafc.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['.straffanafc.ie', 'straffanafc.herokuapp.com', '127.0.0.1', 'localhost']
 SITE_ID = 2
 INTERNAL_IPS = ('127.0.0.1',)
 
