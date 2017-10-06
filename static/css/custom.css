@@ -112,7 +112,7 @@ padding-bottom:200px; /* this needs to be bigger than footer height*/
     left: 0;
     right: 0;
     margin-top: -87px; /* negative value of footer height */
-    position: relative;
+    position: static;
     text-align: center;
 }
 #myCarousel {
