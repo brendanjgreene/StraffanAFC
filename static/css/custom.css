@@ -3,9 +3,11 @@
   --main-color: #06c;
   --accent-color: #006;
 }
-html,
-body{
+html{
     height: 100%;
+}
+body{
+    height: inherit;
     padding-top: 100px;
     /* padding-bottom: 100px;  no longer necessary if footer isn't fixed */
     background-image: url("/static/Images/IMG_8678.JPG");
