@@ -25,9 +25,9 @@ def new_subject(request):
             return redirect(news)
     else:
         form = SubjectForm()
+
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'Create new News Subject',
-                                         'form_action': reverse('forum'),
                                          'button_text': 'Save Subject',
                                          'cancelview': 'forum',
                                          })
@@ -133,7 +133,8 @@ def new_story(request, subject_id):
 
     args = {
         'thread_form': thread_form,
-        'heading_text': 'Start new Subject',
+        'heading_text': 'Start new Story',
+        'button_text': 'Save New Story',
         'post_form': post_form,
         'subject': subject,
         'poll_form': poll_form,
