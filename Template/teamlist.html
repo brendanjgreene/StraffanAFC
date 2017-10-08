@@ -79,7 +79,7 @@
                 {% if players.team_id == team.id %}
                     <tr>
                         <th>{{ players.name }} {{ players.last_name }}</th>
-                        {% if user.is_superuser or user.profile.team == team %}
+                        {% if user.is_superuser or user.profile.team == team or team.name == 'Unassigned' %}
                             <td>
                                 <a href="{% url 'edit-player' players.id %}"><i class="fa fa-pencil-square-o"></i></a>
                                 {% if user.is_superuser %}<br>

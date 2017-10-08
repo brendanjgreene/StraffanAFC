@@ -242,6 +242,7 @@ def delete_team(request, id):
 def new_player(request):
     if request.method == "POST":
         form = PlayerForm(request.POST)
+
         if form.is_valid():
             player = form.save(commit=False)
             player.save()
@@ -253,6 +254,10 @@ def new_player(request):
             messages.error(request, 'Please correct the errors below.')
     else:
         form = PlayerForm()
+        if request.user.is_superuser:
+            form.fields['team'].queryset = Team.objects.all()
+        else:
+            form.fields["team"].queryset = Team.objects.filter(id=request.user.profile.team_id)
 
     return render(request, 'form.html', {'form': form,
                                          'heading_text': 'You are creating a new player!',
@@ -274,6 +279,10 @@ def edit_player(request, id):
             messages.error(request, 'Please correct the errors below.')
     else:
         form = PlayerForm(instance=player)
+        if request.user.is_superuser:
+            form.fields['team'].queryset = Team.objects.all()
+        else:
+            form.fields['team'].queryset = Team.objects.filter(id=request.user.profile.team_id) | Team.objects.filter(name="Unassigned")
 
     return render(request, 'form.html', {'form': form,
                                          'cancelview': "get_team",
