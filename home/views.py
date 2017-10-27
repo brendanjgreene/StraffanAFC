@@ -315,7 +315,7 @@ def delete_player(request, id):
 
 def get_index(request):
     images = Post.objects.exclude(image='')
-    posts = Post.objects.all().order_by("-created_at")[:5]
+    posts = Post.objects.all().order_by("-created_at")[:10]
     return render(request, 'index.html',
                   {"images": images,
                    "posts": posts})
