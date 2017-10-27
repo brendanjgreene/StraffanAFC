@@ -5,19 +5,23 @@
         <div class="jumbotron">
             <h1>{{ subject.name }} News</h1>
             {% autoescape off %}{{ subject.description }}{% endautoescape %}
+            <div class="btn-group">
+                {% if subject.team %}
+                    <a class="btn btn-success" style="background-color: {{ club.mainColor }}" href="/team/{{ subject.team.id }}">Go to {{ subject.team.name }} Info</a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <a href="{% url 'new_story' subject.id %}" class="btn btn-primary">New Story</a>
+                {% endif %}
+                <a href="/news/" class="btn btn-success" style="background-color: {{ club.mainColor }}" >Back to News Subjects</a>
                 {% if user.is_superuser %}
                     <a href="{% url 'edit_subject' subject.id %}" class="btn btn-info"><i class="fa fa-pencil-square-o"></i></a>
                     <a href="{% url 'delete_subject' subject.id %}" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
                 {% endif %}
+            </div>
+
         </div>
     </div>
     <table class="col-md-12">
-    <div class="btn-group">
-        {% if user.is_authenticated %}
-            <a href="{% url 'new_story' subject.id %}" class="btn btn-primary">New Subject</a>
-        {% endif %}
-        <a href="/news/" class="btn btn-success" style="background-color: {{ club.mainColor }}" >Back to Club News</a>
-    </div>
         <hr>
     <table class="table table-striped">
         {% if subject.threads.all %}

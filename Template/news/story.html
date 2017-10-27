@@ -5,14 +5,18 @@
 {% block content %}
     <div class="row header">
         <div class="container-fluid jumbotron">
-        <h2>{{ thread.subject }}</h2>
+            <h2>{{ thread.subject }}</h2>
             <h1>{{ thread.name }}</h1>
-        {% if user.is_superuser %}
-            <p>
+            <div class="btn-group">
+                <a href="/news/" class="btn btn-success" style="background-color: {{ club.mainColor }}" >Back to News</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'new_post' thread.id %}" class="btn btn-primary">New post</a>
+                {% endif %}
+                {% if user.is_superuser %}
                     <a href="{% url 'edit_story' thread.id %}" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></a>
                     <a href="{% url 'delete_story' thread.id %}" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
-            </p>
-        {% endif %}
+                {% endif %}
+            </div>
             <br>
             <div class="col-md-12">
                 <table class="table">
@@ -67,12 +71,6 @@
                 </div>
             {% endif %}
         </div>
-            <div class="btn-group col-md-9">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'new_post' thread.id %}" class="btn btn-primary">New post</a>
-                {% endif %}
-                <a href="/news/" class="btn btn-success" style="background-color: {{ club.mainColor }}" >Back to News</a>
-            </div>
             {% for post in thread.posts.all %}
                 {% include "news/post.html" %}
             {% endfor %}
