@@ -29,7 +29,9 @@
                 <th>Name</th>
                 <!--th></th--><!--this was to make space for managers title remove comments to put back in might be useful for assistant manager-->
                 <th>Phone</th>
+                {% if user.is_staff %}
                 <th>Email</th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -44,7 +46,7 @@
                         <td>{{ managers.first_name }} {{ managers.last_name }}</td>
                         <!--td>{{ managers.profile.title }}</td--><!--managers title redundant unless we have assistant managers-->
                         <td><a class="calling" href="tel:{{ managers.profile.mobile }}">{{ managers.profile.mobile }}</a></td>
-                        <td>{% if "fake" not in managers.email %}<a href="mailto:{{ managers.email }}"> {{ managers.email }}</a>{% endif %}</td>
+                        <td>{% if user.is_staff and 'fake' not in managers.email %}<a href="mailto:{{ managers.email }}"> {{ managers.email }}</a>{% endif %}</td>
                     </tr>
                 {% endif %}
             {% endfor %}

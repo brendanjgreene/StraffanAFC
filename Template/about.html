@@ -88,7 +88,7 @@ function log(s) {
                         </span>
                     </a>
                 </h4>
-                {% if "fake" not in staff.email %}<h4><i class="fa fa-envelope-square" aria-label="email"></i><a href="mailto:{{ staff.email }}"> {{ staff.email }}</a></h4>{% endif %}
+                {% if "Secretary" in staff.profile.title.name %}<h4><i class="fa fa-envelope-square" aria-label="email"></i><a href="mailto:{{ staff.email }}"> {{ staff.email }}</a></h4>{% endif %}
                 </blockquote>
                 {% endif %}
             {% endfor %}
