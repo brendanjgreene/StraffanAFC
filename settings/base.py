@@ -59,6 +59,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'club.context_processors.club_processor',
                 'home.context_processors.teams_processor',
+                'news.context_processors.news_processor',
             ],
         },
     },
