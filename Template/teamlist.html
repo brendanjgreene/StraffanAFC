@@ -23,6 +23,9 @@
             <a  class="btn btn-info" href="/teams/">Back to Teams</a>
         {% endif %}
     {% endfor %}
+    {% if user.is_superuser or user.profile.team == team %}
+        <a type="button" class="btn btn-success" href="mailto:straffanafc@eircom.net?cc={% for managers in managers_list %}{% if managers.profile.team_id == team.id %}{% if "fake" not in managers.email %}{{ managers.email }},{% endif %}{% endif %}{% endfor %}{% for players in team_list %}{% if players.team_id == team.id %}{{ players.email }},{% endif %}{% endfor %}&subject=message to Straffan AFC {{ team.name }}">Email Team</a>
+    {% endif %}
     </div>
     </h2>
 </div>

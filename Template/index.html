@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="col-sm-12">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <h2>Welcome to {% if club.name %}{{ club.name }}{% else %}Straffan A.F.C.{% endif %}  Website</h2>
             {% if club.description %}
             {% autoescape off %}{{ club.description }}{% endautoescape %}
@@ -11,7 +11,7 @@
             <p>Our under age section is growing all the time.</p>
             {% endif %}
         </div>
-        <div id="myCarouselContainer" class="col-sm-6">
+        <div id="myCarouselContainer" class="col-sm-4">
         <h1 class="text-center">Photo Gallery</h1>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
@@ -39,6 +39,22 @@
                 </a>
             </div>
         </div>
+    <div class="col-sm-4">
+        <h1 class="text-center">Latest News</h1>
+        {% for post in posts %}
+            <a href="/story/{{ post.thread_id }}/"><h1>{{ post.thread.name }}</h1>
+            <p>
+                {% autoescape off %}
+                    {{ post.comment }}
+                {% endautoescape %}
+                {% if post.image %}
+            post contains images click to see them
+            {% endif %}
+            </p>
+            </a>
+        {% endfor %}
+    </div>
+
     </div>
 {% block head_js %}
     <script>

@@ -20,6 +20,11 @@
     <div class="col-md-4 col-sm-5">
         <h3 class="text-warning">Important all staff are required to complete Garda Vetting!</h3>
         <a type="button" class="btn btn-warning" href='http://www.fai.ie/sites/default/files/atoms/files/FAI%20Garda%20Vetting.pdf' target='_blank'>Garda Vetting</a>
+        <hr>
+    <h3> Some easy ways to communicate</h3>
+        <a type="button" class="btn btn-success" href="mailto:straffanafc@eircom.net?cc={% for staff in staff %}{% if "fake" not in staff.email %}{{ staff.email }},{% endif %}{% endfor %}&subject=message to Straffan AFC Staff"> To email all Staff</a>
+        <a type="button" class="btn btn-success" href="mailto:straffanafc@eircom.net?cc={% for parent in parents %}{% if "fake" not in parent.email %}{{ parent.email }},{% endif %}{% endfor %}&subject=message to Straffan AFC Players/Parents"> To email all Player's Parents</a>
+        <a type="button" class="btn btn-success" href="mailto:straffanafc@eircom.net?cc={% for staff in staff %}{% if "fake" not in staff.email %}{{ staff.email }},{% endif %}{% endfor %}{% for parent in parents %}{% if "fake" not in parent.email %}{{ parent.email }},{% endif %}{% endfor %}&subject=message to Straffan AFC Players Parents and Staff"> To email all Player's Parents and Staff</a>
     </div>
     {% endif %}
 </div>

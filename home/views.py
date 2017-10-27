@@ -315,8 +315,10 @@ def delete_player(request, id):
 
 def get_index(request):
     images = Post.objects.exclude(image='')
+    posts = Post.objects.all().order_by("-created_at")[:5]
     return render(request, 'index.html',
-                  {"images": images})
+                  {"images": images,
+                   "posts": posts})
 
 
 def get_players(request):
@@ -349,7 +351,9 @@ def get_info(request):
 
 @login_required(login_url='/login/')
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'profile.html',
+                  {'staff': User.objects.all(),
+                   'parents': Player.objects.all()})
 
 
 
