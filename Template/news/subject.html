@@ -3,7 +3,7 @@
 {% block content %}
     <div class="row header">
         <div class="jumbotron">
-            <h1>{{ subject.name }}</h1>
+            <h1>{{ subject.name }} News</h1>
             {% autoescape off %}{{ subject.description }}{% endautoescape %}
                 {% if user.is_superuser %}
                     <a href="{% url 'edit_subject' subject.id %}" class="btn btn-info"><i class="fa fa-pencil-square-o"></i></a>
@@ -47,8 +47,47 @@
                     {% endif %}
                 {% endfor %}
                 </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+            <td colspan="3">
+            <div class="col-sm-2">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        {% for post in thread.posts.all %}
+                            {% if post.image %}
+                                <div class="item{% if forloop.first %} active {% endif %}">
+                                    <img src="{{ post.image.url }}" alt="{{ post.comment }}" style="width:100%";>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                </div>
+
+                </div>
+            </div>
+            </td>
             </tr>
         {% endfor %}
     </tbody>
     </table>
+        {% block head_js %}
+            <script>
+        $(document).ready(function(){
+            // Activate Carousel
+            $("#myCarousel").carousel();
+
+            // Enable Carousel Indicators
+            $(".item").click(function(){
+                $("#myCarousel").carousel(1);
+            });
+            // Enable Carousel Controls
+            $(".left").click(function(){
+                $("#myCarousel").carousel("prev");
+            });
+        });
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock %}
 {% endblock %}
