@@ -70,7 +70,7 @@ class Post(models.Model):
                 # cases: image don't have getexif
                 pass
 
-            basewidth = 300
+            basewidth = 500
             wpercent = (basewidth / float(image.size[0]))
             hsize = int((float(image.size[1]) * float(wpercent)))
             image = image.resize((basewidth, hsize), Image.ANTIALIAS)

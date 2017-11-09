@@ -43,14 +43,11 @@
     <div class="col-sm-4">
         <h1 class="text-center">Latest News</h1>
         {% for post in posts %}
-            <a href="/story/{{ post.thread_id }}/"><h1>{{ post.thread.name }}</h1>
-            <p>
-                {% autoescape off %}
-                    {{ post.comment }}
-                {% endautoescape %}
+            <a href="/story/{{ post.thread_id }}/">
+                <h2>{% autoescape off %}{{ post.comment }}{% endautoescape %}{% if post.comment == "" %}Image with no comment{% endif %}</h2>
+                <h3>from story: {{ post.thread.name }}</h3>
                 {% if post.image %}post contains images click to see them
             {% endif %}
-            </p>
             </a>
         {% endfor %}
     </div>
