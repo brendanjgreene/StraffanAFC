@@ -6,7 +6,7 @@
         {% if user.png %}
             <p><img src="{% static 'images/user.png' %}" /></p>
         {% endif %}
-        <p>{{ post.user.username }}</p>
+        <p>{{ post.user.first_name }} {{ post.user.last_name }}</p>
         <!--p>{{ post.user.posts.count }} POSTS</p-->
     </div>
     <div class="col-md-9">

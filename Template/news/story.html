@@ -32,7 +32,7 @@
                                     {{ thread.created_at | started_time }}
                                 </time>
                             </td>
-                            <td>{{ thread.user.username }}</td>
+                            <td>{{ thread.user.first_name }} {{ thread.user.last_name }}</td>
                             <td>
                                 {% if thread.posts.count > 0 %}
                                     {% last_posted_user_name thread %}
